@@ -368,29 +368,35 @@
                 }
 
                 if (service === 'fetch-influencer') {
-                    document.getElementById('fetch-submit').addEventListener('click', function() {
-                        const username = document.getElementById('fetch-input').value;
-                        fetch(`/fetch-influencer/?username=${encodeURIComponent(username)}`)
-                            .then(response => response.json())
-                            .then(data => {
-                                const responseContainer = document.getElementById('fetch-response');
-                                if (data.error) {
-                                    responseContainer.innerText = `Error: ${data.error}`;
-                                } else {
-                                    responseContainer.innerHTML = `
-                                        <p><strong>Username:</strong> ${data.username}</p>
-                                        <p><strong>Followers:</strong> ${data.followers}</p>
-                                        <p><strong>Posts:</strong> ${data.posts}</p>
-                                        <p><strong>Bio:</strong> ${data.bio}</p>
-                                    `;
-                                }
-                            })
-                            .catch(error => {
-                                const responseContainer = document.getElementById('fetch-response');
-                                responseContainer.innerText = `Error: ${error}`;
-                            });
-                    });
-                }
+                  document.getElementById('fetch-submit').addEventListener('click', function() {
+                      const username = document.getElementById('fetch-input').value;
+                      fetch(`/fetch-influencer/?username=${encodeURIComponent(username)}`)
+                          .then(response => response.json())
+                          .then(data => {
+                              const responseContainer = document.getElementById('fetch-response');
+                              if (data.error) {
+                                  responseContainer.innerHTML = `<p><strong>Error:</strong> ${data.error}</p>`;
+                              } else {
+                                  responseContainer.innerHTML = `
+                                      <div class="card">
+                                          <img src="${data.image_url}" class="card-img-top" alt="Influencer Image">
+                                          <div class="card-body">
+                                              <h5 class="card-title">Influencer Details</h5>
+                                              <p><strong>Username:</strong> ${data.username}</p>
+                                              <p><strong>Followers:</strong> ${data.followers}</p>
+                                              <p><strong>Posts:</strong> ${data.posts}</p>
+                                              <p><strong>Bio:</strong> ${data.bio}</p>
+                                          </div>
+                                      </div>
+                                  `;
+                              }
+                          })
+                          .catch(error => {
+                              document.getElementById('fetch-response').innerHTML = `<p><strong>Error:</strong> ${error}</p>`;
+                          });
+                  });
+              }
+              
             });
         });
     });
