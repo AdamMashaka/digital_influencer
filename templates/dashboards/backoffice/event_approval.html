@@ -1,0 +1,23 @@
+{% extends 'dashboards/backoffice/base.html' %}
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h3>Event Approval: {{ event.title }}</h3>
+    </div>
+    <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="event-details">
+                <!-- Display full event details here -->
+                <p>Event Name: {{ event.title }}</p>
+                <p>Organizer: {{ event.organizer }}</p>
+                <!-- Add more details -->
+            </div>
+            <div class="approval-actions">
+                <button type="submit" name="action" value="approve" class="btn btn-success">Approve</button>
+                <button type="submit" name="action" value="reject" class="btn btn-danger">Reject</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,421 @@
+{% extends 'dashboards/backoffice/base.html' %}
+{% load static %}
+{% block toolbar %}
+    <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3 ">
+        <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
+            Add event
+        </h1>
+        <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
+            <li class="breadcrumb-item text-muted">
+                <a class="text-muted text-hover-primary" href="{% url 'dashboard' %}">
+                    Home </a>
+            </li>
+            <li class="breadcrumb-item">
+                <span class="bullet bg-gray-400 w-5px h-2px"></span>
+            </li>
+            <li class="breadcrumb-item text-muted">
+                Dashboards
+            </li>
+        </ul>
+    </div>
+{% endblock toolbar %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <div class="card-px text-center pt-15 pb-15">
+            <h2 class="fs-2x fw-bold mb-0">Interested in Working with Event management portal</h2>
+            <p class="text-gray-400 fs-4 fw-semibold py-7">
+                Here are few questions to get started. <br /> we'll ask you to generate the event in our system
+                 are you Ready? </p>
+            <a href="#" class="btn btn-primary er fs-6 px-8 py-4" data-bs-toggle="modal"
+                data-bs-target="#kt_modal_create_account" data-bs-dismiss="modal">
+                Let's get started </a>
+        </div>
+        <div class="text-center pb-15 px-5">
+            <img src="{% static 'img/Ticlogo.png' %}" alt=""
+                class="mw-100 h-200px h-sm-325px" />
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="kt_modal_create_account" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-hidden="true">
+    <div class="modal-dialog mw-1000px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Event system.</h2>
+                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                    <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span class="path2"></span></i>
+                </div>
+            </div>
+            <div class="modal-body scroll-y m-5">
+                <div class="stepper stepper-links d-flex flex-column" id="kt_create_account_stepper">
+                    <div class="stepper-nav py-5">
+                        <div class="stepper-item current" data-kt-stepper-element="nav">
+                            <h3 class="stepper-title">
+                                Event Type
+                            </h3>
+                        </div>
+                        <div class="stepper-item" data-kt-stepper-element="nav">
+                            <h3 class="stepper-title">
+                                Event Members
+                            </h3>
+                        </div>
+
+                        <div class="stepper-item" data-kt-stepper-element="nav">
+                            <h3 class="stepper-title">
+                                Completed
+                            </h3>
+                        </div>
+
+                        <div class="stepper-item" data-kt-stepper-element="nav">
+                            <h3 class="stepper-title">
+                                Event Members
+                            </h3>
+                        </div>
+
+                        
+                    </div>
+                    <form action="{% url 'addevent' %}" method="POST" enctype="multipart/form-data" id="addevent-form">
+                        {% csrf_token %}
+                        <div class="current" data-kt-stepper-element="content">
+                            <div class="w-100">
+                                <div class="pb-10 pb-lg-15">
+                                    <h2 class="fw-bold d-flex align-items-center text-dark">
+                                        Choose Event Type
+                                        <span class="ms-1" data-bs-toggle="tooltip"
+                                            title="Billing is issued based on your selected account type">
+                                            <i class="ki-duotone ki-information-5 text-gray-500 fs-6"><span
+                                                    class="path1"></span><span class="path2"></span><span
+                                                    class="path3"></span></i></span>
+                                    </h2>
+                                    <div class="text-muted fw-semibold fs-6">
+                                        If you need more info, please check out
+                                        <a href="#" class="link-primary fw-bold">Help Page</a>.
+                                    </div>
+                                </div>
+                                <div class="fv-row">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <input type="radio" class="btn-check" name="event_type" value="inward" checked="checked" id="kt_create_account_form_event_type_inward" />
+                                            <label class="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex align-items-center mb-10" for="kt_create_account_form_event_type_inward">
+                                                <i class="ki-duotone ki-badge fs-3x me-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>
+                                                <span class="d-block fw-semibold text-start">
+                                                    <span class="text-dark fw-bold d-block fs-4 mb-2">Inward Event</span>
+                                                    <span class="text-muted fw-semibold fs-6">If you need more info, please check it out</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="radio" class="btn-check" name="event_type" value="outward" id="kt_create_account_form_event_type_outward" />
+                                            <label class="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex align-items-center" for="kt_create_account_form_event_type_outward">
+                                                <i class="ki-duotone ki-briefcase fs-3x me-5"><span class="path1"></span><span class="path2"></span></i>
+                                                <span class="d-block fw-semibold text-start">
+                                                    <span class="text-dark fw-bold d-block fs-4 mb-2">Outward Event</span>
+                                                    <span class="text-muted fw-semibold fs-6">Create corporate event to many users</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div data-kt-stepper-element="content">
+                            <div class="w-100">
+                                <div class="pb-10 pb-lg-12">
+                                    <h2 class="fw-bold text-dark">Event Details</h2>
+                                    <div class="text-muted fw-semibold fs-6">
+                                        If you need more info, please check out
+                                        <a href="#" class="link-primary fw-bold">Help Page</a>.
+                                    </div>
+                                </div>
+                                <div class="fv-row mb-10">
+                                    <label class="form-label required">Event Name</label>
+                                    <input name="title" class="form-control form-control-lg form-control-solid" required />
+                                    {% if form.errors.title %}
+                                        <div class="text-danger">{{ form.errors.title }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="fv-row mb-10">
+                                    <label class="form-label required">Event Organizer</label>
+                                    <input name="organizer" class="form-control form-control-lg form-control-solid" required />
+                                    {% if form.errors.organizer %}
+                                        <div class="text-danger">{{ form.errors.organizer }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="fv-row mb-10">
+                                    <label class="form-label required">Contact Email</label>
+                                    <input name="contact" class="form-control form-control-lg form-control-solid" required />
+                                    {% if form.errors.contact %}
+                                        <div class="text-danger">{{ form.errors.contact }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="fv-row mb-10">
+                                    <label class="form-label required">Event Date</label>
+                                    <input type="date" name="date" class="form-control form-control-lg form-control-solid" required />
+                                    {% if form.errors.date %}
+                                        <div class="text-danger">{{ form.errors.date }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="fv-row mb-10">
+                                    <label class="form-label">End Date</label> <!-- Optional End Date -->
+                                    <input type="date" name="end_date" class="form-control form-control-lg form-control-solid" />
+                                    {% if form.errors.end_date %}
+                                        <div class="text-danger">{{ form.errors.end_date }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="fv-row mb-10">
+                                    <label class="form-label required">Time</label>
+                                    <input type="time" name="time" class="form-control form-control-lg form-control-solid" required />
+                                    {% if form.errors.time %}
+                                        <div class="text-danger">{{ form.errors.time }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="fv-row mb-10">
+                                    <label class="form-label required">Location</label>
+                                    <input name="location" class="form-control form-control-lg form-control-solid" required />
+                                    {% if form.errors.location %}
+                                        <div class="text-danger">{{ form.errors.location }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="fv-row mb-10">
+                                    <label class="form-label required">Ticket Price</label>
+                                    <input name="price" class="form-control form-control-lg form-control-solid" required />
+                                    {% if form.errors.price %}
+                                        <div class="text-danger">{{ form.errors.price }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="fv-row mb-10">
+                                    <label class="form-label required">Event Description</label>
+                                    <textarea name="description" class="form-control form-control-lg form-control-solid" rows="3" required></textarea>
+                                    {% if form.errors.description %}
+                                        <div class="text-danger">{{ form.errors.description }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="fv-row mb-10">
+                                    <label class="form-label required">Event Image</label>
+                                    <input type="file" name="photo" class="form-control form-control-lg form-control-solid" required />
+                                    {% if form.errors.photo %}
+                                        <div class="text-danger">{{ form.errors.photo }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="fv-row mb-10">
+                                    <label class="form-label required">Sponsor Images</label>
+                                    <input type="file" name="sponsor_images" class="form-control form-control-lg form-control-solid" multiple required />
+                                    {% if form.errors.sponsor_images %}
+                                        <div class="text-danger">{{ form.errors.sponsor_images }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div data-kt-stepper-element="content">
+                            <div class="w-100">
+                                <div class="pb-10 pb-lg-12">
+                                    <h2 class="fw-bold text-dark">Event Members</h2>
+                                    <div class="text-muted fw-semibold fs-6">
+                                        Add event members and assign roles.
+                                    </div>
+                                </div>
+                                <div id="event-members-container">
+                                    <div class="fv-row mb-10">
+                                        <label class="form-label required">Member Name</label>
+                                        <input name="member_name" class="form-control form-control-lg form-control-solid" />
+                                    </div>
+                                    <div class="fv-row mb-10">
+                                        <label class="form-label required">Member Email</label>
+                                        <input name="member_email" class="form-control form-control-lg form-control-solid" />
+                                    </div>
+                                    <div class="fv-row mb-10">
+                                        <label class="form-label required">Role</label>
+                                        <select name="member_role" class="form-control form-control-lg form-control-solid">
+                                            <option value="planner">Planner</option>
+                                            <option value="rapporteur">Rapporteur</option>
+                                            <option value="presenter">Presenter</option>
+                                            <option value="secretary">Secretary</option>
+                                        </select>
+                                    </div>
+                                    <button type="button" class="btn btn-primary" id="add-member-btn">Add Member</button>
+                                </div>
+                                <div id="members-list" class="mt-4">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Member Name</th>
+                                                <th>Member Email</th>
+                                                <th>Role</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="members-table-body">
+                                            <!-- Members will be listed here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    
+
+                    
+                        <div class="d-flex flex-stack pt-15">
+                            <div class="mr-2">
+                                <button type="button" class="btn btn-lg btn-light-primary me-3" data-kt-stepper-action="previous">
+                                    <i class="ki-duotone ki-arrow-left fs-4 me-1"><span class="path1"></span><span class="path2"></span></i> Back
+                                </button>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-lg btn-primary me-3" data-kt-stepper-action="submit">
+                                    <span class="indicator-label">
+                                        Submit
+                                        <i class="ki-duotone ki-arrow-right fs-3 ms-2 me-0"><span class="path1"></span><span class="path2"></span></i>
+                                    </span>
+                                    <span class="indicator-progress">
+                                        Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-lg btn-primary" data-kt-stepper-action="next">
+                                    Continue
+                                    <i class="ki-duotone ki-arrow-right fs-4 ms-1 me-0"><span class="path1"></span><span class="path2"></span></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="members" id="members-input">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="card mb-5 mb-xl-10">
+    <div class="card-header">
+        <div class="card-title">
+            <h3>List of events you attend</h3>
+        </div>
+    </div>
+
+
+<div class="card-body p-0">
+    <!--begin::Table wrapper-->
+    <div class="table-responsive">
+        <!--begin::Table-->
+        <table class="table align-middle table-row-bordered table-row-solid gy-4 gs-9">
+            <!--begin::Thead-->
+            <thead class="border-gray-200 fs-5 fw-semibold bg-lighten">
+                <tr>
+                    <th class="min-w-250px">Location</th>
+                    <th class="min-w-100px">Event Link</th>
+                    <th class="min-w-150px">Organizer</th>
+                    <th class="min-w-150px">Event Name</th>
+                    <th class="min-w-150px">Contact Email</th>
+                    <th class="min-w-150px">Action</th>
+                </tr>
+            </thead>
+            <!--end::Thead-->
+
+            <!--begin::Tbody-->
+            <tbody class="fw-6 fw-semibold text-gray-600">
+                {% for event in all_events %}
+                    <tr>
+                        <td>
+                            <a href="https://www.google.com/maps/search/?api=1&query={{ event.location }}" target="_blank">
+                                {{ event.location }}
+                            </a>
+                        </td>
+                        <td>
+                            {% if event.meeting_link %}
+                                <a href="{{ event.meeting_link }}" target="_blank">Join Event</a>
+                            {% else %}
+                                No Link
+                            {% endif %}
+                        </td>
+                        <td>{{ event.organizer }}</td>
+                        <td>{{ event.title }}</td>
+                        <td>{{ event.email }}</td>
+                        <td class="text-end">
+                            {% if user.is_superuser or event.is_event_member %}
+                            <button type="button" class="btn btn-icon btn-bg-black btn-active-color-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#addMeetingLinkModal{{ event.id }}">
+                                <i class="ki-duotone ki-switch fs-2"><span class="path1"></span><span class="path2"></span></i>
+                            </button>
+                        {% endif %}
+                            {% if user.is_superuser %}
+                                <button type="button" class="btn btn-icon btn-bg-black btn-active-color-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#assignCabinetMemberModal{{ event.id }}">
+                                    <i class="ki-duotone ki-user fs-2"><span class="path1"></span><span class="path2"></span></i>
+                                </button>
+                            
+                            <button type="button" class="btn btn-icon btn-bg-black btn-active-color-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#userListModal{{ event.id }}">
+                                <i class="ki-duotone ki-people fs-2"><span class="path1"></span><span class="path2"></span></i>
+                            </button>            
+                               
+                            {% endif %}
+                            <button type="button" class="btn btn-icon btn-bg-black btn-active-color-primary btn-sm" data-bs-toggle="modal" data-bs-target="#askQuestionModal{{ event.id }}">
+                                <i class="ki-duotone ki-book fs-2"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const addMemberBtn = document.getElementById('add-member-btn');
+                            const membersTableBody = document.getElementById('members-table-body');
+                            const membersInput = document.getElementById('members-input');
+                            let membersList = [];
+                    
+                            addMemberBtn.addEventListener('click', function() {
+                                const memberName = document.querySelector('input[name="member_name"]').value.trim();
+                                const memberEmail = document.querySelector('input[name="member_email"]').value.trim();
+                                const memberRole = document.querySelector('select[name="member_role"]').value;
+                    
+                                if (memberName && memberEmail && memberRole) {
+                                    const newMember = {
+                                        name: memberName,
+                                        email: memberEmail,
+                                        role: memberRole
+                                    };
+                    
+                                    membersList.push(newMember);
+                                    renderMembers();
+                                    document.querySelector('input[name="member_name"]').value = '';
+                                    document.querySelector('input[name="member_email"]').value = '';
+                                    document.querySelector('select[name="member_role"]').value = 'planner';
+                                } else {
+                                    alert('Please fill in all fields.');
+                                }
+                            });
+                    
+                            function renderMembers() {
+                                membersTableBody.innerHTML = '';
+                                membersList.forEach((member, index) => {
+                                    const memberRow = document.createElement('tr');
+                                    memberRow.innerHTML = `
+                                        <td>${member.name}</td>
+                                        <td>${member.email}</td>
+                                        <td>${member.role}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger btn-sm remove-member-btn" data-index="${index}">
+                                                Remove
+                                            </button>
+                                        </td>
+                                    `;
+                                    membersTableBody.appendChild(memberRow);
+                    
+                                    memberRow.querySelector('.remove-member-btn').addEventListener('click', function() {
+                                        membersList.splice(index, 1);
+                                        renderMembers();
+                                    });
+                                });
+                    
+                                membersInput.value = JSON.stringify(membersList);
+                            }
+                        });
+                    </script>
+                    {% endblock content %}

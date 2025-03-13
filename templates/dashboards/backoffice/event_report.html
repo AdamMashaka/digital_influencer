@@ -1,0 +1,141 @@
+<!-- filepath: /home/adam/Downloads/new_eventsystem/templates/dashboards/backoffice/event_report.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ event.title }}</h1>
+    <p><strong>Date:</strong> {{ event.date }}</p>
+    <p><strong>Location:</strong> {{ event.location }}</p>
+    <p><strong>Description:</strong> {{ event.description }}</p>
+
+    <h2>Event Statistics</h2>
+    <table>
+        <tr>
+            <th>Detail</th>
+            <th>Number</th>
+        </tr>
+        <tr>
+            <td>Number of Registered Users</td>
+            <td>{{ num_registered }}</td>
+        </tr>
+        <tr>
+            <td>Number of Cabinet Members</td>
+            <td>{{ num_cabinet_members }}</td>
+        </tr>
+        <tr>
+            <td>Number of Attendees</td>
+            <td>{{ num_attendees }}</td>
+        </tr>
+        <tr>
+            <td>Number of Questions Asked</td>
+            <td>{{ num_questions }}</td>
+        </tr>
+    </table>
+
+    <h2>Registered Users</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for registration in registrations %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ registration.user.username }}</td>
+                <td>{{ registration.user.email }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Attendee List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for attendee in event.attended_users.all %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ attendee.username }}</td>
+                <td>{{ attendee.email }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Assigned Cabinet Members</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in event.cabinet_members.all %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ member.username }}</td>
+                <td>{{ member.email }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Questions Asked</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Question</th>
+                <th>Asked By</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for question in questions %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ question.text }}</td>
+                <td>{{ question.user.username }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

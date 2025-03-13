@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 import openai
 import os
@@ -6,6 +6,23 @@ import requests
 from django.views.decorators.csrf import csrf_exempt
 from bs4 import BeautifulSoup
 from django.core.mail import send_mail
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
+from .utils import send_sms 
+from django.utils.crypto import get_random_string
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.conf import settings
+from django.utils import timezone
+from .models import Influencer
+from django.contrib.auth import login, logout
+from django.contrib.auth.decorators import login_required
+
+import logging
+from .forms import  RegistrationForm,ContactForm, MeetingLinkForm
+
+logger = logging.getLogger(__name__)
+
 
 
 def home(request):
@@ -52,8 +69,6 @@ def scrape_starbuzz(request):
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
 
-
-
 @csrf_exempt
 def fetch_influencer(request):
     username = request.GET.get('username')
@@ -79,7 +94,6 @@ def fetch_influencer(request):
     }
 
     return JsonResponse(data)
-
 
 @csrf_exempt
 def contact(request):
@@ -128,5 +142,71 @@ def newsletter(request):
             return JsonResponse({'error': str(e)}, status=500)
     return JsonResponse({'error': 'Invalid request method.'}, status=400)
 
-def login_view (request):
-    return render(request, 'website/login.html')
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')  # Redirect to home page after successful login
+        else:
+            messages.error(request, 'Invalid username or password')
+    return render(request, 'website/signin.html')
+
+def register(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            phone_number = form.cleaned_data.get('phone_number')
+
+            backend = 'django.contrib.auth.backends.ModelBackend'
+            user.backend = backend
+            login(request, user)
+            messages.success(request, 'Registration successful.')
+
+            subject = 'Welcome to Our Platform!'
+            html_message = render_to_string('emails/congratulations.html', {'user': user, 'current_year': timezone.now().year})
+            plain_message = strip_tags(html_message)
+            from_email = settings.DEFAULT_FROM_EMAIL
+            to = user.email
+
+            try:
+                send_mail(subject, plain_message, from_email, [to], html_message=html_message)
+                logger.info(f'Welcome email sent to {to}')
+            except Exception as e:
+                logger.error(f'Error sending email: {e}')
+                messages.error(request, 'Registration successful, but there was an error sending the confirmation email.')
+
+            sms_message = "Welcome to our platform! Your registration was successful."
+            try:
+                send_sms(phone_number, sms_message)
+                logger.info(f'Welcome SMS sent to {phone_number}')
+            except Exception as e:
+                logger.error(f'Error sending SMS: {e}')
+                messages.error(request, 'Registration successful, but there was an error sending the welcome SMS.')
+
+            return redirect('welcome')
+        else:
+            messages.error(request, 'Registration failed. Please correct the errors below.')
+    else:
+        form = RegistrationForm()
+    return render(request, 'signup.html', {'form': form}) 
+
+
+def profile(request):
+    influencers = Influencer.objects.all()
+    return render(request, 'website/profile.html', {'influencers': influencers})
+
+def dashboard(request):
+    return render(request, 'website/dashboard.html')
+
+@login_required
+def logout_view(request):
+    if request.method == 'POST' or request.method == 'GET':
+        logout(request)
+        messages.success(request, "You have been logged out.")
+        return redirect('index')
+    else:
+        return redirect('index')

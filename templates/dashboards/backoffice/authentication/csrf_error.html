@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSRF Error</title>
+</head>
+<body>
+    <h1>Oops! We encountered a security verification issue while processing your form submission. This is to ensure the safety of your data. Please follow these steps to resolve the problem:</h1>
+    {% if reason %}
+        <p>{{ reason }}</p>
+    <ul>
+        <li>Make sure you have cookies enabled in your browser settings. CSRF protection relies on cookies to validate the form submission.</li>
+        <li>If you have multiple browser tabs or windows open, please close them and try submitting the form again.</li>
+        <li>If you're using a bookmark or saved link to access this page, please refresh the page and try again.</li>
+        <li>If the issue persists, please try clearing your browser cache and cookies, and then reload the page.</li>
+        <li>If you continue to experience difficulties, feel free to contact our support team for assistance. We apologize for any inconvenience caused and appreciate your understanding</li>
+    </ul>
+    <a href="{% url 'vendor:sign_in' %}">Go back and refresh the page please </a>
+
+    {% else %}
+        <p>An error occurred due to a CSRF validation failure.</p>
+    {% endif %}
+</body>
+</html>
