@@ -8,22 +8,18 @@
   <meta name="description" content="">
   <meta name="keywords" content="">
 
-
   <link href="assets/img/kwibobuzz.png" rel="icon">
   <link href="assets/img/kwibobuzz.png" rel="apple-touch-icon">
 
-
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
 
   <link href="assets/css/main.css" rel="stylesheet">
 
@@ -33,17 +29,17 @@
 
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
-  
+
       <a href="index.html" class="logo d-flex align-items-center me-auto">
         <img src="assets/img/kwibobuzz.png" alt=""> 
         <h1 class="sitename">Kwibobuzz</h1>
       </a>
-      
+
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="index.html" >Home</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="solution.html">Solution</a></li>
+          <li><a href="solution.html" class="active">Solution</a></li>
           <li class="dropdown"><a href="#"><span>Resource</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="#">Dropdown 1</a></li>
@@ -53,7 +49,7 @@
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-  
+
       <a class="btn-getstarted" href="index.html#about">Get Started</a>
       <button id="language-toggle" class="btn btn-light ms-3"><i class="bi bi-translate"></i></button>
     </div>
@@ -84,13 +80,13 @@
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
 
             <div class="service-box">
-              <h4>Serices List</h4>
+              <h4>Services List</h4>
               <div class="services-list">
-                <a href="#" class="active"><i class="bi bi-arrow-right-circle"></i><span>Brands</span></a>
-                <a href="#"><i class="bi bi-arrow-right-circle"></i><span>agencies</span></a>
-                <a href="#"><i class="bi bi-arrow-right-circle"></i><span>Influencers</span></a>
-                <a href="#"><i class="bi bi-arrow-right-circle"></i><span>Ask our Kwibobuzz bot</span></a>
-                <a href="#"><i class="bi bi-arrow-right-circle"></i><span>Fetch influencer</span></a>
+                <a href="#" class="service-link active" data-service="brands"><i class="bi bi-arrow-right-circle"></i><span>Brands</span></a>
+                <a href="#" class="service-link" data-service="agencies"><i class="bi bi-arrow-right-circle"></i><span>Agencies</span></a>
+                <a href="#" class="service-link" data-service="influencers"><i class="bi bi-arrow-right-circle"></i><span>Influencers</span></a>
+                <a href="#" class="service-link" data-service="ask-bot"><i class="bi bi-arrow-right-circle"></i><span>Ask our Kwibobuzz bot</span></a>
+                <a href="#" class="service-link" data-service="fetch-influencer"><i class="bi bi-arrow-right-circle"></i><span>Fetch Influencer</span></a>
               </div>
             </div><!-- End Services List -->
 
@@ -98,7 +94,7 @@
               <h4>Download Document</h4>
               <div class="download-catalog">
                 <a href="#"><i class="bi bi-filetype-pdf"></i><span>Best influencer</span></a>
-                <a href="#"><i class="bi bi-file-earmark-word"></i><span>influencer</span></a>
+                <a href="#"><i class="bi bi-file-earmark-word"></i><span>Influencer</span></a>
               </div>
             </div><!-- End Services List -->
 
@@ -112,22 +108,11 @@
           </div>
 
           <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
-            <img src="assets/img/services.jpg" alt="" class="img-fluid services-img">
-            <h3>Temporibus et in vero dicta aut eius lidero plastis trand lined voluptas dolorem ut voluptas</h3>
-            <p>
-              Blanditiis voluptate odit ex error ea sed officiis deserunt. Cupiditate non consequatur et doloremque consequuntur. Accusantium labore reprehenderit error temporibus saepe perferendis fuga doloribus vero. Qui omnis quo sit. Dolorem architecto eum et quos deleniti officia qui.
-            </p>
-            <ul>
-              <li><i class="bi bi-check-circle"></i> <span>Aut eum totam accusantium voluptatem.</span></li>
-              <li><i class="bi bi-check-circle"></i> <span>Assumenda et porro nisi nihil nesciunt voluptatibus.</span></li>
-              <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea</span></li>
-            </ul>
-            <p>
-              Est reprehenderit voluptatem necessitatibus asperiores neque sed ea illo. Deleniti quam sequi optio iste veniam repellat odit. Aut pariatur itaque nesciunt fuga.
-            </p>
-            <p>
-              Sunt rem odit accusantium omnis perspiciatis officia. Laboriosam aut consequuntur recusandae mollitia doloremque est architecto cupiditate ullam. Quia est ut occaecati fuga. Distinctio ex repellendus eveniet velit sint quia sapiente cumque. Et ipsa perferendis ut nihil. Laboriosam vel voluptates tenetur nostrum. Eaque iusto cupiditate et totam et quia dolorum in. Sunt molestiae ipsum at consequatur vero. Architecto ut pariatur autem ad non cumque nesciunt qui maxime. Sunt eum quia impedit dolore alias explicabo ea.
-            </p>
+            <div id="service-content">
+              <img src="assets/img/services.jpg" alt="" class="img-fluid services-img">
+              <h3>Welcome to Kwibobuzz Services</h3>
+              <p>Select a service from the list to see more details.</p>
+            </div>
           </div>
 
         </div>
@@ -156,7 +141,7 @@
         </div>
       </div>
     </div>
-  
+
     <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
@@ -170,7 +155,7 @@
             <p><strong>Email:</strong> <span>mashakaadam123@gmail.com</span></p>
           </div>
         </div>
-  
+
         <div class="col-lg-2 col-md-3 footer-links">
           <h4>Useful Links</h4>
           <ul>
@@ -180,7 +165,7 @@
             <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
           </ul>
         </div>
-  
+
         <div class="col-lg-2 col-md-3 footer-links">
           <h4>Our Services</h4>
           <ul>
@@ -190,7 +175,7 @@
             <li><i class="bi bi-chevron-right"></i> <a href="#">Analytics & Insights</a></li>
           </ul>
         </div>
-  
+
         <div class="col-lg-4 col-md-12">
           <h4>Follow Us</h4>
           <p>Follow us on our social platforms for daily updates about our platform.</p>
@@ -201,25 +186,26 @@
             <a href=""><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
-  
+
       </div>
     </div>
-  
+
     <div class="container copyright text-center mt-4">
       <p>© <span>Copyright</span> <strong class="px-1 sitename">Kwibobuzz</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
         Designed by <a href="https://adamportifolio.netlify.app/">Kwibobuzz Developers</a>
       </div>
     </div>
-  
+
   </footer>
-  
+
+  <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-  
-  <div id="preloader"> 
-    <img src="assets/img/kwibobuzz.png" alt="Loading..." class="preloader-logo">
-  </div>
-  
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
@@ -228,89 +214,99 @@
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  
+
+  <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
-  
+
   <script>
-    window.addEventListener('load', function() {
-      document.getElementById('preloader').style.display = 'none';
-    });
-  </script>
-  
-  <script>
-    const translations = {
-      en: {
-        welcome: "Where tech brilliance meets",
-        description: "We are a team of passionate educators dedicated to providing quality educational resources and tools.",
-        getStarted: "Get Started",
-        watchVideo: "Watch Video",
-        curriculumSupport: "Curriculum Support",
-        interactiveLearning: "Interactive Learning",
-        aiAssistance: "AI-Powered Assistance",
-        personalizedPlans: "Personalized Learning Plans",
-        communitySupport: "Community Support",
-        onlineCourses: "Online Courses",
-        aboutUs: "About Us",
-        about: "About",
-        aboutDescription: "We are dedicated to providing quality educational resources and tools to enhance learning experiences.",
-        empoweringEducation: "Empowering Education Through Technology",
-        mission: "Our mission is to leverage technology to provide accessible and effective educational resources.",
-        comprehensiveResources: "Comprehensive resources aligned with the local syllabus.",
-        interactiveTools: "Interactive tools and quizzes to reinforce learning.",
-        aiPowered: "AI-powered assistance for instant answers to educational queries.",
-        engagingLearning: "We aim to make learning more engaging and effective by integrating modern technology with traditional educational methods.",
-        studentsHelped: "Students Helped",
-        coursesOffered: "Courses Offered",
-        questionsAnswered: "Questions Answered",
-        educators: "Educators",
-        services: "Services",
-        servicesDescription: "We offer a range of educational services to support students and educators.",
-        portfolio: "Portfolio",
-        portfolioDescription: "Explore our educational resources and tools designed to enhance learning experiences."
-      },
-      sw: {
-        welcome: "Pale watu wa tech wanapokutana na watu wa kawaida ",
-        description: "Sisi ni timu ya waelimishaji wenye shauku waliojitolea kutoa rasilimali na zana za elimu bora.",
-        getStarted: "Anza",
-        watchVideo: "Tazama Video",
-        curriculumSupport: "Msaada wa Mtaala",
-        interactiveLearning: "Kujifunza kwa Kuingiliana",
-        aiAssistance: "Msaada wa AI",
-        personalizedPlans: "Mipango ya Kujifunza ya Kibinafsi",
-        communitySupport: "Msaada wa Jamii",
-        onlineCourses: "Kozi za Mtandaoni",
-        aboutUs: "Kuhusu Sisi",
-        about: "Kuhusu",
-        aboutDescription: "Tumejitolea kutoa rasilimali na zana za elimu bora ili kuboresha uzoefu wa kujifunza.",
-        empoweringEducation: "Kuwezesha Elimu Kupitia Teknolojia",
-        mission: "Dhamira yetu ni kutumia teknolojia kutoa rasilimali za elimu zinazopatikana na bora.",
-        comprehensiveResources: "Rasilimali kamili zinazolingana na mtaala wa ndani.",
-        interactiveTools: "Zana na maswali ya kuingiliana ili kuimarisha kujifunza.",
-        aiPowered: "Msaada wa AI kwa majibu ya papo hapo kwa maswali ya elimu.",
-        engagingLearning: "Tunataka kufanya kujifunza kuwa na mvuto zaidi na bora kwa kuunganisha teknolojia ya kisasa na mbinu za jadi za elimu.",
-        studentsHelped: "Wanafunzi Waliosaidiwa",
-        coursesOffered: "Kozi Zinazotolewa",
-        questionsAnswered: "Maswali Yaliyojibiwa",
-        educators: "Waelimishaji",
-        services: "Huduma",
-        servicesDescription: "Tunatoa huduma mbalimbali za elimu kusaidia wanafunzi na waelimishaji.",
-        portfolio: "Kazi",
-        portfolioDescription: "Gundua rasilimali na zana zetu za elimu zilizoundwa ili kuboresha uzoefu wa kujifunza."
-      }
-    };
-  
-    document.getElementById('language-toggle').addEventListener('click', function() {
-      const currentLang = document.documentElement.lang;
-      const newLang = currentLang === 'en' ? 'sw' : 'en';
-      document.documentElement.lang = newLang;
-  
-      document.querySelectorAll('[data-translate]').forEach(element => {
-        const key = element.getAttribute('data-translate');
-        element.textContent = translations[newLang][key];
+    document.addEventListener('DOMContentLoaded', function() {
+      const serviceLinks = document.querySelectorAll('.service-link');
+      const serviceContent = document.getElementById('service-content');
+
+      const services = {
+        brands: `
+          <img src="assets/img/brands.jpg" alt="" class="img-fluid services-img">
+          <h3>Brands</h3>
+          <p>Discover how Kwibobuzz can help your brand connect with the right influencers to create impactful marketing campaigns.</p>
+          <ul>
+            <li><i class="bi bi-check-circle"></i> <span>Access a vast database of influencers.</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Advanced search tools to find the perfect match.</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Detailed analytics and insights.</span></li>
+          </ul>
+          <h4>Why Choose Us?</h4>
+          <p>At Kwibobuzz, we understand the unique needs of brands looking to leverage influencer marketing. Our platform offers:</p>
+          <ul>
+            <li><i class="bi bi-check-circle"></i> <span>Comprehensive influencer profiles with engagement metrics.</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Seamless campaign management tools.</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Real-time performance tracking and reporting.</span></li>
+          </ul>
+          <h4>Success Stories</h4>
+          <p>Read about how brands have successfully used Kwibobuzz to boost their marketing efforts:</p>
+          <div class="success-stories">
+            <div class="story">
+              <img src="assets/img/success1.jpg" alt="" class="img-fluid">
+              <h5>Brand A</h5>
+              <p>Brand A saw a 50% increase in engagement after using Kwibobuzz to find the right influencers.</p>
+            </div>
+            <div class="story">
+              <img src="assets/img/success2.jpg" alt="" class="img-fluid">
+              <h5>Brand B</h5>
+              <p>Brand B's campaign went viral, reaching over 1 million people thanks to our platform.</p>
+            </div>
+          </div>
+        `,
+        agencies: `
+          <img src="assets/img/agencies.jpg" alt="" class="img-fluid services-img">
+          <h3>Agencies</h3>
+          <p>Learn how agencies can leverage Kwibobuzz to manage multiple influencer campaigns efficiently and effectively.</p>
+          <ul>
+            <li><i class="bi bi-check-circle"></i> <span>Comprehensive campaign management tools.</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Collaboration features for team management.</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Real-time performance tracking.</span></li>
+          </ul>
+        `,
+        influencers: `
+          <img src="assets/img/influencers.jpg" alt="" class="img-fluid services-img">
+          <h3>Influencers</h3>
+          <p>Find out how influencers can join Kwibobuzz to connect with top brands and grow their personal brand.</p>
+          <ul>
+            <li><i class="bi bi-check-circle"></i> <span>Opportunities to collaborate with leading brands.</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Tools to manage your influencer profile.</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Insights to track your performance.</span></li>
+          </ul>
+        `,
+        'ask-bot': `
+          <h3>Ask our Kwibobuzz Bot</h3>
+          <p>Interact with our AI-powered bot to get instant answers to your questions about influencer marketing and our platform.</p>
+          <div class="bot-section">
+            <input type="text" id="bot-input" class="form-control" placeholder="Ask a question...">
+            <button id="bot-submit" class="btn btn-primary mt-2">Ask</button>
+            <div id="bot-response" class="mt-3"></div>
+          </div>
+        `,
+        'fetch-influencer': `
+          <h3>Fetch Influencer</h3>
+          <p>Use our tool to fetch influencers from Instagram and other platforms. Enter the influencer's username to get started.</p>
+          <div class="fetch-section">
+            <input type="text" id="fetch-input" class="form-control" placeholder="Enter influencer username...">
+            <button id="fetch-submit" class="btn btn-primary mt-2">Fetch</button>
+            <div id="fetch-response" class="mt-3"></div>
+          </div>
+        `
+      };
+
+      serviceLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+          event.preventDefault();
+          serviceLinks.forEach(link => link.classList.remove('active'));
+          this.classList.add('active');
+          const service = this.getAttribute('data-service');
+          serviceContent.innerHTML = services[service];
+        });
       });
     });
   </script>
-  
-  </body>
-  
-  </html>
+
+</body>
+
+</html>
