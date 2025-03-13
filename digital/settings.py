@@ -26,7 +26,29 @@ SECRET_KEY = 'django-insecure-^!x_%)xs1)#tv6p8t)nqy_-zm7q4#(e2algds%&fl2p2_*l4*s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS =[
+    '127.0.0.1', 
+    'localhost', 
+    '157.173.105.219', 
+    'liveodds.kijanicart.com', 
+    'liveodds.games', 
+    'adamkatani.systems', 
+    '51e9-197-186-0-64.ngrok-free.app',   
+    'ticevents.onrender.com',
+]
+
+CSRF_TRUSTED_ORIGINS =[
+    'https://127.0.0.1',
+    'https://localhost',
+    'https://157.173.105.219',
+    'https://liveodds.kijanicart.com',
+    'https://liveodds.games',
+    'https://adamkatani.systems',
+    'https://51e9-197-186-0-64.ngrok-free.app',
+    'https://ticevents.onrender.com',
+]
+
 
 
 # Application definition
@@ -117,7 +139,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
