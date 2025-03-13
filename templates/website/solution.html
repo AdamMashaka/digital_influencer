@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,20 +9,20 @@
   <meta name="description" content="">
   <meta name="keywords" content="">
 
-  <link href="assets/img/kwibobuzz.png" rel="icon">
-  <link href="assets/img/kwibobuzz.png" rel="apple-touch-icon">
+  <link href="{% static 'assets/img/kwibobuzz.png' %}" rel="icon">
+  <link href="{% static 'assets/img/kwibobuzz.png' %}" rel="apple-touch-icon">
 
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
 
-  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
 
 </head>
 
@@ -29,17 +30,17 @@
 
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <img src="assets/img/kwibobuzz.png" alt=""> 
+  
+      <a href="{% url 'home' %}" class="logo d-flex align-items-center me-auto">
+        <img src="{% static 'assets/img/kwibobuzz.png' %}" alt=""> 
         <h1 class="sitename">Kwibobuzz</h1>
       </a>
-
+      
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html" >Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="solution.html" class="active">Solution</a></li>
+          <li><a href="{% url 'home' %}" class="active">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'solution' %}">Solution</a></li>
           <li class="dropdown"><a href="#"><span>Resource</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="#">Dropdown 1</a></li>
@@ -49,7 +50,7 @@
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-
+  
       <a class="btn-getstarted" href="index.html#about">Get Started</a>
       <button id="language-toggle" class="btn btn-light ms-3"><i class="bi bi-translate"></i></button>
     </div>
@@ -109,7 +110,7 @@
 
           <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
             <div id="service-content">
-              <img src="assets/img/services.jpg" alt="" class="img-fluid services-img">
+              <img src="{% static 'assets/img/services.jpg' %}" alt="" class="img-fluid services-img">
               <h3>Welcome to Kwibobuzz Services</h3>
               <p>Select a service from the list to see more details.</p>
             </div>
@@ -203,151 +204,197 @@
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <div id="preloader">
+    <img src="{% static 'assets/img/kwibobuzz.png' %}" alt="Loading..." class="preloader-logo">
+  </div>
+  
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  
+  <script src="{% static 'assets/js/main.js' %}"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const serviceLinks = document.querySelectorAll('.service-link');
-      const serviceContent = document.getElementById('service-content');
+        const serviceLinks = document.querySelectorAll('.service-link');
+        const serviceContent = document.getElementById('service-content');
 
-      const services = {
-        brands: `
-          <img src="assets/img/portifolio/image5.png" alt="" class="img-fluid services-img">
-          <h3>Brands</h3>
-          <p>Discover how Kwibobuzz can help your brand connect with the right influencers to create impactful marketing campaigns.</p>
-          <ul>
-            <li><i class="bi bi-check-circle"></i> <span>Access a vast database of influencers.</span></li>
-            <li><i class="bi bi-check-circle"></i> <span>Advanced search tools to find the perfect match.</span></li>
-            <li><i class="bi bi-check-circle"></i> <span>Detailed analytics and insights.</span></li>
-          </ul>
-          <h4>Why Choose Us?</h4>
-          <p>At Kwibobuzz, we understand the unique needs of brands looking to leverage influencer marketing. Our platform offers:</p>
-          <ul>
-            <li><i class="bi bi-check-circle"></i> <span>Comprehensive influencer profiles with engagement metrics.</span></li>
-            <li><i class="bi bi-check-circle"></i> <span>Seamless campaign management tools.</span></li>
-            <li><i class="bi bi-check-circle"></i> <span>Real-time performance tracking and reporting.</span></li>
-          </ul>
-          <h4>Success Stories</h4>
-          <p>Read about how brands have successfully used Kwibobuzz to boost their marketing efforts:</p>
-          <div class="success-stories">
-            <div class="story">
-              <img src="assets/img/success1.jpg" alt="" class="img-fluid">
-              <h5>Brand A</h5>
-              <p>Brand A saw a 50% increase in engagement after using Kwibobuzz to find the right influencers.</p>
-            </div>
-            <div class="story">
-              <img src="assets/img/success2.jpg" alt="" class="img-fluid">
-              <h5>Brand B</h5>
-              <p>Brand B's campaign went viral, reaching over 1 million people thanks to our platform.</p>
-            </div>
-          </div>
-        `,
-        agencies: `
-          <img src="assets/img/agencies.jpg" alt="" class="img-fluid services-img">
-          <h3>Agencies</h3>
-          <p>Learn how agencies can leverage Kwibobuzz to manage multiple influencer campaigns efficiently and effectively.</p>
-          <ul>
-            <li><i class="bi bi-check-circle"></i> <span>Comprehensive campaign management tools.</span></li>
-            <li><i class="bi bi-check-circle"></i> <span>Collaboration features for team management.</span></li>
-            <li><i class="bi bi-check-circle"></i> <span>Real-time performance tracking.</span></li>
-          </ul>
-          <h4>Why Choose Us?</h4>
-          <p>Kwibobuzz provides agencies with the tools they need to manage multiple campaigns seamlessly:</p>
-          <ul>
-            <li><i class="bi bi-check-circle"></i> <span>Centralized dashboard for all campaigns.</span></li>
-            <li><i class="bi bi-check-circle"></i> <span>Team collaboration and role management.</span></li>
-            <li><i class="bi bi-check-circle"></i> <span>Detailed performance analytics and reporting.</span></li>
-          </ul>
-          <h4>Success Stories</h4>
-          <p>Discover how agencies have used Kwibobuzz to streamline their influencer marketing efforts:</p>
-          <div class="success-stories">
-            <div class="story">
-              <img src="assets/img/success3.jpg" alt="" class="img-fluid">
-              <h5>Agency X</h5>
-              <p>Agency X managed to run 10 simultaneous campaigns efficiently using Kwibobuzz.</p>
-            </div>
-            <div class="story">
-              <img src="assets/img/success4.jpg" alt="" class="img-fluid">
-              <h5>Agency Y</h5>
-              <p>Agency Y saw a 30% increase in client satisfaction by using our platform's collaboration tools.</p>
-            </div>
-          </div>
-        `,
-        influencers: `
-          <img src="assets/img/influencers.jpg" alt="" class="img-fluid services-img">
-          <h3>Influencers</h3>
-          <p>Find out how influencers can join Kwibobuzz to connect with top brands and grow their personal brand.</p>
-          <ul>
-            <li><i class="bi bi-check-circle"></i> <span>Opportunities to collaborate with leading brands.</span></li>
-            <li><i class="bi bi-check-circle"></i> <span>Tools to manage your influencer profile.</span></li>
-            <li><i class="bi bi-check-circle"></i> <span>Insights to track your performance.</span></li>
-          </ul>
-          <h4>Why Join Us?</h4>
-          <p>Kwibobuzz offers influencers a platform to grow and manage their brand effectively:</p>
-          <ul>
-            <li><i class="bi bi-check-circle"></i> <span>Access to top brand collaborations.</span></li>
-            <li><i class="bi bi-check-circle"></i> <span>Profile management and optimization tools.</span></li>
-            <li><i class="bi bi-check-circle"></i> <span>Performance tracking and analytics.</span></li>
-          </ul>
-          <h4>Success Stories</h4>
-          <p>Read about how influencers have grown their brand using Kwibobuzz:</p>
-          <div class="success-stories">
-            <div class="story">
-              <img src="assets/img/success5.jpg" alt="" class="img-fluid">
-              <h5>Influencer A</h5>
-              <p>Influencer A doubled their follower count by collaborating with top brands through Kwibobuzz.</p>
-            </div>
-            <div class="story">
-              <img src="assets/img/success6.jpg" alt="" class="img-fluid">
-              <h5>Influencer B</h5>
-              <p>Influencer B saw a significant increase in engagement and brand deals.</p>
-            </div>
-          </div>
-        `,
-        'ask-bot': `
-          <h3>Ask our Kwibobuzz Bot</h3>
-          <p>Interact with our AI-powered bot to get instant answers to your questions about influencer marketing and our platform.</p>
-          <div class="bot-section">
-            <input type="text" id="bot-input" class="form-control" placeholder="Ask a question...">
-            <button id="bot-submit" class="btn btn-primary mt-2">Ask</button>
-            <div id="bot-response" class="mt-3"></div>
-          </div>
-        `,
-        'fetch-influencer': `
-          <h3>Fetch Influencer</h3>
-          <p>Use our tool to fetch influencers from Instagram and other platforms. Enter the influencer's username to get started.</p>
-          <div class="fetch-section">
-            <input type="text" id="fetch-input" class="form-control" placeholder="Enter influencer username...">
-            <button id="fetch-submit" class="btn btn-primary mt-2">Fetch</button>
-            <div id="fetch-response" class="mt-3"></div>
-          </div>
-        `
-      };
+        const services = {
+            brands: `
+                <img src="{% static 'assets/img/portifolio/image5.png' %}" alt="" class="img-fluid services-img">
+                <h3>Brands</h3>
+                <p>Discover how Kwibobuzz can help your brand connect with the right influencers to create impactful marketing campaigns.</p>
+                <ul>
+                    <li><i class="bi bi-check-circle"></i> <span>Access a vast database of influencers.</span></li>
+                    <li><i class="bi bi-check-circle"></i> <span>Advanced search tools to find the perfect match.</span></li>
+                    <li><i class="bi bi-check-circle"></i> <span>Detailed analytics and insights.</span></li>
+                </ul>
+                <h4>Why Choose Us?</h4>
+                <p>At Kwibobuzz, we understand the unique needs of brands looking to leverage influencer marketing. Our platform offers:</p>
+                <ul>
+                    <li><i class="bi bi-check-circle"></i> <span>Comprehensive influencer profiles with engagement metrics.</span></li>
+                    <li><i class="bi bi-check-circle"></i> <span>Seamless campaign management tools.</span></li>
+                    <li><i class="bi bi-check-circle"></i> <span>Real-time performance tracking and reporting.</span></li>
+                </ul>
+                <h4>Success Stories</h4>
+                <p>Read about how brands have successfully used Kwibobuzz to boost their marketing efforts:</p>
+                <div class="success-stories">
+                    <div class="story">
+                        <img src="{% static 'assets/img/success1.jpg' %}" alt="" class="img-fluid">
+                        <h5>Brand A</h5>
+                        <p>Brand A saw a 50% increase in engagement after using Kwibobuzz to find the right influencers.</p>
+                    </div>
+                    <div class="story">
+                        <img src="{% static 'assets/img/success2.jpg' %}" alt="" class="img-fluid">
+                        <h5>Brand B</h5>
+                        <p>Brand B's campaign went viral, reaching over 1 million people thanks to our platform.</p>
+                    </div>
+                </div>
+            `,
+            agencies: `
+                <img src="{% static 'assets/img/agencies.jpg' %}" alt="" class="img-fluid services-img">
+                <h3>Agencies</h3>
+                <p>Learn how agencies can leverage Kwibobuzz to manage multiple influencer campaigns efficiently and effectively.</p>
+                <ul>
+                    <li><i class="bi bi-check-circle"></i> <span>Comprehensive campaign management tools.</span></li>
+                    <li><i class="bi bi-check-circle"></i> <span>Collaboration features for team management.</span></li>
+                    <li><i class="bi bi-check-circle"></i> <span>Real-time performance tracking.</span></li>
+                </ul>
+                <h4>Why Choose Us?</h4>
+                <p>Kwibobuzz provides agencies with the tools they need to manage multiple campaigns seamlessly:</p>
+                <ul>
+                    <li><i class="bi bi-check-circle"></i> <span>Centralized dashboard for all campaigns.</span></li>
+                    <li><i class="bi bi-check-circle"></i> <span>Team collaboration and role management.</span></li>
+                    <li><i class="bi bi-check-circle"></i> <span>Detailed performance analytics and reporting.</span></li>
+                </ul>
+                <h4>Success Stories</h4>
+                <p>Discover how agencies have used Kwibobuzz to streamline their influencer marketing efforts:</p>
+                <div class="success-stories">
+                    <div class="story">
+                        <img src="{% static 'assets/img/success3.jpg' %}" alt="" class="img-fluid">
+                        <h5>Agency X</h5>
+                        <p>Agency X managed to run 10 simultaneous campaigns efficiently using Kwibobuzz.</p>
+                    </div>
+                    <div class="story">
+                        <img src="{% static 'assets/img/success4.jpg' %}" alt="" class="img-fluid">
+                        <h5>Agency Y</h5>
+                        <p>Agency Y saw a 30% increase in client satisfaction by using our platform's collaboration tools.</p>
+                    </div>
+                </div>
+            `,
+            influencers: `
+                <img src="{% static 'assets/img/influencers.jpg' %}" alt="" class="img-fluid services-img">
+                <h3>Influencers</h3>
+                <p>Find out how influencers can join Kwibobuzz to connect with top brands and grow their personal brand.</p>
+                <ul>
+                    <li><i class="bi bi-check-circle"></i> <span>Opportunities to collaborate with leading brands.</span></li>
+                    <li><i class="bi bi-check-circle"></i> <span>Tools to manage your influencer profile.</span></li>
+                    <li><i class="bi bi-check-circle"></i> <span>Insights to track your performance.</span></li>
+                </ul>
+                <h4>Why Join Us?</h4>
+                <p>Kwibobuzz offers influencers a platform to grow and manage their brand effectively:</p>
+                <ul>
+                    <li><i class="bi bi-check-circle"></i> <span>Access to top brand collaborations.</span></li>
+                    <li><i class="bi bi-check-circle"></i> <span>Profile management and optimization tools.</span></li>
+                    <li><i class="bi bi-check-circle"></i> <span>Performance tracking and analytics.</span></li>
+                </ul>
+                <h4>Success Stories</h4>
+                <p>Read about how influencers have grown their brand using Kwibobuzz:</p>
+                <div class="success-stories">
+                    <div class="story">
+                        <img src="{% static 'assets/img/success5.jpg' %}" alt="" class="img-fluid">
+                        <h5>Influencer A</h5>
+                        <p>Influencer A doubled their follower count by collaborating with top brands through Kwibobuzz.</p>
+                    </div>
+                    <div class="story">
+                        <img src="{% static 'assets/img/success6.jpg' %}" alt="" class="img-fluid">
+                        <h5>Influencer B</h5>
+                        <p>Influencer B saw a significant increase in engagement and brand deals.</p>
+                    </div>
+                </div>
+            `,
+            'ask-bot': `
+                <h3>Ask our Kwibobuzz Bot</h3>
+                <p>Interact with our AI-powered bot to get instant answers to your questions about influencer marketing and our platform.</p>
+                <div class="bot-section">
+                    <input type="text" id="bot-input" class="form-control" placeholder="Ask a question...">
+                    <button id="bot-submit" class="btn btn-primary mt-2">Ask</button>
+                    <div id="bot-response" class="mt-3"></div>
+                </div>
+            `,
+            'fetch-influencer': `
+                <h3>Fetch Influencer</h3>
+                <p>Use our tool to fetch influencers from Instagram and other platforms. Enter the influencer's username to get started.</p>
+                <div class="fetch-section">
+                    <input type="text" id="fetch-input" class="form-control" placeholder="Enter influencer username...">
+                    <button id="fetch-submit" class="btn btn-primary mt-2">Fetch</button>
+                    <div id="fetch-response" class="mt-3"></div>
+                </div>
+            `
+        };
 
-      serviceLinks.forEach(link => {
-        link.addEventListener('click', function(event) {
-          event.preventDefault();
-          serviceLinks.forEach(link => link.classList.remove('active'));
-          this.classList.add('active');
-          const service = this.getAttribute('data-service');
-          serviceContent.innerHTML = services[service];
+        serviceLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                serviceLinks.forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
+                const service = this.getAttribute('data-service');
+                serviceContent.innerHTML = services[service];
+
+                if (service === 'ask-bot') {
+                    document.getElementById('bot-submit').addEventListener('click', function() {
+                        const question = document.getElementById('bot-input').value;
+                        fetch(`/ask-bot/?question=${encodeURIComponent(question)}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                const responseContainer = document.getElementById('bot-response');
+                                if (data.error) {
+                                    responseContainer.innerHTML += `<p><strong>Error:</strong> ${data.error}</p>`;
+                                } else {
+                                    responseContainer.innerHTML += `<p><strong>Question:</strong> ${question}</p><p><strong>Answer:</strong> ${data.response}</p>`;
+                                }
+                                document.getElementById('bot-input').value = ''; // Clear the input box
+                            })
+                            .catch(error => {
+                                const responseContainer = document.getElementById('bot-response');
+                                responseContainer.innerHTML += `<p><strong>Error:</strong> ${error}</p>`;
+                            });
+                    });
+                }
+
+                if (service === 'fetch-influencer') {
+                    document.getElementById('fetch-submit').addEventListener('click', function() {
+                        const username = document.getElementById('fetch-input').value;
+                        fetch(`/fetch-influencer/?username=${encodeURIComponent(username)}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                const responseContainer = document.getElementById('fetch-response');
+                                if (data.error) {
+                                    responseContainer.innerText = `Error: ${data.error}`;
+                                } else {
+                                    responseContainer.innerHTML = `
+                                        <p><strong>Username:</strong> ${data.username}</p>
+                                        <p><strong>Followers:</strong> ${data.followers}</p>
+                                        <p><strong>Posts:</strong> ${data.posts}</p>
+                                        <p><strong>Bio:</strong> ${data.bio}</p>
+                                    `;
+                                }
+                            })
+                            .catch(error => {
+                                const responseContainer = document.getElementById('fetch-response');
+                                responseContainer.innerText = `Error: ${error}`;
+                            });
+                    });
+                }
+            });
         });
-      });
     });
-  </script>
+</script>
 
 </body>
 

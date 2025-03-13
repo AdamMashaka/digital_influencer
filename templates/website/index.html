@@ -36,15 +36,15 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
   
       <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <img src="assets/img/kwibobuzz.png" alt=""> 
+        <img src="{% static 'assets/img/kwibobuzz.png' %}" alt=""> 
         <h1 class="sitename">Kwibobuzz</h1>
       </a>
       
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="#" class="active">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="solution.html">Solution</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'solution' %}">Solution</a></li>
           <li class="dropdown"><a href="#"><span>Resource</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="#">Dropdown 1</a></li>
@@ -76,7 +76,7 @@
             </div>
           </div>
           <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="100">
-            <img src="assets/img/mondi.png" class="img-fluid animated" alt="">
+            <img src="{% static 'assets/img/mondi.png' %}" class="img-fluid animated" alt="">
           </div>
         </div>
       </div>
@@ -134,11 +134,11 @@
     <p>We are dedicated to connecting investors with the right influencers across various social media platforms.</p>
   </div><!-- End Section Title -->
 
-  <div class="container">
+  <div class="container"> 
 
     <div class="row gy-4">
       <div class="col-lg-6 position-relative align-self-start" data-aos="fade-up" data-aos-delay="100">
-        <img src="assets/img/about.png" class="img-fluid" alt="About Us">
+        <img src="{% static 'assets/img/about.png' %}" class="img-fluid" alt="About Us">
         <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a>
       </div>
       <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="200">
@@ -647,7 +647,7 @@
 <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 <div id="preloader">
-  <img src="assets/img/kwibobuzz.png" alt="Loading..." class="preloader-logo">
+  <img src="{% static 'assets/img/kwibobuzz.png' %}" alt="Loading..." class="preloader-logo">
 </div>
 
 <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
