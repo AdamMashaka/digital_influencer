@@ -23,10 +23,12 @@ from .forms import  RegistrationForm,ContactForm, MeetingLinkForm
 
 logger = logging.getLogger(__name__)
 
+openai.api_key = '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'
 
+ACCESS_TOKEN = '1002792908415536|DEpcT8fn-E13NsoDF8Ud6PicADQ' 
 
 def home(request):
-    return render(request, 'website/index.html')
+    return render(request, 'website/index.html') 
 
 def about(request):
     return render(request, 'website/about.html')
