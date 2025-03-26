@@ -18,6 +18,8 @@ from .models import Influencer
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 
+
+
 import logging
 from .forms import  RegistrationForm,ContactForm, MeetingLinkForm
 
@@ -121,6 +123,8 @@ def contact(request):
             return JsonResponse({'error': str(e)}, status=500)
     return JsonResponse({'error': 'Invalid request method.'}, status=400)
 
+
+
 @csrf_exempt
 def newsletter(request):
     if request.method == 'POST':
@@ -143,6 +147,9 @@ def newsletter(request):
         except Exception as e:
             return JsonResponse({'error': str(e)}, status=500)
     return JsonResponse({'error': 'Invalid request method.'}, status=400)
+
+
+
 
 def login_view(request):
     if request.method == 'POST':
@@ -209,6 +216,6 @@ def logout_view(request):
     if request.method == 'POST' or request.method == 'GET':
         logout(request)
         messages.success(request, "You have been logged out.")
-        return redirect('index')
+        return redirect('home')
     else:
-        return redirect('index')
+        return redirect('home')

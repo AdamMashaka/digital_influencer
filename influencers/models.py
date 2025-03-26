@@ -32,6 +32,13 @@ class Question(models.Model):
 
     def __str__(self):
         return f'Question for {self.event.title} by {self.user.username}'
+    
+class NewsletterSubscriber(models.Model):
+    email = models.EmailField(unique=True)  # Ensure unique email addresses
+    subscribed_at = models.DateTimeField(auto_now_add=True)  # Automatically store the subscription time
+
+    def __str__(self):
+        return self.email
 
 
 # Create your models here.
