@@ -1,0 +1,68 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<div class="grid grid-cols-12 gap-x-6">
+    <div class="col-span-12 xl:col-span-8">
+      <div class="box">
+        <div class="box-header">
+          <h5 class="box-title">Financial Year</h5>
+        </div>
+        <div class="box-body">
+            <form  action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label">Year</label>
+                    <input type="text" name="year" class="px-3 py-2 ti-form-input" placeholder="0000-0000" value="{{ years.year }}">
+                </div>
+                <div class="space-y-2 mb-3">
+                    <label for="input-label" class="ti-form-label">Start Date</label>
+                    <div class="flex rounded-sm shadow-sm">
+                        <div
+                            class="px-4 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
+                            <span class="text-sm text-gray-500 dark:text-white/70"><i
+                                    class="ri ri-calendar-line"></i></span>
+                        </div>
+
+                        <input type="text"
+                            class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
+                            id="addignedDate" name="start_date" placeholder="Choose date and time"
+                            readonly="readonly" value="{{ years.start_date }}">
+                    </div>
+                </div>
+                <div class="space-y-2 mb-3">
+                    <label for="input-label" class="ti-form-label">End Date</label>
+                    <div class="flex rounded-sm shadow-sm">
+                        <div
+                            class="px-4 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
+                            <span class="text-sm text-gray-500 dark:text-white/70"><i
+                                    class="ri ri-calendar-line"></i></span>
+                        </div>
+
+                        <input type="text"
+                            class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
+                            id="targetDate" name="end_date" placeholder="Choose date and time"
+                            readonly="readonly" value="{{ years.end_date }}">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Status</label>
+                    <select class="px-3 py-2 ti-form-input" name="is_active">
+                        <option>select</option>
+                        <option {% if  years.status == "1" %} selected {% else %} '' {% endif %} value="1">Active</option>
+                        <option {% if  years.status == "0" %} selected {% else %} '' {% endif %} value="0">Inactive</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit" class="ti-btn bg-indigo-500/10 text-indigo-500 hover:text-white hover:bg-indigo-500 ring-offset-white focus:ring-indigo-500 dark:focus:ring-offset-white/10">Create Financial  Year</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+{% endblock content %}
+{% block extra_scripts %}
+<script src="{% static 'admin/libs/dragula/dragula.min.js' %}"></script>
+<script src="{% static 'admin/js/tasks.js' %}"></script>
+{% endblock extra_scripts %}

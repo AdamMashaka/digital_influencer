@@ -1,0 +1,46 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<div class="grid grid-cols-12 gap-x-6">
+    <div class="col-span-12 xl:col-span-12">
+      <div class="box">
+        <div class="box-header">
+          <h5 class="box-title">Edit Enroll</h5>
+        </div>
+        <div class="box-body">
+            <form  action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="grid lg:grid-cols-2 gap-6 space-y-4 lg:space-y-0">
+                    <div class="space-y-2">
+                        <label class="ti-form-label mb-0">Student</label>
+                        <select class="my-auto ti-form-input" name="student_id">
+                            <option>select</option>
+                            {% if users %}
+                                {% for user in users %}
+                                     <option {% if enroll.student.id ==     user.id %} selected {% else %} '' {% endif %} value="{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</option>
+                                {% endfor %}
+                            {% endif %}
+                        </select>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="ti-form-label mb-0">Course</label>
+                        <select class="my-auto ti-form-input" name="course_id">
+                            <option>select</option>
+                            {% if courses %}
+                                {% for course in courses %}
+                                    <option {% if enroll.course.id == course.id %} selected {% else %} '' {% endif %} value="{{ course.id }}">{{ course.name }}</option>
+                                {% endfor %}
+                            {% endif %}
+                        </select>                       
+                    </div>
+                </div>
+                <div class="text-center py-4">
+                    <button type="submit" class="ti-btn bg-indigo-500/10 text-indigo-500 hover:text-white hover:bg-indigo-500 ring-offset-white focus:ring-indigo-500 dark:focus:ring-offset-white/10">Save</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+{% endblock content %}

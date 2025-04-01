@@ -208,8 +208,6 @@ def profile(request):
     influencers = Influencer.objects.all()
     return render(request, 'website/profile.html', {'influencers': influencers})
 
-def dashboard(request):
-    return render(request, 'website/dashboard.html')
 
 @login_required
 def logout_view(request):
@@ -219,3 +217,8 @@ def logout_view(request):
         return redirect('home')
     else:
         return redirect('home')
+    
+    
+    
+def dashboard(request):
+    return render(request, 'dashboard/index.html') 

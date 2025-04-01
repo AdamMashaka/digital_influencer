@@ -1,0 +1,86 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<div class="grid grid-cols-12 gap-x-6">
+    <div class="col-span-12 xl:col-span-12">
+      <div class="box">
+        <div class="box-header">
+          <h5 class="box-title">Add Student</h5>
+        </div>
+        <div class="box-body">
+            <form  action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="grid lg:grid-cols-2 gap-6 space-y-4 lg:space-y-0">
+                    <div class="space-y-2">
+                        <label class="ti-form-label mb-0">First Name</label>
+                        <input type="text" name="first_name" class="my-auto ti-form-input" placeholder="Firstname">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="ti-form-label mb-0">Last Name</label>
+                        <input type="text" name="last_name" class="my-auto ti-form-input" placeholder="Lastname">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="ti-form-label mb-0">User Name</label>
+                        <input type="text" name="username" class="my-auto ti-form-input" placeholder="username">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="ti-form-label mb-0">Phone Number</label>
+                        <input type="text" name="phone" class="my-auto ti-form-input" placeholder="+91 123-456-789">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="ti-form-label mb-0">Email Address</label>
+                        <input type="email" name="email" class="my-auto ti-form-input" placeholder="your@gmail.com">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="ti-form-label mb-0">Password</label>
+                        <input type="password" class="ti-form-input" placeholder="Minimal 8 characters">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="ti-form-label mb-0">Confirm Password</label>
+                        <input type="cpwd" class="ti-form-input" placeholder="Minimal 8 characters">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="ti-form-label mb-0">Date Of Birth</label>
+                        <input type="text" name="birth_date" class="ti-form-input flatpickr-input" id="date" placeholder="Choose date" readonly="readonly">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="ti-form-label mb-0">Gender</label>
+                        <ul class="flex flex-col sm:flex-row">
+                            <li class="ti-list-group gap-x-2.5 bg-white border text-gray-800 ltr:sm:-ml-px rtl:sm:-mr-px sm:mt-0 ltr:sm:first:rounded-tr-none ltr:sm:first:rounded-tl-none rtl:sm:first:rounded-tr-none rtl:sm:first:rounded-tl-none ltr:sm:first:rounded-bl-sm rtl:sm:first:rounded-br-sm ltr:sm:last:rounded-bl-none ltr:sm:last:rounded-br-none rtl:sm:last:rounded-bl-none rtl:sm:last:rounded-br-none ltr:sm:last:rounded-tr-sm rtl:sm:last:rounded-tl-sm dark:bg-bgdark dark:border-white/10 dark:text-white">
+                                <div class="relative flex items-start w-full">
+                                    <div class="flex items-center h-5">
+                                        <input id="hs-horizontal-list-group-item-radio-1" name="gender" type="radio" value="female" class="ti-form-radio" checked="">
+                                    </div>
+                                    <label for="hs-horizontal-list-group-item-radio-1" class="ltr:ml-3 rtl:mr-3 block w-full text-sm text-gray-600 dark:text-white/70">
+                                        Female
+                                    </label>
+                                </div>
+                            </li>
+
+                            <li class="ti-list-group gap-x-2.5 bg-white border text-gray-800 ltr:sm:-ml-px rtl:sm:-mr-px sm:mt-0 ltr:sm:first:rounded-tr-none ltr:sm:first:rounded-tl-none rtl:sm:first:rounded-tr-none rtl:sm:first:rounded-tl-none ltr:sm:first:rounded-bl-sm rtl:sm:first:rounded-br-sm ltr:sm:last:rounded-bl-none ltr:sm:last:rounded-br-none rtl:sm:last:rounded-bl-none rtl:sm:last:rounded-br-none ltr:sm:last:rounded-tr-sm rtl:sm:last:rounded-tl-sm dark:bg-bgdark dark:border-white/10 dark:text-white">
+                            <div class="relative flex items-start w-full">
+                                    <div class="flex items-center h-5">
+                                        <input id="hs-horizontal-list-group-item-radio-2" name="gender" type="radio" value="male" class="ti-form-radio">
+                                    </div>
+                                    <label for="hs-horizontal-list-group-item-radio-2" class="ltr:ml-3 rtl:mr-3 block w-full text-sm text-gray-600 dark:text-white/70">
+                                        Male
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="ti-form-label mb-0">Profile Picture</label>
+                        <input type="file" name="profile_picture" class="ti-form-input  dropify" data-height="100">
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="ti-btn bg-indigo-500/10 text-indigo-500 hover:text-white hover:bg-indigo-500 ring-offset-white focus:ring-indigo-500 dark:focus:ring-offset-white/10">Save</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+{% endblock content %}

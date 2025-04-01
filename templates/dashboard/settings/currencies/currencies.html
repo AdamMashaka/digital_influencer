@@ -1,0 +1,89 @@
+{% extends "dashboard/settings/base_setting.html" %}
+{% load static %}
+{% block setting_body %}
+<div class="col-span-12 xl:col-span-9">
+    <div class="box">
+      <div class="box-body p-0">
+        <div>
+          <div class="box border-0 shadow-none mb-0">
+            <div class="box-header lg:flex lg:justify-between">
+              <h5 class="box-title leading-none flex"><i class="ri ri-shield-user-line ltr:mr-2 rtl:ml-2"></i> System Settings</h5>
+            </div>
+            <div class="box-body">
+                <form class="space-y-3 container">
+                    <div class="sm:grid grid-cols-12 gap-x-6">
+                        <label class="col-span-3 ti-form-label">Default Language</label>
+                        <select class="col-span-9 py-2 px-3 ti-form-select" name="country" placeholder="country">
+                            <option selected="">select</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                          </select>
+                    </div>
+                    <div class="sm:grid grid-cols-12 gap-x-6">
+                        <label class="col-span-3 ti-form-label">Locale</label>
+                        <select class="col-span-9 py-2 px-3 ti-form-select" name="country" placeholder="country">
+                            <option selected="">select</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                          </select>
+                    </div>
+                    <div class="sm:grid grid-cols-12 gap-x-6">
+                        <label class="col-span-3 ti-form-label">Timezone</label>
+                        <select class="col-span-9 py-2 px-3 ti-form-select" name="country" placeholder="country">
+                            <option selected="">select</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                          </select>
+                    </div>
+                    <div class="sm:grid grid-cols-12 gap-x-6">
+                        <label class="col-span-3 ti-form-label">Default Currency</label>
+                        <select class="col-span-9 py-2 px-3 ti-form-select" name="country" placeholder="country">
+                            <option selected="">select</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                          </select>
+                    </div>
+                    <div class="sm:grid grid-cols-12 gap-x-6">
+                        <label class="col-span-3 ti-form-label">Default Payment Method</label>
+                        <select class="col-span-9 py-2 px-3 ti-form-select" name="country" placeholder="country">
+                            <option selected="">select</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                          </select>
+                    </div>
+                    <div class="sm:grid grid-cols-12 gap-x-6">
+                        <label class="col-span-3 ti-form-label">City</label>
+                        <input type="text" class="col-span-9 py-2 px-3 ti-form-input" name="city" placeholder="City">
+                    </div>
+                    <div class="sm:grid grid-cols-12 gap-x-6">
+                        <label class="col-span-3 ti-form-label">Zip Code</label>
+                        <input type="text" class="col-span-9 py-2 px-3 ti-form-input" name="zipcode" placeholder="Zip Code">
+                    </div>
+                    <div class="sm:grid grid-cols-12 gap-x-6">
+                        <label class="col-span-3 ti-form-label">Company Phone</label>
+                        <input type="text" class="col-span-9 py-2 px-3 ti-form-input" name="company_phone" placeholder="Company Phone">
+                    </div>
+                    <div class="sm:grid grid-cols-12 gap-x-6">
+                        <label class="col-span-3 ti-form-label">Company Website</label>
+                        <input type="text" class="col-span-9 py-2 px-3 ti-form-input" name="company_website" placeholder="Company Website">
+                    </div>
+
+                    <div class="grid grid-cols-12 gap-x-6">
+                        <div class="col-span-3"> </div>
+                        <div class="col-span-9">
+                            <button type="submit" class="ti-btn ti-btn-primary">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock setting_body %}

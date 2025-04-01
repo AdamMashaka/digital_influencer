@@ -1,0 +1,373 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<div class="grid grid-cols-12 gap-6">
+    <div class="col-span-12 xl:col-span-3">
+      <div class="box">
+        <div class="box-header">
+          <a href="javascript:void(0);" class="hs-dropdown-toggle py-2 px-3 ti-btn ti-btn-primary w-full"
+            data-hs-overlay="#todo-compose">
+            <i class="ri ri-edit-line"></i> Add New Todo Task
+          </a>
+        </div>
+        <div class="box-body">
+          <ul>
+            <li>
+              <a href="javascript:void(0);" class="p-2 mb-1 flex items-center align-middle justify-between text-gray-500 dark:text-white/70 space-x-2 rtl:space-x-reverse rounded-sm bg-gray-100 font-normal hover:bg-gray-200 focus:bg-gary-800 dark:bg-black/20 dark:hover:bg-black/20">
+                <div class="flex space-x-3 rtl:space-x-reverse">
+                  <i class="ri ri-mail-line"></i>
+                  <span class="">Today Tasks</span>
+                </div>
+                <div>
+                  <span class="">10</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0);" class="p-2 mb-1 flex justify-between text-gray-500 dark:text-white/70 space-x-2 rtl:space-x-reverse rounded-sm font-normal hover:bg-gray-200 focus:bg-gary-800 dark:bg-bgdark dark:hover:bg-black/20">
+                <div class="flex space-x-3 rtl:space-x-reverse">
+                  <i class="ri ri-inbox-archive-line"></i>
+                  <span class="">Upcoming Tasks</span>
+                </div>
+                <div>
+                  <span class="">20</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0);" class="p-2 mb-1 flex justify-between text-gray-500 dark:text-white/70 space-x-2 rtl:space-x-reverse rounded-sm font-normal hover:bg-gray-200 focus:bg-gary-800 dark:bg-bgdark dark:hover:bg-black/20">
+                <div class="flex space-x-3 rtl:space-x-reverse">
+                  <i class="ri ri-star-line"></i>
+                  <span class="">Starred</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0);" class="p-2 mb-1 flex justify-between text-gray-500 dark:text-white/70 space-x-2 rtl:space-x-reverse rounded-sm font-normal hover:bg-gray-200 focus:bg-gary-800 dark:bg-bgdark dark:hover:bg-black/20">
+                <div class="flex space-x-3 rtl:space-x-reverse">
+                  <i class="ri ri-price-tag-3-line"></i>
+                  <span class="">Important</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0);" class="p-2 mb-1 flex justify-between text-gray-500 dark:text-white/70 space-x-2 rtl:space-x-reverse rounded-sm font-normal hover:bg-gray-200 focus:bg-gary-800 dark:bg-bgdark dark:hover:bg-black/20">
+                <div class="flex space-x-3 rtl:space-x-reverse">
+                  <i class="ri ri-delete-bin-line"></i>
+                  <span class="">Trash</span>
+                </div>
+                <div>
+                  <span class="">25</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+          <h3 class="text-gray-500 dark:text-white/70 my-3 font-semibold">Priority</h3>
+          <ul>
+            <li>
+              <a href="javascript:void(0);" class="py-1 px-2 mb-1 flex justify-between text-gray-500 dark:text-white/70 space-x-2 rtl:space-x-reverse rounded-sm font-normal dark:hover:bg-black/20">
+                <div class="flex space-x-3 rtl:space-x-reverse">
+                  <span class="w-2.5 h-2.5 inline-block bg-success rounded-full my-auto"></span>
+                  <span class="">Low</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0);" class="py-1 px-2 mb-1 flex justify-between text-gray-500 dark:text-white/70 space-x-2 rtl:space-x-reverse rounded-sm font-normal dark:hover:bg-black/20">
+                <div class="flex space-x-3 rtl:space-x-reverse">
+                  <span class="w-2.5 h-2.5 inline-block bg-warning rounded-full my-auto"></span>
+                  <span class="">Medium</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0);" class="py-1 px-2 flex justify-between text-gray-500 dark:text-white/70 space-x-2 rtl:space-x-reverse rounded-sm font-normal dark:hover:bg-black/20 mb-0">
+                <div class="flex space-x-3 rtl:space-x-reverse">
+                  <span class="w-2.5 h-2.5 inline-block bg-danger rounded-full my-auto"></span>
+                  <span class="">High</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="box-footer">
+          <img src="{% static 'admin/img/png-images/9.png' %}" alt="todo-img">
+        </div>
+      </div>
+    </div>
+    <div class="col-span-12 xl:col-span-9">
+      <div class="box">
+        <div class="box-body">
+          <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12 lg:col-span-4">
+              <div class="relative sm:max-w-xs max-w-[210px]">
+                <label for="hs-table-search" class="sr-only">Search</label>
+                <div class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center pointer-events-none ltr:pr-4 rtl:pl-4">
+                  <i class="ti ti-search"></i>
+                </div>
+                <input type="text" name="hs-table-search" id="hs-table-search" class="p-2 ltr:pr-10 rtl:pl-10 ti-form-input"
+                  placeholder="Search Task">
+              </div>
+            </div>
+            <div class="col-span-12 lg:col-span-8">
+              <div class="sm:flex space-y-2 sm:space-y-0 sm:space-x-3 space-x-0 justify-end todo-right rtl:space-x-reverse">
+                <select class="ti-form-select todo-choice">
+                  <option value="">Sort By</option>
+                  <option value="1">A To Z</option>
+                  <option value="2">Z To A</option>
+                  <option value="3">Favorites</option>
+                  <option value="4">All</option>
+                </select>
+                <select class="ti-form-select todo-choice">
+                  <option value="">Status</option>
+                  <option value="1">Pending</option>
+                  <option value="2">Completed</option>
+                  <option value="3">Inprogress</option>
+                  <option value="4">New</option>
+                </select>
+                <div class="hs-dropdown ti-dropdown">
+                  <a aria-label="anchor" href="javascript:void(0);"
+                    class="hs-dropdown-toggle ti-dropdown-toggle inline-flex !p-2 flex-shrink-0 justify-center items-center gap-2 w-full rounded-sm border font-medium bg-white text-gray-500 shadow-sm align-middle focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-white focus:ring-primary transition-all text-xs dark:bg-bgdark dark:border-white/10 dark:text-white/70 dark:focus:ring-offset-white/10">
+                    <i class="ri ri-more-2-line text-lg leading-none"></i>
+                  </a>
+                  <div class="hs-dropdown-menu ti-dropdown-menu">
+                    <a class="ti-dropdown-item" href="javascript:void(0);">Select All</a>
+                    <a class="ti-dropdown-item" href="javascript:void(0);">Mark All</a>
+                    <a class="ti-dropdown-item" href="javascript:void(0);">Delete All</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <div class="box-body">
+          <div class="table-bordered rounded-sm overflow-auto todo-table">
+            <table class="ti-custom-table ti-custom-table-head whitespace-nowrap">
+              <thead class="bg-gray-100 dark:bg-black/20">
+                <tr>
+                  <th scope="col" class="dark:text-white/70">
+                    <div class="flex">
+                      <input type="checkbox" class="border-gray-500 ti-form-checkbox mt-0.5 check-all"
+                        id="hs-default-checkbox">
+                      <label for="hs-default-checkbox" class="text-sm text-gray-500 dark:text-white/70"></label>
+                    </div>
+                  </th>
+                  <th scope="col" class="dark:text-white/70"></th>
+                  <th scope="col" class="dark:text-white/70">title</th>
+                  <th scope="col" class="dark:text-white/70">Assigned Date</th>
+                  <th scope="col" class="dark:text-white/70">Due Date</th>
+                  <th scope="col" class="dark:text-white/70">Status</th>
+                  <th scope="col" class="dark:text-white/70">Priority</th>
+                  <th scope="col" class="dark:text-white/70 min-w-[160px]">Assigned To</th>
+                  <th scope="col" class="!text-end dark:text-white/70">Action</th>
+                </tr>
+              </thead>
+              <tbody class="todo-drag">
+                {% if tasks %}
+                  {% for task in tasks %}
+                  <tr class="todo-box">
+                    <td>
+                      <div class="flex items-center h-5 justify-center todo-checkbox">
+                        <input id="hs-table-checkbox-11" type="checkbox" class="border-gray-500 ti-form-checkbox">
+                        <label for="hs-table-checkbox-11" class="sr-only">Checkbox</label>
+                      </div>
+                    </td>
+                    <td>
+                      <div
+                        class="cursor-move w-8 h-8 leading-none text-lg rounded-sm bg-gray-100 dark:bg-black/20 flex justify-center p-1.5 mx-auto">
+                        ::</div>
+                    </td>
+                    <td>
+                      <p class="text-sm font-semibold w-52 truncate">{{ task.title }}</p>
+                    </td>
+                    <td>{{ task.start_date|date:"d-m-Y" }}</td>
+                    <td>{{ task.finish_date|date:"d-m-Y" }}</td>
+                    <td>
+                        {% if task.status   == 'New'  %}
+                          <span class="text-info">{{ task.status }}</span>
+                        {% elif task.status == 'Inprogress'  %}
+                           <span class="text-success">{{ task.status }}</span>
+                        {% elif task.status == 'Pending'  %}
+                           <span class="text-warning">{{ task.status }}</span>
+                        {% else %}
+                           <span class="text-success">{{ task.status }}</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                      {% if task.priority   == 'Low'  %}
+                          <span class="badge bg-success/20 text-success">{{ task.priority }}</span>
+                        {% elif task.priority == 'Medium'  %}
+                           <span class="badge bg-primary text-primary">{{ task.priority }}</span>
+                        {% elif task.priority == 'High'  %}
+                           <span class="badge bg-warning text-warning">{{ task.priority }}</span>
+                        {% else %}
+                           <span class="badge bg-danger/20 text-danger">{{ task.priority }}</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                      <div class="flex -space-x-2 rtl:space-x-reverse">
+                        <img class="avatar avatar-xs rounded-full" src="{{ task.user.profile.profile_picture.url }}"
+                          alt="Image Description">
+                      </div>
+                    </td>
+                    <td class="text-end font-medium">
+                      <div class="hs-tooltip ti-main-tooltip">
+                        <a href="{% url 'dashboard:edit_task' task.id %}"
+                          class="hs-tooltip-toggle w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-secondary">
+                          <i class="ti ti-pencil"></i>
+                          <span
+                            class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700 hidden"
+                            role="tooltip" data-popper-placement="top"
+                            style="position: fixed; inset: auto auto 0px 0px; margin: 0px; transform: translate(953px, -281px);">
+                            Edit
+                          </span>
+                        </a>
+                      </div>
+                      <div class="hs-tooltip ti-main-tooltip">
+                        <a href="javascript:void(0);"
+                          class="todo-remove hs-tooltip-toggle w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-danger">
+                          <i class="ti ti-trash"></i>
+                          <span
+                            class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
+                            role="tooltip" data-popper-placement="top"
+                            style="position: fixed; inset: auto auto 0px 0px; margin: 0px; transform: translate(985px, -281px);">
+                            Delete
+                          </span>
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+  
+                  {% endfor %}
+                {% endif %}
+              </tbody>
+            </table>
+          </div>
+          <nav class="flex items-center space-x-2 rtl:space-x-reverse justify-end">
+            <a class="text-gray-500 dark:text-white/70 hover:text-primary p-4 inline-flex items-center gap-2 font-medium rounded-sm" href="javascript:void(0);">
+              <span aria-hidden="true">«</span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="w-10 h-10 bg-primary text-white p-4 inline-flex items-center text-sm font-medium rounded-full" href="javascript:void(0);" aria-current="page">1</a>
+            <a class="w-10 h-10 text-gray-500 dark:text-white/70 hover:text-primary p-4 inline-flex items-center text-sm font-medium rounded-full" href="javascript:void(0);">2</a>
+            <a class="w-10 h-10 text-gray-500 dark:text-white/70 hover:text-primary p-4 inline-flex items-center text-sm font-medium rounded-full" href="javascript:void(0);">3</a>
+            <a class="text-gray-500 dark:text-white/70 hover:text-primary p-4 inline-flex items-center gap-2 font-medium rounded-sm" href="javascript:void(0);">
+              <span class="sr-only">Next</span>
+              <span aria-hidden="true">»</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <form action="{% url 'dashboard:new_task' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div id="todo-compose" class="hs-overlay hidden ti-modal">
+      <div class="hs-overlay-open:mt-7 ti-modal-box mt-0 ease-out">
+        <div class="ti-modal-content">
+          <div class="ti-modal-header">
+            <h3 class="ti-modal-title">
+              New Task
+            </h3>
+            <button type="button" class="hs-dropdown-toggle ti-modal-close-btn" data-hs-overlay="#todo-compose">
+              <span class="sr-only">Close</span>
+              <i class="ri-close-line"></i>
+            </button>
+          </div>
+          <div class="ti-modal-body">
+            <div class="space-y-3">
+              <div class="">
+                <label for="input-label" class="ti-form-label">Task Title</label>
+                <input type="text" id="input-label" name="title" class="ti-form-input" placeholder="Task title">
+              </div>
+              <div>
+                <label class="ti-form-label">Assigned To</label>
+                <select class="ti-form-select" name="user"
+                  id="choices-multiple-remove-button" multiple>
+                  {% if users %}
+                    {% for user in users  %}
+                       <option value="{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</option>
+                    {% endfor %}
+                  {% endif %}
+                </select>
+              </div>
+              <div>
+                <label for="input-label" class="ti-form-label">Assigned Date</label>
+                <div class="flex rounded-sm shadow-sm">
+                  <div
+                    class="px-4 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
+                    <span class="text-sm text-gray-500 dark:text-white/70"><i class="ri ri-calendar-line"></i></span>
+                  </div>
+
+                  <input type="text" class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
+                    id="addignedDate" name="start_date" placeholder="Choose date and time" readonly>
+                </div>
+              </div>
+              <div>
+                <label for="input-label" class="ti-form-label">Due Date</label>
+                <div class="flex rounded-sm shadow-sm">
+                  <div
+                    class="px-4 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
+                    <span class="text-sm text-gray-500 dark:text-white/70"><i class="ri ri-calendar-line"></i></span>
+                  </div>
+
+                  <input type="text" class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
+                    id="targetDate" name="finish_date" placeholder="Choose date and time" readonly>
+                </div>
+              </div>
+
+              <div>
+                <label class="ti-form-label">Priority</label>
+                <select class="ti-form-select todo-choice" name="priority">
+                  <option value="">Select</option>
+                  <option value="Critical">Critical</option>
+                  <option value="High">High</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Low">Low</option>
+                </select>
+              </div>
+
+
+
+              <div>
+                <label class="ti-form-label">Assigned By</label>
+                <select class="ti-form-select" name="assigned_by">
+                  <option value="">select</option>
+                  {% if users %}
+                    {% for user in users  %}
+                       <option value="{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</option>
+                    {% endfor %}
+                  {% endif %}
+                </select>
+              </div>
+
+              <div class="">
+                <label for="input-label" class="ti-form-label">Attachment</label>
+                <input type="file" id="input-label" name="upload_file" data-height="100" class="ti-form-input dropify" placeholder="Task title">
+              </div>
+
+              
+            </div>
+          </div>
+          <div class="ti-modal-footer">
+            <button type="button"
+              class="hs-dropdown-toggle ti-btn ti-border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:ring-offset-white focus:ring-primary dark:bg-bgdark dark:hover:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-white dark:focus:ring-offset-white/10"
+              data-hs-overlay="#todo-compose">
+              Close
+            </button>
+            <button type="submit" class="ti-btn ti-btn-primary" href="javascript:void(0);">
+              Create
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+{% endblock content %}
+{% block extra_scripts %}
+    <script src="{% static 'admin/libs/dragula/dragula.min.js' %}"></script>
+    <script src="{% static 'admin/js/todo.js' %}"></script>
+{% endblock extra_scripts %}

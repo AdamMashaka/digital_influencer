@@ -1,0 +1,79 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<div class="grid grid-cols-12 gap-x-6">
+
+    <div class="col-span-12 xl:col-span-3">
+      <div class="box">
+        <div class="box-body pt-3">
+          <nav class="flex flex-col space-y-2" aria-label="Tabs" role="tablist" data-hs-tabs-vertical="true">
+            <a href="{% url 'dashboard:general_setting' %}" type="button"
+              class="hs-tab-active:bg-primary hs-tab-active:border-primary hs-tab-active:text-white dark:hs-tab-active:bg-primary dark:hs-tab-active:border-primary dark:hs-tab-active:text-white -mr-px py-3 px-3 inline-flex items-center gap-2 bg-gray-50 text-sm font-medium text-center border text-gray-500 rounded-sm hover:text-gray-700 dark:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-gray-300">
+              <i class="ri ri-global-line"></i> System Settings
+            </a>
+            <a href="{% url 'dashboard:currencies' %}" type="button"
+              class="hs-tab-active:bg-primary hs-tab-active:border-primary hs-tab-active:text-white dark:hs-tab-active:bg-primary dark:hs-tab-active:border-primary dark:hs-tab-active:text-white -mr-px py-3 px-3 inline-flex items-center gap-2 bg-gray-50 text-sm font-medium text-center border text-gray-500 rounded-sm hover:text-gray-700 dark:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-gray-300"
+              id="profile-settings-item-3" data-hs-tab="#profile-settings-3" aria-controls="profile-settings-3"
+              role="tab">
+              <i class="ri ri-lock-line"></i> Currency Settings
+            </a>
+            <a href="{% url 'dashboard:email_config' %}" type="button"
+              class="hs-tab-active:bg-primary hs-tab-active:border-primary hs-tab-active:text-white dark:hs-tab-active:bg-primary dark:hs-tab-active:border-primary dark:hs-tab-active:text-white -mr-px py-3 px-3 inline-flex items-center gap-2 bg-gray-50 text-sm font-medium text-center border text-gray-500 rounded-sm hover:text-gray-700 dark:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-gray-300"
+              id="profile-settings-item-3" data-hs-tab="#profile-settings-3" aria-controls="profile-settings-3"
+              role="tab">
+              <i class="ri ri-lock-line"></i> Email Settings
+            </a>
+            <a href="{% url 'dashboard:email_template' %}" type="button"
+              class="hs-tab-active:bg-primary hs-tab-active:border-primary hs-tab-active:text-white dark:hs-tab-active:bg-primary dark:hs-tab-active:border-primary dark:hs-tab-active:text-white -mr-px py-3 px-3 inline-flex items-center gap-2 bg-gray-50 text-sm font-medium text-center border text-gray-500 rounded-sm hover:text-gray-700 dark:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-gray-300"
+              id="profile-settings-item-4" data-hs-tab="#profile-settings-4" aria-controls="profile-settings-4"
+              role="tab">
+              <i class="ri ri-account-circle-line"></i> Email Template
+            </a>
+            <a href="{% url 'dashboard:email_config' %}" type="button"
+              class="hs-tab-active:bg-primary hs-tab-active:border-primary hs-tab-active:text-white dark:hs-tab-active:bg-primary dark:hs-tab-active:border-primary dark:hs-tab-active:text-white -mr-px py-3 px-3 inline-flex items-center gap-2 bg-gray-50 text-sm font-medium text-center border text-gray-500 rounded-sm hover:text-gray-700 dark:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-gray-300"
+              id="profile-settings-item-5" data-hs-tab="#profile-settings-5" aria-controls="profile-settings-5"
+              role="tab">
+              <i class="ri ri-notification-4-line"></i> SMS Settings
+            </a>
+            <a href="{% url 'dashboard:email_config' %}" type="button"
+              class="hs-tab-active:bg-primary hs-tab-active:border-primary hs-tab-active:text-white dark:hs-tab-active:bg-primary dark:hs-tab-active:border-primary dark:hs-tab-active:text-white -mr-px py-3 px-3 inline-flex items-center gap-2 bg-gray-50 text-sm font-medium text-center border text-gray-500 rounded-sm hover:text-gray-700 dark:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-gray-300"
+              id="profile-settings-item-5" data-hs-tab="#profile-settings-5" aria-controls="profile-settings-5"
+              role="tab">
+              <i class="ri ri-notification-4-line"></i> Invoices Settings
+            </a>
+            <a href="{% url 'dashboard:email_config' %}" type="button"
+              class="hs-tab-active:bg-primary hs-tab-active:border-primary hs-tab-active:text-white dark:hs-tab-active:bg-primary dark:hs-tab-active:border-primary dark:hs-tab-active:text-white -mr-px py-3 px-3 inline-flex items-center gap-2 bg-gray-50 text-sm font-medium text-center border text-gray-500 rounded-sm hover:text-gray-700 dark:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-gray-300">
+              <i class="ri ri-notification-4-line"></i> Theme Settings
+            </a>
+            <a href="{% url 'dashboard:payment_method' %}" type="button"
+              class="hs-tab-active:bg-primary hs-tab-active:border-primary hs-tab-active:text-white dark:hs-tab-active:bg-primary dark:hs-tab-active:border-primary dark:hs-tab-active:text-white -mr-px py-3 px-3 inline-flex items-center gap-2 bg-gray-50 text-sm font-medium text-center border text-gray-500 rounded-sm hover:text-gray-700 dark:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-gray-300"
+              id="profile-settings-item-5" data-hs-tab="#profile-settings-5" aria-controls="profile-settings-5"
+              role="tab">
+              <i class="ri ri-notification-4-line"></i> Payment Method
+            </a>
+            <a href="{% url 'dashboard:email_config' %}" type="button"
+              class="hs-tab-active:bg-primary hs-tab-active:border-primary hs-tab-active:text-white dark:hs-tab-active:bg-primary dark:hs-tab-active:border-primary dark:hs-tab-active:text-white -mr-px py-3 px-3 inline-flex items-center gap-2 bg-gray-50 text-sm font-medium text-center border text-gray-500 rounded-sm hover:text-gray-700 dark:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-gray-300"
+              id="profile-settings-item-5" data-hs-tab="#profile-settings-5" aria-controls="profile-settings-5"
+              role="tab">
+              <i class="ri ri-notification-4-line"></i> Notification Settings
+            </a>
+            <a href="" type="button"
+              class="hs-tab-active:bg-primary hs-tab-active:border-primary hs-tab-active:text-white dark:hs-tab-active:bg-primary dark:hs-tab-active:border-primary dark:hs-tab-active:text-white -mr-px py-3 px-3 inline-flex items-center gap-2 bg-gray-50 text-sm font-medium text-center border text-gray-500 rounded-sm hover:text-gray-700 dark:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-gray-300"
+              id="profile-settings-item-5" data-hs-tab="#profile-settings-5" aria-controls="profile-settings-5"
+              role="tab">
+              <i class="ri ri-notification-4-line"></i> Translations
+            </a>
+
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    {% block setting_body %}
+
+    {% endblock setting_body %}
+
+  </div>
+
+
+{% endblock content %}

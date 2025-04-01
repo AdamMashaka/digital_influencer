@@ -1,0 +1,438 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<div class="content-body default-height">
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="mb-4">
+                    <ul class="d-flex align-items-center flex-wrap">
+                        <li><a href="{% url 'blogs:blog' %}" class="btn btn-primary btn-sm">Blog List</a></li>
+                        <li><a href="{% url 'blogs:category' %}" class="btn btn-primary btn-sm mx-1">Blog Category</a>
+                        </li>
+                        <li><a href="{% url 'blogs:category' %}" class="btn btn-primary btn-sm me-1 mt-sm-0 mt-1">Add
+                                Blog Category</a></li>
+                        <li><a href="javascript:void(0);"
+                                class="btn btn-primary btn-sm open mt-1 mt-md-0">Screen Option</a></li>
+                    </ul>
+                </div>
+                <div class="main-check" style="display:none;">
+                    <div class="row">
+                        <h6 class="mb-3">Show on screen</h6>
+                        <div class="col-xl-2 col-lg-3 col-sm-4">
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" value=""
+                                    id="flexCheckDefault-1">
+                                <label class="form-check-label mb-0 text-nowrap" for="flexCheckDefault-1">
+                                    Page Attributes
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-sm-4">
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" value=""
+                                    id="flexCheckDefault-2">
+                                <label class="form-check-label mb-0 text-nowrap" for="flexCheckDefault-2">
+                                    Featured Image
+
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-sm-4">
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" value=""
+                                    id="flexCheckDefault-5">
+                                <label class="form-check-label mb-0 text-nowrap" for="flexCheckDefault-5">
+                                    Discussion
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-sm-4">
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" value=""
+                                    id="flexCheckDefault-7">
+                                <label class="form-check-label mb-0" for="flexCheckDefault-7">
+                                    Author
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-sm-4">
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" value=""
+                                    id="flexCheckDefault-8">
+                                <label class="form-check-label mb-0" for="flexCheckDefault-8">
+                                    Page Type
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-sm-4">
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" value=""
+                                    id="flexCheckDefault-9">
+                                <label class="form-check-label mb-0" for="flexCheckDefault-9">
+                                    Seo
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <form action="" enctype="multipart/form-data" method="POST" >
+                  {% csrf_token %}
+                    <div class="row">
+                        <div class="col-xl-8">
+                            <div class="card h-auto">
+                                <div class="card-body">
+                                        <div class="mb-3">
+                                            <label class="form-label">Title</label>
+                                            <input type="text" name="title" class="form-control" placeholder="Title">
+                                        </div>
+                                    <label class="form-label">Description</label>
+                                    <textarea class="form-control" name="description" rows="3" ></textarea>
+                                </div>
+                            </div>
+
+                            <div class="filter cm-content-box box-primary">
+                                <div class="content-title SlideToolHeader">
+                                    <div class="cpa">
+                                        Discussion
+                                    </div>
+                                    <div class="tools">
+                                        <a href="javascript:void(0);" class="expand handle"><i
+                                                class="fal fa-angle-down"></i></a>
+                                    </div>
+                                </div>
+                                <div class="cm-content-body form excerpt">
+                                    <div class="card-body">
+                                        <div class="form-check">
+                                            <input class="form-check-input" name="is_comment" type="checkbox" value=""
+                                                id="flexCheckDefault-15">
+                                            <label class="form-check-label" for="flexCheckDefault-15">
+                                                Allow comments.
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="filter cm-content-box box-primary">
+                                <div class="content-title SlideToolHeader">
+                                    <div class="cpa">Author
+
+                                    </div>
+                                    <div class="tools">
+                                        <a href="javascript:void(0);" class="expand handle"><i
+                                                class="fal fa-angle-down"></i></a>
+                                    </div>
+                                </div>
+                                <div class="cm-content-body form excerpt">
+                                    <div class="card-body">
+                                        <label class="form-label">User</label>
+                                        <select name="authour" class="form-control default-select h-auto wide">
+                                            {% if users %}
+                                              {% for user in users %}
+                                                   <option value="{{ user.id }}">{{ user.username }}</option>
+                                              {% endfor %}
+                                            {% endif %}
+                                        </select>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filter cm-content-box box-primary">
+                                <div class="content-title SlideToolHeader">
+                                    <div class="cpa"> Seo
+                                    </div>
+                                    <div class="tools"><a href="javascript:void(0);" class="expand handle"><i
+                                                class="fal fa-angle-down"></i></a>
+                                    </div>
+                                </div>
+                                <div class="cm-content-body form excerpt">
+                                    <div class="card-body">
+                                        <label class="form-label">Page Title</label>
+                                        <input type="text" name="seo_title" class="form-control mb-3" placeholder="Page title">
+                                        <div class="row">
+                                            <div class="col-xl-6 col-sm-6">
+                                                <label class="form-label">Keywords</label>
+                                                <input type="text" name="seo_keywords" class="form-control mb-sm-0 mb-3 "
+                                                    placeholder="Enter meta Keywords">
+                                            </div>
+                                            <div class="col-xl-6 col-sm-6">
+                                                <label class="form-label">Descriptions</label>
+                                                <textarea name="seo_description" class="form-control" placeholder="Enter meta Keywords"
+                                                    rows="3"></textarea>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="right-sidebar-sticky">
+                                <div class="filter cm-content-box box-primary">
+                                    <div class="content-title SlideToolHeader">
+                                        <div class="cpa">
+                                            Published
+                                        </div>
+                                        <div class="tools">
+                                            <a href="javascript:void(0);" class="expand handle"><i
+                                                    class="fal fa-angle-down"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="cm-content-body publish-content form excerpt">
+                                        <div class="card-body py-3">
+                                            <ul class="list-style-1 block">
+                                                <li>
+                                                    <div>
+                                                        <label class="form-label mb-0 me-2">
+                                                            <i class="fa-solid fa-key"></i>
+                                                            Status:
+                                                        </label>
+                                                        <span class="font-w500">Published</span>
+                                                        <a href="javascript:void(0);"
+                                                            class="badge badge-primary light ms-3" id="headingOne"
+                                                            data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                                            aria-controls="collapseOne" aria-expanded="true"
+                                                            role="button">Edit</a>
+                                                    </div>
+                                                    <div id="collapseOne" class="collapse"
+                                                        aria-labelledby="headingOne"
+                                                        data-bs-parent="#accordion-one">
+                                                        <div class=" border rounded p-3 mt-3">
+                                                            <div class="mb-2">
+                                                                <label class="form-label w-100">Content Type</label>
+                                                                <select name="status" class="form-control  solid default-select">
+                                                                    <option selected>Select Status</option>
+                                                                    <option value="Published">Published</option>
+                                                                    <option value="Draft">Draft</option>
+                                                                    <option value="Trash">Trash</option>
+                                                                    <option value="Private">Private</option>
+                                                                    <option value="Pending">Pending</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="mt-3">
+                                                                <button class="btn btn-primary btn-sm me-2"
+                                                                    type="button" data-bs-toggle="collapse"
+                                                                    data-bs-target="#collapseOne"
+                                                                    aria-expanded="false"
+                                                                    aria-controls="collapseOne">
+                                                                    Ok
+                                                                </button>
+                                                                <button class="btn btn-danger light btn-sm"
+                                                                    type="button" data-bs-toggle="collapse"
+                                                                    data-bs-target="#collapseOne"
+                                                                    aria-expanded="false"
+                                                                    aria-controls="collapseOne">
+                                                                    Cancel
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div>
+                                                        <label class="form-label mb-0 me-2">
+                                                            <i class="fa-solid fa-eye"></i>
+                                                            Visible:
+                                                        </label>
+                                                        <span class="font-w500">Public</span>
+                                                        <a href="javascript:void(0);"
+                                                            class="badge badge-primary light ms-3" id="headingtwo"
+                                                            data-bs-toggle="collapse" data-bs-target="#collapsetwo"
+                                                            aria-controls="collapsetwo" aria-expanded="true"
+                                                            role="button">Edit</a>
+                                                    </div>
+                                                    <div id="collapsetwo" class="collapse"
+                                                        aria-labelledby="headingtwo"
+                                                        data-bs-parent="#accordion-one">
+                                                        <div class="p-3 mt-3 border rounded">
+                                                            <div class="basic-form">
+                                                                <form>
+                                                                    <div class="mb-3 mb-0">
+                                                                        <div class="radio">
+                                                                            <div class="form-check">
+                                                                                <input class="form-check-input"
+                                                                                    type="radio"
+                                                                                    name="visibility"
+                                                                                    id="flexRadioDefault1">
+                                                                                <label class="form-check-label"
+                                                                                    for="flexRadioDefault1">
+                                                                                    Public
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="radio disabled">
+                                                                            <div class="form-check">
+                                                                                <input class="form-check-input"
+                                                                                    type="radio"
+                                                                                    name="flexRadioDefault"
+                                                                                    id="flexRadioDefault3">
+                                                                                <label class="form-check-label"
+                                                                                    for="flexRadioDefault3">
+                                                                                    Private
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div>
+                                                                <button class="btn btn-primary btn-sm me-2"
+                                                                    type="button" data-bs-toggle="collapse"
+                                                                    data-bs-target="#collapsetwo"
+                                                                    aria-expanded="false"
+                                                                    aria-controls="collapsetwo">
+                                                                    Ok
+                                                                </button>
+                                                                <button class="btn btn-danger light btn-sm"
+                                                                    type="button" data-bs-toggle="collapse"
+                                                                    data-bs-target="#collapsetwo"
+                                                                    aria-expanded="false"
+                                                                    aria-controls="collapsetwo">
+                                                                    Cancel
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="filter cm-content-box box-primary">
+                                    <div class="content-title SlideToolHeader">
+                                        <div class="cpa">
+                                            Categories
+                                        </div>
+                                        <div class="tools">
+                                            <a href="javascript:void(0);" class="expand handle"><i
+                                                    class="fal fa-angle-down"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="cm-content-body publish-content form excerpt">
+                                        <div class="card-body">
+                                            <div class="border rounded p-3 mb-3">
+                                                {% if categories %}
+                                                    {% for row in categories %}
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="{{ row.id}}"
+                                                                id="flexCheckDefault-{{ row.id }}">
+                                                            <label class="form-check-label" for="flexCheckDefault-{{ row.id }}">
+                                                                {{ row.name }}
+                                                            </label>
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endif %}                                                
+                                            </div>
+                                            <a href="javascript:void(0);"><i class="fa-solid fa-plus"></i> Add New
+                                                Categories</a>
+                                            <div class="input-group mt-3">
+                                                <input type="text" class="form-control" placeholder="Username"
+                                                    aria-label="Username" aria-describedby="basic-addon1">
+                                                <span class="input-group-text" id="basic-addon1"><a
+                                                        href="javascript:void(0);">Add New</a></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="filter cm-content-box box-primary">
+                                    <div class="content-title SlideToolHeader">
+                                        <div class="cpa">
+                                            Tag
+                                        </div>
+                                        <div class="tools">
+                                            <a href="javascript:void(0);" class="expand handle"><i
+                                                    class="fal fa-angle-down"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="cm-content-body  form excerpt">
+                                        <div class="card-body">
+                                            <select name="tags" class="form-control" id="multi-value-select" multiple="multiple">
+                                                <option selected="selected">orange</option>
+                                                <option>white</option>
+                                                <option selected="selected">purple</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="filter cm-content-box box-primary">
+                                    <div class="content-title SlideToolHeader">
+                                        <div class="cpa">
+                                            Featured Image
+                                        </div>
+                                        <div class="tools">
+                                            <a href="javascript:void(0);" class="expand handle"><i
+                                                    class="fal fa-angle-down"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="cm-content-body publish-content form excerpt">
+                                        <div class="card-body">
+                                            <div class="avatar-upload d-flex align-items-center">
+                                                <div class=" position-relative ">
+                                                    <div class="avatar-preview">
+                                                        <div id="imagePreview"
+                                                            style="background-image: url({% static 'dashboard/images/no-img-avatar.png' %});">
+                                                        </div>
+                                                    </div>
+                                                    <div class="change-btn d-flex align-items-center flex-wrap">
+                                                        <input type='file' name="image" class="form-control d-none"
+                                                            id="imageUpload" accept=".png, .jpg, .jpeg">
+                                                        <label for="imageUpload"
+                                                            class="btn btn-primary light btn-sm ms-0">Select
+                                                            Image</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer border-top text-end py-3 ">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-sm">Save</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+{% block extra_scripts %}
+
+	<script src="{% static 'dashboard/vendor/ckeditor/ckeditor.js' %}"></script>
+	<script src="{% static 'dashboard/vendor/select2/js/select2.full.min.js' %}"></script>
+	<script src="{% static 'dashboard/js/plugins-init/select2-init.js' %}"></script>
+
+    <script>
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function (e) {
+					$('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+					$('#imagePreview').hide();
+					$('#imagePreview').fadeIn(650);
+				}
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+		$("#imageUpload").on('change', function () {
+
+			readURL(this);
+		});
+		$('.remove-img').on('click', function () {
+			var imageUrl = "images/no-img-avatar.png";
+			$('.avatar-preview, #imagePreview').removeAttr('style');
+			$('#imagePreview').css('background-image', 'url(' + imageUrl + ')');
+		});
+	</script>
+
+{% endblock extra_scripts %}

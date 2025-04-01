@@ -1,0 +1,127 @@
+{% load static %}
+{% block html %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-nav-layout="vertical" class="light" data-header-styles="light" data-menu-styles="dark">
+  {% block head %}
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> TEHAMASPACE | {{page}}</title>
+    <meta name="description"
+      content="">
+    <meta name="keywords"
+      content="">
+    <link rel="shortcut icon" href="{% static 'admin/img/brand-logos/favicon.ico' %}">
+    <script src="{% static 'admin/js/main.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/libs/simplebar/simplebar.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/libs/@simonwep/pickr/themes/nano.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/libs/jsvectormap/css/jsvectormap.min.css' %}">
+    <link href="{% static 'admin/libs/dropify/dropify.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'admin/libs/izitoast/css/alertify.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/libs/izitoast/css/default-alertify.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/libs/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/libs/flatpickr/flatpickr.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/libs/choices.js/public/assets/styles/choices.min.css' %}">
+    {% block extra_styles %}{% endblock extra_styles %}
+  </head>
+  {% endblock head %}
+  {% block body %}
+<body class="">
+
+  {% include 'dashboard/includes/theme.html' %}
+
+  <div class="page">
+    {% include 'dashboard/includes/sidebar.html' %}
+    {% include 'dashboard/includes/header.html' %}
+    <div class="content">
+      <div class="main-content">
+          <div class="block justify-between page-header md:flex">
+            <div>
+                <h3 class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-white text-2xl font-medium"> {{page}}</h3>
+            </div>
+            <ol class="flex items-center whitespace-nowrap min-w-0">
+                <li class="text-sm">
+                  <a class="flex items-center font-semibold text-primary hover:text-primary dark:text-primary truncate" href="/dashboard/">
+                    Home
+                    <i class="ti ti-chevrons-right flex-shrink-0 mx-3 overflow-visible text-gray-300 dark:text-gray-300 rtl:rotate-180"></i>
+                  </a>
+                </li>
+                <li class="text-sm text-gray-500 hover:text-primary dark:text-white/70 " aria-current="page">
+                    {{page}}
+                </li>
+            </ol>
+        </div>
+        {% block content %}{% endblock content %}
+      </div>
+    </div>
+
+    {% include 'dashboard/includes/footer.html' %}
+
+  </div>
+
+  <div class="scrollToTop">
+    <span class="arrow"><i class="ri-arrow-up-s-fill text-xl"></i></span>
+  </div>
+
+  <div id="responsive-overlay"></div>
+  
+  {% block scripts %}
+  <script src="{% static 'admin/libs/jquery/jquery.min.js' %}"></script>
+  {% if page == 'Dashboard' %}
+    <script src="{% static 'admin/libs/apexcharts/apexcharts.min.js' %}"></script>
+    <script src="{% static 'admin/libs/chart.js/chart.min.js' %}"></script>
+    <script src="{% static 'admin/js/index-12.js' %}"></script>
+  {% endif %}
+  <script src="{% static 'admin/libs/@popperjs/core/umd/popper.min.js' %}"></script>
+  <script src="{% static 'admin/libs/@simonwep/pickr/pickr.es5.min.js' %}"></script>
+  <script src="{% static 'admin/js/defaultmenu.js' %}"></script>
+  <script src="{% static 'admin/js/sticky.js' %}"></script>
+  <script src="{% static 'admin/js/switch.js' %}"></script>
+  <script src="{% static 'admin/libs/preline/preline.js' %}"></script>
+  <script src="{% static 'admin/libs/simplebar/simplebar.min.js' %}"></script>
+  <script src="{% static 'admin/js/custom.js' %}"></script>
+  <script src="{% static 'admin/js/custom-switcher.js' %}"></script>
+  <script src="{% static 'admin/libs/izitoast/js/alertify.js' %}"></script>
+  <script src="{% static 'admin/libs/ckeditor/ckeditor.js' %}"></script>
+  <script src="{% static 'admin/libs/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js' %}"></script>
+  <script src="{% static 'admin/libs/dropify/dropify.js' %}"></script>
+  <script src="{% static 'admin/libs/flatpickr/flatpickr.min.js' %}"></script>
+  <script src="{% static 'admin/js/flatpickr.js' %}"></script>
+  <script src="{% static 'admin/libs/choices.js/public/assets/scripts/choices.min.js' %}"></script>
+  <script src="{% static 'admin/libs/moment/moment.js' %}"></script>
+
+  <script>
+    {% if messages %}
+      {% for message in messages %}
+          alertify.set('notifier','position', 'top-right');
+          {% if message.tags == "alert-success" %}
+              alertify.success('{{ message }}');
+          {% elif message.tags == "alert-danger" %}
+              alertify.error('{{ message }}');
+          {% elif message.tags == "alert-warning" %}
+              alertify.warning('{{ message }}');
+          {% elif message.tags == "alert-info" %}
+              alertify.notify('{{ message }}');
+          {% endif %}
+          
+      {% endfor %}
+    {% endif %}
+  </script>
+
+
+  {% if page_name != 'dashboard' %}
+    <script>
+      $('.dropify').dropify();
+      $(function() {
+        CKEDITOR.replace('editor1')
+        //$('.textarea').wysihtml5()
+      })
+    </script>
+  {% endif %}
+  {% block extra_scripts %}{% endblock extra_scripts %}
+  {% endblock scripts %}
+</body>
+{% endblock body %}
+</html>
+{% endblock html %}
