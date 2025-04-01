@@ -150,7 +150,6 @@ def newsletter(request):
 
 
 
-
 def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -161,7 +160,7 @@ def login_view(request):
             return redirect('home')  # Redirect to home page after successful login
         else:
             messages.error(request, 'Invalid username or password')
-    return render(request, 'website/signin.html')
+    return render(request, 'website/login.html')
 
 def register(request):
     if request.method == 'POST':
