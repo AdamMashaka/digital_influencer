@@ -1,0 +1,193 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<div class="grid grid-cols-12 gap-x-6">
+    <div class="col-span-12 xl:col-span-12">
+      <div class="box">
+        <div class="box-header">
+          <h5 class="box-title">Add Class</h5>
+        </div>
+        <div class="box-body">
+            <div class="flex justify-center w-full">
+                <div class="w-full max-w-4xl">
+                    <div class="bg-white p-6 rounded-lg shadow-none">
+                        <form  action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label class="form-label mb-3">Title</label>
+                                <input type="text" name="title" class="px-3 py-2 ti-form-input" placeholder="Title">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label mb-3">Description</label>
+                                <textarea name="description" class="px-3 py-2 ti-form-input" rows="3"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label mb-3">Assign Instructor</label>
+                                <select id="instructor" name="instructor" class="px-3 py-2 mt-3 ti-form-input border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-0">
+                                    <option value="">select</option>
+                                    {% if instructors %}
+                                        {% for instructor in instructors %}
+                                           <option value="{{ instructor.id }}">{{ instructor.first_name }} {{ instructor.last_name }}</option>
+                                        {% endfor %}
+                                    {% endif %}
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label mb-3">Assistant Instructor</label>
+                                <select id="assistant_instructor" name="assistant_instructor" class="px-3 py-2 mt-3 ti-form-input border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-0">
+                                    <option value="">select</option>
+                                    {% if instructors %}
+                                    {% for instructor in instructors %}
+                                       <option  value="{{ instructor.id }}">{{ instructor.first_name }} {{ instructor.last_name }}</option>
+                                    {% endfor %}
+                                {% endif %}
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label mb-3">Duration</label>
+                                <input type="text" name="duration" class="px-3 py-2 ti-form-input" placeholder="Duration">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label mb-3">Category</label>
+                                <select id="Category" name="category" class="px-3 py-2 mt-3 ti-form-input border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-0">
+                                    <option value="">select</option>
+                                    {% if categories %}
+                                    {% for category in categories %}
+                                       <option value="{{ category.id }}">{{ category.name }}</option>
+                                    {% endfor %}
+                                {% endif %}
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label mb-3">Sub category</label>
+                                <select id="subcategory" name="subcategory" class="px-3 py-2 mt-3 ti-form-input border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-0">
+                                    <option value="">select</option>
+                                    {% if subcategories %}
+                                    {% for category in subcategories %}
+                                       <option value="{{ category.id }}">{{ category.name }}</option>
+                                    {% endfor %}
+                                {% endif %}
+                                </select>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label class="block text-sm font-medium text-gray-700">Free course</label>
+                                <div class="flex items-center py-2">
+                                  <div class="mr-4">
+                                    <input type="radio" id="is_free" name="is_free"
+                                      class="form-radio h-5 w-5 text-blue-600" value="1"
+                                      >
+                                    <label for="is_free"
+                                      class="ml-2 text-sm font-medium text-gray-900">Free course</label>
+                                  </div>
+                                </div>
+                              </div>
+
+                            <div class="mb-3">
+                                <label class="form-label mb-3">Price</label>
+                                <input type="text" name="price" class="px-3 py-2 ti-form-input" placeholder="If you checked free course, the leave it blank">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label mb-3">Type</label>
+                                <select id="type" name="type" class="px-3 py-2 mt-3 ti-form-input border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-0">
+                                    <option value="">select</option>
+                                    <option value="single class">single class</option>
+                                    <option value="continous class">continous class</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label mb-3">Level</label>
+                                <select id="level" name="level" class="px-3 py-2 mt-3 ti-form-input border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-0">
+                                    <option value="">select</option>
+                                    {% if levels %}
+                                    {% for level in levels %}
+                                       <option  value="{{ level.id }}">{{ level.name }}</option>
+                                    {% endfor %}
+                                {% endif %}
+                                </select>
+                            </div>
+                            <div class="space-y-2 py-2">
+                                <label for="input-label" class="ti-form-label">Start Date</label>
+                                <div class="flex rounded-sm shadow-sm">
+                                    <div
+                                        class="px-4 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
+                                        <span class="text-sm text-gray-500 dark:text-white/70"><i
+                                                class="ri ri-calendar-line"></i></span>
+                                    </div>
+
+                                    <input type="text"
+                                        class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
+                                        id="addignedDate" name="start" placeholder="Choose date and time"
+                                        readonly="readonly">
+                                </div>
+                            </div>
+                            <div class="space-y-2 py-2">
+                                <label for="input-label" class="ti-form-label">End Date</label>
+                                <div class="flex rounded-sm shadow-sm">
+                                    <div
+                                        class="px-4 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
+                                        <span class="text-sm text-gray-500 dark:text-white/70"><i
+                                                class="ri ri-calendar-line"></i></span>
+                                    </div>
+
+                                    <input type="text"
+                                        class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
+                                        id="targetDate" name="end" placeholder="Choose date and time"
+                                        readonly="readonly">
+                                </div>
+                            </div>
+
+                            <div class="mb-3 py-2">
+                                <label class="form-label mb-3">Time</label>
+                                <input type="time" name="time" class="px-3 py-2 ti-form-input" placeholder="Time">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label mb-3">Host</label>
+                                <select id="host" name="host" class="px-3 py-2 mt-3 ti-form-input border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-0">
+                                    <option value="">select</option>
+                                    <option value="zoom">Zoom</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label class="block text-sm font-medium text-gray-700">Certificate</label>
+                                <div class="flex items-center py-2">
+                                  <div class="mr-4">
+                                    <input type="radio" id="is_certificated" name="is_certificated"
+                                      class="form-radio h-5 w-5 text-blue-600" value="1"
+                                      >
+                                    <label for="is_certificated"
+                                      class="ml-2 text-sm font-medium text-gray-900">Certificate</label>
+                                  </div>
+                                </div>
+                              </div>
+
+                            <div class="mb-3 py-2">
+                                <label class="form-label mb-3">Capacity</label>
+                                <input type="text" name="capacity" class="px-3 py-3 ti-form-input" placeholder="Capacity">
+                            </div>
+
+                            <div class="mb-3 py-2">
+                                <label class="form-label mb-3">Course Thumbnail</label>
+                                <input type="file" name="images" class="px-3 py-2 ti-form-input dropify" data-height="100" placeholder="images">
+                            </div>
+
+                            <div class="text-end">
+                                <button type="submit" class="ti-btn bg-indigo-500/10 text-indigo-500 hover:text-white hover:bg-indigo-500 ring-offset-white focus:ring-indigo-500 dark:focus:ring-offset-white/10">Create</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+{% endblock content %}
+{% block extra_scripts %}
+<script src="{% static 'admin/libs/dragula/dragula.min.js' %}"></script>
+<script src="{% static 'admin/js/tasks.js' %}"></script>
+{% endblock extra_scripts %}

@@ -1,0 +1,719 @@
+{% extends 'dashboards/backoffice/base.html' %} 
+{% load static %} 
+{% block toolbar %}
+{% load custom_tags %}
+  <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
+      <div
+        id="kt_app_toolbar_container"
+        class="app-container container-fluid d-flex flex-stack"
+      >
+        <div
+          class="page-title d-flex flex-column justify-content-center flex-wrap me-3"
+        >
+          <h1
+            class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0"
+          >
+          Event list
+          </h1>
+          <ul
+            class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1"
+          >
+            <li class="breadcrumb-item text-muted">
+              <a href="{% url 'index' %}" class="text-muted text-hover-primary">
+                Home
+              </a>
+            </li>
+            <li class="breadcrumb-item">
+              <span class="bullet bg-gray-400 w-5px h-2px"></span>
+            </li>
+            <li class="breadcrumb-item text-muted">Eventlist</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+{% endblock toolbar %}
+{% block content%}  
+<div>
+    <div class="row g-xxl-9">
+        <div class="col-xxl-8">
+            <div class="card card-xxl-stretch mb-5 mb-xl-10">
+                <div class="card-header card-header-stretch">
+                    <div class="card-title">
+                        <h3 class="m-0 text-gray-900">Details Summary</h3>
+                    </div>
+                </div>
+
+                <div class="card-body pt-7 pb-0 px-0">
+                    <div class="tab-content">
+                        <div class="tab-pane fade active show" id="kt_security_summary_tab_pane_hours" role="tabpanel">
+                            <div class="row p-0 mb-5 px-9">
+                                <div class="col">
+                                    <div class="border border-dashed border-gray-300 text-center min-w-125px rounded pt-4 pb-2 my-3">
+                                        <span class="fs-4 fw-semibold text-success d-block">Events registered</span>
+                                        <span class="fs-2hx fw-bold text-gray-900" data-kt-countup="true" data-kt-countup-value="{{ events_registered }}">0</span>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="border border-dashed border-gray-300 text-center min-w-125px rounded pt-4 pb-2 my-3">
+                                        <span class="fs-4 fw-semibold text-success d-block">Events attended</span>
+                                        <span class="fs-2hx fw-bold text-gray-900" data-kt-countup="true" data-kt-countup-value="{{ events_attended }}">0</span>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="border border-dashed border-gray-300 text-center min-w-125px rounded pt-4 pb-2 my-3">
+                                        <span class="fs-4 fw-semibold text-primary d-block">Events missed</span>
+                                        <span class="fs-2hx fw-bold text-gray-900" data-kt-countup="true" data-kt-countup-value="{{ events_missed }}">0</span>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="border border-dashed border-gray-300 text-center min-w-125px rounded pt-4 pb-2 my-3">
+                                        <span class="fs-4 fw-semibold text-danger d-block">Events postponed</span>
+                                        <span class="fs-2hx fw-bold text-gray-900" data-kt-countup="true" data-kt-countup-value="{{ events_postponed }}">0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-2">
+                    <div class="d-flex align-items-center pb-6 px-9">
+                        <h3 class="m-0 text-gray-900 flex-grow-1">Activity Chart</h3>
+                    </div>
+                    <div class="tab-content px-3">
+                        <div class="tab-pane fade active show" id="kt_security_summary_tab_pane_hours_agents" role="tabpanel">
+                            <canvas id="eventsChart" style="height: 300px"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="col-xxl-4">
+<div class="card card-xxl-stretch-50 mb-5 mb-xl-10">
+    <div class="card-body pt-5">
+        <div id="kt_security_recent_alerts" class="carousel carousel-custom carousel-stretch slide" data-bs-ride="carousel" data-bs-interval="8000">
+            <div class="d-flex flex-stack align-items-center flex-wrap">               
+                <h4 class="text-gray-400 fw-semibold mb-0 pe-2">
+                    Recent events
+                </h4>           
+                <ol class="p-0 m-0 carousel-indicators carousel-indicators-dots">
+                    {% for event in recent_events %}
+                        <li data-bs-target="#kt_security_recent_alerts" data-bs-slide-to="{{ forloop.counter0 }}" class="ms-1 {% if forloop.first %}active{% endif %}"></li>
+                    {% endfor %}
+                </ol>
+            </div>
+            <div class="carousel-inner pt-6">
+                {% for event in recent_events %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">     
+                        <div class="carousel-wrapper">            
+                            <div class="d-flex flex-column flex-grow-1">                       
+                                <a href="#" class="fs-5 fw-bold text-dark text-hover-primary">
+                                    {{ event.title }}
+                                </a>
+                                <p class="text-gray-600 fs-6 fw-semibold pt-3 mb-0">
+                                    {{ event.description }}
+                                </p>                       
+                            </div>  
+                            <div class="d-flex flex-stack pt-8">      
+                                <span class="badge badge-light-primary fs-7 fw-bold me-2">{{ event.date }}</span>      
+                                <a href="#" class="btn btn-sm btn-light">Learn More</a>
+                            </div>          
+                        </div>         
+                    </div>
+                {% endfor %}
+            </div>
+        </div>    
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- filepath: /home/adam/Downloads/new_eventsystem/templates/dashboards/backoffice/eventlist.html -->
+<!-- filepath: /home/adam/Downloads/new_eventsystem/templates/dashboards/backoffice/eventlist.html -->
+<div class="card mb-5 mb-xl-10">
+    <div class="card-header">
+        <div class="card-title">
+            <h3>List of events you attend</h3>
+        </div>
+    </div>
+
+    <div class="card-body p-0">
+        <!--begin::Table wrapper-->
+        <div class="table-responsive">
+            <!--begin::Table-->
+            <table class="table align-middle table-row-bordered table-row-solid gy-4 gs-9">
+                <!--begin::Thead-->
+                <thead class="border-gray-200 fs-5 fw-semibold bg-lighten">
+                    <tr>
+                        <th class="min-w-250px">Location</th>
+                        <th class="min-w-100px">Event Link</th>
+                        <th class="min-w-150px">Organizer</th>
+                        <th class="min-w-150px">Event Name</th>
+                        <th class="min-w-150px">Contact Email</th>
+                        <th class="min-w-150px">Action</th>
+                    </tr>
+                </thead>
+                <!--end::Thead-->
+
+                <!--begin::Tbody-->
+                <tbody class="fw-6 fw-semibold text-gray-600">
+                    {% for event in all_events %}
+                        <tr>
+                            <td>
+                                <a href="https://www.google.com/maps/search/?api=1&query={{ event.location }}" target="_blank">
+                                    {{ event.location }}
+                                </a>
+                            </td>
+                            <td>
+                                {% if event.meeting_link %}
+                                    <a href="{{ event.meeting_link }}" target="_blank">Join Event</a>
+                                {% else %}
+                                    No Link
+                                {% endif %}
+                            </td>
+                            <td>{{ event.organizer }}</td>
+                            <td>{{ event.title }}</td>
+                            <td>{{ event.email }}</td>
+                            <td class="text-end">
+                                {% if user.is_superuser or user in event.cabinet_members.all %}
+                                <button type="button" class="btn btn-icon btn-bg-black btn-active-color-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#addMeetingLinkModal{{ event.id }}">
+                                    <i class="ki-duotone ki-switch fs-2"><span class="path1"></span><span class="path2"></span></i>
+                                </button>
+                            {% endif %}
+                                {% if user.is_superuser %}
+                                    <button type="button" class="btn btn-icon btn-bg-black btn-active-color-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#assignCabinetMemberModal{{ event.id }}">
+                                        <i class="ki-duotone ki-user fs-2"><span class="path1"></span><span class="path2"></span></i>
+                                    </button>
+                                
+                                <button type="button" class="btn btn-icon btn-bg-black btn-active-color-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#userListModal{{ event.id }}">
+                                    <i class="ki-duotone ki-people fs-2"><span class="path1"></span><span class="path2"></span></i>
+                                </button>            
+                                   
+                                {% endif %}
+                                <button type="button" class="btn btn-icon btn-bg-black btn-active-color-primary btn-sm" data-bs-toggle="modal" data-bs-target="#askQuestionModal{{ event.id }}">
+                                    <i class="ki-duotone ki-book fs-2"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>
+                                </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    {% for event in all_events %}
+<!-- Modal for viewing registered users -->
+<div class="modal fade" id="userListModal{{ event.id }}" tabindex="-1" aria-labelledby="userListModalLabel{{ event.id }}" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="userListModalLabel{{ event.id }}">Registered Users for {{ event.title }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5>Attendee List</h5>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for reg in event.registration_set.all %}
+                            <tr>
+                                <td>{{ reg.user.username }}</td>
+                                <td>{{ reg.user.email }}</td>
+                                <td>
+                                    {% with reg.user.groups.first.name as role %}
+                                        {{ role|default:"Participant" }}
+                                    {% endwith %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Modal for asking a question -->
+    <div class="modal fade" id="askQuestionModal{{ event.id }}" tabindex="-1" aria-labelledby="askQuestionModalLabel{{ event.id }}" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="askQuestionModalLabel{{ event.id }}">Ask a Question for {{ event.title }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{% url 'ask_question' event.id %}" method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="question" class="form-label">Question</label>
+                            <textarea class="form-control" id="question" name="question" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Question</button>
+                    </form>
+                    <hr>
+                    <h5>Questions Asked</h5>
+                    <table class="table table-border">
+                        <thead>
+                            <tr>
+                                <th>Number</th>
+                                <th>Question</th>
+                                <th>Asked By</th>
+                                <th>Asked At</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for question in event.question_set.all %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ question.question }}</td>
+                                <td>{{ question.user.username }}</td>
+                                <td>{{ question.created_at }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Modal for adding a meeting link -->
+<div class="modal fade" id="addMeetingLinkModal{{ event.id }}" tabindex="-1" aria-labelledby="addMeetingLinkModalLabel{{ event.id }}" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addMeetingLinkModalLabel{{ event.id }}">Add Meeting Link for {{ event.title }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'add_meeting_link' event.id %}" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="meeting_link" class="form-label">Meeting Link</label>
+                        <input type="url" class="form-control" id="meeting_link" name="meeting_link" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Link</button>
+                </form>
+                <hr>
+                <h5>Assign to Attended List</h5>
+                <form action="{% url 'assign_to_attended_list' event.id %}" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="search" class="form-label">Search</label>
+                        <input type="text" class="form-control" id="search" placeholder="Search by username or email" onkeyup="filterTable()">
+                    </div>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#scannerModal{{ event.id }}">Open Scanner</button>
+                    <div class="table-responsive">
+                        <table class="table table-bodered">
+                            <thead>
+                                <tr>
+                                    <th>Select</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody id="assignUserTable">
+                                {% for reg in event.registration_set.all %}
+                                    {% if reg.user not in event.attended_users.all %}
+                                        <tr>
+                                            <td><input type="checkbox" name="attended_users" value="{{ reg.user.id }}"></td>
+                                            <td>{{ reg.user.username }}</td>
+                                            <td>{{ reg.user.email }}</td>
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Assign to Attended List</button>
+                </form>
+                <hr>
+                <h5>Manually Add User to Attended List</h5>
+                <form action="{% url 'manually_add_to_attended_list' event.id %}" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="manual_username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="manual_username" name="username" placeholder="Enter username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="manual_email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="manual_email" name="email" placeholder="Enter email" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add User</button>
+                </form>
+                <hr>
+                <h5>Attended List</h5>
+                <form action="{% url 'remove_from_attended_list' event.id %}" method="post">
+                    {% csrf_token %}
+                    <div class="table-responsive">
+                        <table class="table table-brdered">
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for attendee in event.attended_users.all %}
+                                    <tr>
+                                        <td>{{ attendee.username }}</td>
+                                        <td>{{ attendee.email }}</td>
+                                        <td>
+                                            <button type="submit" name="remove_attendee" value="{{ attendee.id }}" class="btn btn-danger btn-sm">Remove</button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal for assigning cabinet members -->
+<div class="modal fade" id="assignCabinetMemberModal{{ event.id }}" tabindex="-1" aria-labelledby="assignCabinetMemberModalLabel{{ event.id }}" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="assignCabinetMemberModalLabel{{ event.id }}">Event committe for {{ event.title }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="assign-cabinet-member-form-{{ event.id }}" action="{% url 'assign_cabinet_member' event.id %}" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="member_email" class="form-label">Member Email</label>
+                        <input type="email" class="form-control" id="member_email" name="member_email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="member_username" class="form-label">Member Username</label>
+                        <input type="text" class="form-control" id="member_username" name="member_username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="member_position" class="form-label">Assign Role</label>
+                        <input type="text" class="form-control" id="member_position" name="member_position" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Assign Member</button>
+                </form>
+                <hr>
+                <h5>Assigned Cabinet Members</h5>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Username</th>
+                            <th>Position</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cabinet-members-list-{{ event.id }}">
+                        {% for member in event.cabinet_members.all %}
+                            <tr>
+                                <td>{{ member.email }}</td>
+                                <td>{{ member.username }}</td>
+                                <td>{{ member.position }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Handle form submission for assigning cabinet members
+    document.querySelectorAll('form[id^="assign-cabinet-member-form-"]').forEach(form => {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const eventId = this.id.split('-').pop();
+            const url = this.action;
+
+            fetch(url, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': formData.get('csrfmiddlewaretoken')
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    const member = data.member;
+                    const newRow = `
+                        <tr>
+                            <td>${member.email}</td>
+                            <td>${member.username}</td>
+                            <td>${member.position}</td>
+                        </tr>
+                    `;
+                    document.getElementById(`cabinet-members-list-${eventId}`).insertAdjacentHTML('beforeend', newRow);
+                    this.reset();
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    });
+});
+</script>
+
+<!-- Scanner Modal -->
+<div class="modal fade" id="scannerModal{{ event.id }}" tabindex="-1" aria-labelledby="scannerModalLabel{{ event.id }}" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="scannerModalLabel{{ event.id }}">QR Code Scanner</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <video id="preview{{ event.id }}" style="width: 100%;"></video>
+                <form id="scan-form{{ event.id }}" method="post" action="{% url 'mark_attendance' event.id %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="qr_data" id="qr_data{{ event.id }}">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+
+<script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    {% for event in all_events %}
+        let scanner{{ event.id }} = new Instascan.Scanner({ video: document.getElementById('preview{{ event.id }}') });
+        scanner{{ event.id }}.addListener('scan', function (content) {
+            let formData = new FormData();
+            formData.append('qr_data', content);
+            formData.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+
+            fetch("{% url 'mark_attendance' event.id %}", {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert(data.message);
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while processing the QR code.');
+            });
+        });
+        Instascan.Camera.getCameras().then(function (cameras) {
+            if (cameras.length > 0) {
+                scanner{{ event.id }}.start(cameras[0]);
+            } else {
+                console.error('No cameras found.');
+            }
+        }).catch(function (e) {
+            console.error(e);
+        });
+    {% endfor %}
+});
+
+
+function filterTable() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("search");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("assignUserTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }       
+    }
+}
+</script>
+
+<style>
+    :root {
+        --background-color: #ffffff;
+        --text-color: #323248;
+        --border-color: #dee2e6;
+        --header-background-color: #f8f9fa;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --background-color: #333333;
+            --text-color: #ffffff;
+            --border-color: #444444;
+            --header-background-color: #555555;
+        }
+    }
+
+    .table-bordered th, .table-bordered td {
+        border: 1px solid var(--border-color);
+        padding: 8px;
+        color: var(--text-color);
+    }
+    .table-bordered th {
+        background-color: var(--header-background-color);
+    }
+    .table-bordered td {
+        background-color: var(--background-color);
+    }
+</style>
+
+<div class="card ">
+    <div class="card-header card-header-stretch">
+                <div class="card-title">
+            <h3>Past events you attended</h3>
+        </div>
+        <div class="card-toolbar">
+            <ul class="nav nav-stretch fs-5 fw-semibold nav-line-tabs border-transparent" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a id="kt_referrals_tab_1" class="nav-link text-active-gray-800 me-4 active" data-bs-toggle="tab" role="tab" href="#kt_referrals_1">
+                        Month
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="kt_referred_users_tab_content" class="tab-content">
+        <div id="kt_referrals_1" class="card-body p-0 tab-pane fade show active" role="tabpanel">
+            <div class="table-responsive">
+                <table class="table table-row-bordered align-middle gy-6">
+                    <thead class="border-bottom border-gray-200 fs-6 fw-bold bg-lighten">
+                        <tr>
+                            <th class="min-w-125px ps-9">Event Name</th>
+                            <th class="min-w-125px px-0">Location</th>
+                            <th class="min-w-125px">Date</th>
+                            <th class="min-w-125px">Organizer</th>
+                            <th class="min-w-125px ps-0">Contact Email</th>
+                        </tr>
+                    </thead>
+                    <tbody class="fs-6 fw-semibold text-gray-600">
+                        {% for registration in past_registrations %}
+                            <tr>
+                                <td class="ps-9">{{ registration.event.title }}</td>
+                                <td class="ps-0">{{ registration.event.location }}</td>
+                                <td>{{ registration.event.date }}</td>
+                                <td>{{ registration.event.organizer }}</td>
+                                <td>{{ registration.event.email }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="kt_referrals_2" class="card-body p-0 tab-pane fade" role="tabpanel">
+            <div class="table-responsive">
+                <table class="table table-row-bordered align-middle gy-6">
+                    <thead class="border-bottom border-gray-200 fs-6 fw-bold bg-lighten">
+                        <tr>
+                            <th class="min-w-125px ps-9">Event Name</th>
+                            <th class="min-w-125px px-0">Location</th>
+                            <th class="min-w-125px">Date</th>
+                            <th class="min-w-125px">Organizer</th>
+                            <th class="min-w-125px ps-0">Contact Email</th>
+                        </tr>
+                    </thead>
+                    <tbody class="fs-6 fw-semibold text-gray-600">
+                        {% for registration in past_registrations %}
+                            {% if registration.event.date.year == 2022 %}
+                                <tr>
+                                    <td class="ps-9">{{ registration.event.title }}</td>
+                                    <td class="ps-0">{{ registration.event.location }}</td>
+                                    <td>{{ registration.event.date }}</td>
+                                    <td>{{ registration.event.organizer }}</td>
+                                    <td>{{ registration.event.email }}</td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="kt_referrals_3" class="card-body p-0 tab-pane fade" role="tabpanel">
+            <div class="table-responsive">
+                <table class="table table-row-bordered align-middle gy-6">
+                    <thead class="border-bottom border-gray-200 fs-6 fw-bold bg-lighten">
+                        <tr>
+                            <th class="min-w-125px ps-9">Event Name</th>
+                            <th class="min-w-125px px-0">Location</th>
+                            <th class="min-w-125px">Date</th>
+                            <th class="min-w-125px">Organizer</th>
+                            <th class="min-w-125px ps-0">Contact Email</th>
+                        </tr>
+                    </thead>
+                    <tbody class="fs-6 fw-semibold text-gray-600">
+                        {% for registration in past_registrations %}
+                            {% if registration.event.date.year == 2021 %}
+                                <tr>
+                                    <td class="ps-9">{{ registration.event.title }}</td>
+                                    <td class="ps-0">{{ registration.event.location }}</td>
+                                    <td>{{ registration.event.date }}</td>
+                                    <td>{{ registration.event.organizer }}</td>
+                                    <td>{{ registration.event.email }}</td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function filterTable() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("search");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("userTable");
+        tr = table.getElementsByTagName("tr");
+    
+        for (i = 0; i < tr.length; i++) {
+            tdUsername = tr[i].getElementsByTagName("td")[1];
+            tdEmail = tr[i].getElementsByTagName("td")[2];
+            if (tdUsername || tdEmail) {
+                txtValueUsername = tdUsername.textContent || tdUsername.innerText;
+                txtValueEmail = tdEmail.textContent || tdEmail.innerText;
+                if (txtValueUsername.toUpperCase().indexOf(filter) > -1 || txtValueEmail.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }       
+        }
+    }
+    </script>
+
+    
+
+  {% endblock content%}
+
+</div>

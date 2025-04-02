@@ -1,0 +1,176 @@
+{% extends "dashboard/projects/project_base.html" %}
+{% load static %}
+{% block pro_content %}
+<div class="col-span-12 xl:col-span-9">
+    <div class="box">
+        <div class="box-body p-0">
+            <div>
+                <div class="box border-0 shadow-none mb-0">
+                    <div class="box-header lg:flex lg:justify-between">
+                        <h5 class="box-title leading-none flex">
+                            {{ project.title }}
+                        </h5>
+                        <a href="{% url 'dashboard:edit_project' project.project_no %}" class="ti-btn m-0 ti-btn-soft-primary"
+                           >Edit Project</a>
+                    </div>
+                    <div class="box-body">
+                        <div class="grid grid-cols-4 gap-4 p-4 border-b">
+                            <div class="col-span-1 p-1 border-r">
+                                <div class="mb-4">
+                                    <span><strong>Projects No :</strong></span>
+                                    <span>0003</span>
+                                </div>
+                                <div class="mb-4">
+                                    <span><strong>Category :</strong></span>
+                                    <span>New Project</span>
+                                </div>
+                                <div class="mb-4">
+                                    <span><strong>Project Name :</strong></span>
+                                    <span>web Ui</span>
+                                </div>
+                                <div class="mb-4">
+                                    <span><strong>Tags :</strong></span>
+                                    <span></span>
+                                </div>
+                                <div class="mb-4">
+                                    <span><strong>Client :</strong></span>
+                                    <span><strong>Demo</strong></span>
+                                </div>
+                                <div class="mb-4">
+                                    <span><strong>Start Date:</strong></span>
+                                    <span>04.22.2024</span>
+                                </div>
+                                <div class="mb-4">
+                                    <span><strong>End Date:</strong></span>
+                                    <span>04.26.2024</span>
+                                </div>
+    
+                                <div class="mb-4">
+                                    <soan><strong>Status:</strong></soan>
+                                    <soan>
+                                        <span class="px-2 py-1 bg-yellow-200 text-yellow-800 rounded">On Hold</span>
+                                    </soan>
+                                </div>
+                            </div>
+                            <div class="col-span-1 p-4 border-r">
+                                <div class="mb-4">
+                                    <div><strong>Billing Type :</strong></div>
+                                    <div>Fixed Price</div>
+                                </div>
+                                <div class="mb-4">
+                                    <div><small>Estimate Hours :</small></div>
+                                    <div>0:00 m</div>
+                                </div>
+                                <div class="mb-4">
+                                    <div><strong>Budget :</strong></div>
+                                    <div>$ 0,00</div>
+                                </div>
+                                <div class="mb-4">
+                                    <div><strong>Assigned To:</strong></div>
+                                    <div>Lucas Myalla</div>
+                                </div>
+                            </div>
+
+                            <div class="col-span-1 p-5 border-r">
+                                <form>
+                                    <div class="space-y-4">
+                                        <div class="flex justify-between items-center">
+                                            <span>Total Expense:</span>
+                                            <span>$ 0,00</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span>Billable Expense:</span>
+                                            <span>$ 0,00</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span>Non Billable Expense:</span>
+                                            <span>$ 0,00</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span>Billed Expense:</span>
+                                            <span>$ 0,00</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span>Unbilled Expense:</span>
+                                            <span>$ 0,00</span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <div class="col-span-1 p-4">
+                                    <p class="lead bb mb-4"></p>
+                                        <div class="">
+                                            <ul class="timer flex space-x-1 justify-center text-center font-mono">
+                                                <li>0<span> Hours</span></li>
+                                                <li class="dots">:</li>
+                                                <li>0<span> Minutes</span></li>
+                                                <li class="dots">:</li>
+                                                <li>0<span> Seconds</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="text-center py-2">
+                                            <div class="">
+                                                <strong class="font-semibold text-lg">Extra Works</strong>
+                                            </div>
+                                            <ul class="flex space-x-1 justify-center text-center font-mono">
+                                                <li>0<span> Hours</span></li>
+                                                <li class="dots">:</li>
+                                                <li>0<span> Minutes</span></li>
+                                                <li class="dots">:</li>
+                                                <li>0<span> Seconds</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="">
+                                            <h2 class="text-center mt-2 text-2xl font-bold">Total Bill: $ 0,00</h2>
+                                        </div>
+                                
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-5 p-4">
+                            <div class="flex-1 p-1 border-r">
+                                <p class="text-lg leading-loose"></p>
+                                <form class="p-5">
+                                    <blockquote class="text-sm break-words">new</blockquote>
+                                </form>
+                            </div>
+                            <div class="flex-1 p-1">
+                                <p class="text-lg leading-loose"></p>
+                                <form class="p-5">
+                                    <div class="w-full">
+                                        <strong>3 / 4 Days Left (75%)</strong>
+                                    </div>
+                                    <div class="w-full">
+                                        <div class="mt-2 bg-gray-200 h-2 relative" style="width: 100%">
+                                            <div class="absolute left-0 top-0 h-2 bg-red-500" style="width: 75%" data-tooltip="75%"></div>
+                                        </div>
+                                    </div>
+                        
+                                    <div class="w-full">
+                                        <strong>0 / Open Tasks (0%)</strong>
+                                    </div>
+                                    <div class="w-full">
+                                        <div class="mt-2 bg-gray-200 h-2 relative" style="width: 100%">
+                                            <div class="absolute left-0 top-0 h-2 bg-green-500" style="width: 0%" data-tooltip="0%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="w-full">
+                                        <strong>Completed:</strong>
+                                    </div>
+                                    <div class="w-full">
+                                        <div class="mt-2 bg-gray-200 h-2 relative" style="width: 100%">
+                                            <div class="absolute left-0 top-0 h-2 bg-red-500" style="width: 0%" data-tooltip="0%"></div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock pro_content %}

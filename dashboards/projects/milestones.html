@@ -1,0 +1,187 @@
+{% extends "dashboard/projects/project_base.html" %}
+{% load static %}
+{% block pro_content %}
+<div class="col-span-12 xl:col-span-9">
+    <div class="box">
+      <div class="box-body p-0">
+        <div>
+          <div class="box border-0 shadow-none mb-0">
+            <div class="box-header lg:flex lg:justify-between">
+              <h5 class="box-title leading-none flex my-2">Milestones
+                </h5>
+              <a href="javascript:void(0);"  data-hs-overlay="#hs-medium-modal" class="ti-btn m-0 ti-btn-soft-primary"><i
+                  class="ti ti-plus"></i> New Milestone </a>
+            </div>
+            <div class="box-body">
+                <div class="mt-5 table-bordered rounded-sm ti-custom-table-head overflow-auto">
+                    <table class="ti-custom-table ti-custom-table-head edit-table whitespace-nowrap text-center">
+                      <thead class="bg-gray-50 dark:bg-black/20">
+                        <tr class="cart-box">
+                          <th scope="col" class="dark:text-white/70">Milestone Name</th>
+                          <th scope="col" class="dark:text-white/70">Start Date</th>
+                          <th scope="col" class="dark:text-white/70">End Date</th>
+                          <th scope="col" class="dark:text-white/70">Progress</th>
+                          <th scope="col" class="dark:text-white/70">Status</th>
+                          <th scope="col" class="dark:text-white/70">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% if groups %}
+                        {% for group in groups %}
+                        <tr class="invoice-list">
+                          <td class="text-start">{{ group.name}}</td>
+                          <td class="font-medium space-x-2 rtl:space-x-reverse">
+                            <div class="hs-tooltip ti-main-tooltip">
+                              <a href="{% url 'dashboard:group_update' group.pk %}"
+                                onclick="changeTheInfo('Edit Invoice','Socrates Itumay','P.O. Box 283 8562 Fusce Rd., 20620','socratesitumany@abc.com','#IN5252155','25-10-2022','25-11-2022')"
+                                data-hs-overlay="#invoice-modal"
+                                class="invoice-edit m-0 hs-tooltip-toggle relative  w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-secondary">
+                                <i class="ti ti-pencil"></i>
+                                <span
+                                  class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
+                                  role="tooltip">
+                                  Edit
+                                </span>
+                              </a>
+                            </div>
+                            <div class="hs-tooltip ti-main-tooltip">
+                              <a href="{% url 'dashboard:group_delete' group.pk %}"
+                                class="invoice-btn m-0 hs-tooltip-toggle relative  w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-danger">
+                                <i class="ti ti-trash"></i>
+                                <span
+                                  class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
+                                  role="tooltip">
+                                  Delete
+                                </span>
+                              </a>
+                            </div>
+                          </td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <tr class="invoice-list">
+                          <td class="text-center"> no records</td>
+                        </tr>
+                        {% endif %}
+                      </tbody>
+                    </table>
+                  </div>
+                  <nav class="flex justify-end items-center space-x-2 rtl:space-x-reverse mt-5">
+                    <a class="w-10 h-10 bg-white dark:bg-black/20 text-gray-500 hover:bg-primary hover:text-white p-2 inline-flex justify-center text-sm font-medium items-center gap-2 rounded-full"
+                      href="javascript:void(0);">
+                      <span aria-hidden="true">«</span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="w-10 h-10 bg-primary text-white p-2 inline-flex items-center justify-center text-sm font-medium rounded-full"
+                      href="javascript:void(0);" aria-current="page">1</a>
+                    <a class="w-10 h-10 bg-white dark:bg-black/20 text-gray-500 hover:bg-primary hover:text-white p-2 inline-flex justify-center items-center text-sm font-medium rounded-full"
+                      href="javascript:void(0);">2</a>
+                    <a class="w-10 h-10 bg-white dark:bg-black/20 text-gray-500 hover:bg-primary hover:text-white p-2 inline-flex justify-center items-center text-sm font-medium rounded-full"
+                      href="javascript:void(0);">3</a>
+                    <a class="w-10 h-10 bg-white dark:bg-black/20 text-gray-500 hover:bg-primary hover:text-white p-2 inline-flex justify-center text-sm font-medium items-center gap-2 rounded-full"
+                      href="javascript:void(0);">
+                      <span class="sr-only">Next</span>
+                      <span aria-hidden="true">»</span>
+                    </a>
+                  </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div id="hs-medium-modal" class="hs-overlay hidden ti-modal">
+    <div class="hs-overlay-open:mt-7 ti-modal-box mt-0 ease-out md:!max-w-2xl md:w-full m-3 md:mx-auto">
+        <div class="ti-modal-content">
+            <form action="" method="POST" >
+             {% csrf_token %}
+            <div class="ti-modal-header">
+                <h3 class="ti-modal-title">
+                    Add New
+                </h3>
+                <button type="button" class="hs-dropdown-toggle ti-modal-close-btn" data-hs-overlay="#hs-medium-modal">
+                    <span class="sr-only">Close</span>
+                    <svg class="w-3.5 h-3.5" width="8" height="8" viewBox="0 0 8 8" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M0.258206 1.00652C0.351976 0.912791 0.479126 0.860131 0.611706 0.860131C0.744296 0.860131 0.871447 0.912791 0.965207 1.00652L3.61171 3.65302L6.25822 1.00652C6.30432 0.958771 6.35952 0.920671 6.42052 0.894471C6.48152 0.868271 6.54712 0.854471 6.61352 0.853901C6.67992 0.853321 6.74572 0.865971 6.80722 0.891111C6.86862 0.916251 6.92442 0.953381 6.97142 1.00032C7.01832 1.04727 7.05552 1.1031 7.08062 1.16454C7.10572 1.22599 7.11842 1.29183 7.11782 1.35822C7.11722 1.42461 7.10342 1.49022 7.07722 1.55122C7.05102 1.61222 7.01292 1.6674 6.96522 1.71352L4.31871 4.36002L6.96522 7.00648C7.05632 7.10078 7.10672 7.22708 7.10552 7.35818C7.10442 7.48928 7.05182 7.61468 6.95912 7.70738C6.86642 7.80018 6.74102 7.85268 6.60992 7.85388C6.47882 7.85498 6.35252 7.80458 6.25822 7.71348L3.61171 5.06702L0.965207 7.71348C0.870907 7.80458 0.744606 7.85498 0.613506 7.85388C0.482406 7.85268 0.357007 7.80018 0.264297 7.70738C0.171597 7.61468 0.119017 7.48928 0.117877 7.35818C0.116737 7.22708 0.167126 7.10078 0.258206 7.00648L2.90471 4.36002L0.258206 1.71352C0.164476 1.61976 0.111816 1.4926 0.111816 1.36002C0.111816 1.22744 0.164476 1.10028 0.258206 1.00652Z"
+                            fill="currentColor" />
+                    </svg>
+                </button>
+            </div>
+            <div class="ti-modal-body">
+                <div class="grid lg:grid-cols-2 gap-6 space-y-4 lg:space-y-0">
+                    <input type="hidden" id="input-label" name="project_id" class="ti-form-input" placeholder="Milestone Name">
+                    <div class="space-y-2">
+                        <label for="input-label" class="ti-form-label">Milestone Name</label>
+                        <input type="text" id="input-label" name="title" class="ti-form-input" placeholder="Milestone Name">
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <label for="input-label" class="ti-form-label">Start Date</label>
+                        <div class="flex rounded-sm shadow-sm">
+                            <div
+                                class="px-4 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
+                                <span class="text-sm text-gray-500 dark:text-white/70"><i
+                                        class="ri ri-calendar-line"></i></span>
+                            </div>
+
+                            <input type="text"
+                                class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
+                                id="addignedDate" name="start_date" placeholder="Choose date and time" readonly>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="ti-form-label">Responsible</label>
+                        <select class="ti-form-select" name="assigned_to"
+                            id="choices-multiple-remove-button" multiple>
+                            {% if users %}
+                                {% for user in users %}
+                                    <option value="{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</option>
+                                {% endfor %}
+                            {% endif %}
+                        </select>
+                    </div>
+                    <div class="space-y-2">
+                        <label for="input-label" class="ti-form-label">End Date</label>
+                        <div class="flex rounded-sm shadow-sm">
+                            <div
+                                class="px-4 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
+                                <span class="text-sm text-gray-500 dark:text-white/70"><i
+                                        class="ri ri-calendar-line"></i></span>
+                            </div>
+
+                            <input type="text"
+                                class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
+                                id="targetDate" name="end_date" placeholder="Choose date and time" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-3 py-3">
+                    <label class="ti-form-label">Description</label>
+                    <textarea class="ti-form-input" rows="3" name="description" placeholder="Short descriptions" data-lt-tmp-id="lt-130630" spellcheck="false" data-gramm="false"></textarea>
+                </div>
+            </div>
+            <div class="ti-modal-footer">
+                <button type="button"
+                    class="hs-dropdown-toggle ti-btn ti-border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:ring-offset-white focus:ring-primary dark:bg-bgdark dark:hover:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-white dark:focus:ring-offset-white/10"
+                    data-hs-overlay="#hs-medium-modal">
+                    Close
+                </button>
+                <button type="submit" class="ti-btn  bg-primary text-white hover:bg-primary  focus:ring-primary  dark:focus:ring-offset-white/10">
+                     Save
+               </button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock pro_content %}
+{% block extra_scripts %}
+<script src="{% static 'admin/libs/dragula/dragula.min.js' %}"></script>
+<script src="{% static 'admin/js/tasks.js' %}"></script>
+{% endblock extra_scripts %}

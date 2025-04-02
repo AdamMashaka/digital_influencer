@@ -1,0 +1,1024 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<div class="grid grid-cols-12 gap-x-6">
+  <div class="col-span-12 xl:col-span-12">
+    <div class="box">
+      <div class="box-header lg:flex lg:justify-between">
+        <h5 class="box-title my-auto">Bootcamp Content</h5>
+      </div>
+      <div class="box-body">
+        <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div
+          class="sm:flex bg-gray-100 hover:bg-gray-200 rounded-sm transition p-1 dark:bg-black/20 dark:hover:bg-black/20">
+          <nav class="sm:flex sm:space-x-2 rtl:space-x-reverse overflow-auto">
+            <a class="w-full sm:w-auto hs-tab-active:bg-white hs-tab-active:text-gray-700 dark:hs-tab-active:bg-bgdark dark:hs-tab-active:text-white py-2 px-3 inline-flex items-center gap-2 bg-transparent text-sm text-gray-500 font-medium rounded-sm  dark:text-white/50 dark:hover:text-white active"
+              href="javascript:void(0);" id="segment-item-1" data-hs-tab="#segment-1">
+              Curriculum
+            </a>
+            <a class="w-full sm:w-auto hs-tab-active:bg-white hs-tab-active:text-gray-700 dark:hs-tab-active:bg-bgdark dark:hs-tab-active:text-white py-2 px-3 inline-flex items-center gap-2 bg-transparent text-sm text-gray-500 font-medium rounded-sm  dark:text-white/50 dark:hover:text-white"
+              href="javascript:void(0);" id="segment-item-2" data-hs-tab="#segment-2">
+              Basic
+            </a>
+            <a class="w-full sm:w-auto hs-tab-active:bg-white hs-tab-active:text-gray-700 dark:hs-tab-active:bg-bgdark dark:hs-tab-active:text-white py-2 px-3 inline-flex items-center gap-2 bg-transparent text-sm text-gray-500 font-medium rounded-sm  dark:text-white/50 dark:hover:text-white"
+              href="javascript:void(0);" id="segment-item-3" data-hs-tab="#segment-3">
+              Info
+            </a>
+            <a class="w-full sm:w-auto hs-tab-active:bg-white hs-tab-active:text-gray-700 dark:hs-tab-active:bg-bgdark dark:hs-tab-active:text-white py-2 px-3 inline-flex items-center gap-2 bg-transparent text-sm text-gray-500 font-medium rounded-sm  dark:text-white/50 dark:hover:text-white"
+              href="javascript:void(0);" id="segment-item-4" data-hs-tab="#segment-4">
+              Pricing
+            </a>
+            <a class="w-full sm:w-auto hs-tab-active:bg-white hs-tab-active:text-gray-700 dark:hs-tab-active:bg-bgdark dark:hs-tab-active:text-white py-2 px-3 inline-flex items-center gap-2 bg-transparent text-sm text-gray-500 font-medium rounded-sm  dark:text-white/50 dark:hover:text-white"
+              href="javascript:void(0);" id="segment-item-5" data-hs-tab="#segment-5">
+              Media
+            </a>
+            <a class="w-full sm:w-auto hs-tab-active:bg-white hs-tab-active:text-gray-700 dark:hs-tab-active:bg-bgdark dark:hs-tab-active:text-white py-2 px-3 inline-flex items-center gap-2 bg-transparent text-sm text-gray-500 font-medium rounded-sm  dark:text-white/50 dark:hover:text-white"
+              href="javascript:void(0);" id="segment-item-6" data-hs-tab="#segment-6">
+              Seo
+            </a>
+            <a class="w-full sm:w-auto hs-tab-active:bg-white hs-tab-active:text-gray-700 dark:hs-tab-active:bg-bgdark dark:hs-tab-active:text-white py-2 px-3 inline-flex items-center gap-2 bg-transparent text-sm text-gray-500 font-medium rounded-sm  dark:text-white/50 dark:hover:text-white"
+              href="javascript:void(0);" id="segment-item-7" data-hs-tab="#segment-7">
+              Finish
+            </a>
+          </nav>
+        </div>
+
+        <div class="mt-3">
+            <div id="segment-1" role="tabpanel" aria-labelledby="segment-item-1" class="">
+                <div class="flex justify-center w-full">
+                  <div class="w-full max-w-4xl">
+                    <div class="bg-white p-6 rounded-lg shadow-none">
+                      <div class="col-span-12 mb-4 text-center mt-3">
+                        <a href="javascript:void(0);" data-hs-overlay="#hs-medium-modal"
+                          class="inline-block px-4 py-1 ml-1 border border-blue-500 text-blue-500 rounded-full text-sm leading-normal cursor-pointer hover:bg-blue-500 hover:text-white transition ease-in-out duration-150"><i
+                            class="mdi mdi-plus"></i> Add Module</a>
+                        <a href="javascript:void(0);" data-hs-overlay="#hs-class-modal"
+                          class="inline-block px-4 py-1 ml-1 border border-blue-500 text-blue-500 rounded-full text-sm leading-normal cursor-pointer hover:bg-blue-500 hover:text-white transition ease-in-out duration-150"><i
+                            class="mdi mdi-plus"></i> Add Class</a>
+                        <a href="javascript:void(0)"
+                          class="inline-block px-4 py-1 ml-1 border border-blue-500 text-blue-500 rounded-full text-sm leading-normal cursor-pointer hover:bg-blue-500 hover:text-white transition ease-in-out duration-150"><i
+                            class="mdi mdi-sort-variant"></i> Sort sections</a>
+                      </div>
+    
+                      <div class="container mx-auto px-4">
+                        {% if modules %}
+                          {% for module in modules %}
+                            <div class="bg-gray-100 text-gray-600 hover:bg-gray-200 mb-5 p-5 rounded-md shadow" id="module-container">
+                                
+                                <div class="flex justify-between items-center"  onmouseover="toggleWidgets('widgets-of-section-{{ module.id }}', true)"
+                                onmouseout="toggleWidgets('widgets-of-section-{{ module.id }}', false)">
+                                  <h5 class="text-lg leading-tight font-light" 
+                                    >
+                                      Module {{ module.order }}: {{ module.name }}
+                                  </h5>
+                                  <div class="hidden justify-center items-center" id="widgets-of-section-{{ module.id }}">
+                                      <button class="bg-transparent hover:bg-gray-200 text-gray-700 py-1 px-2 rounded text-sm">
+                                          <i class="mdi mdi-sort-variant"></i> 🔀 Sort
+                                      </button>
+                                      <button class="bg-transparent hover:bg-gray-200 text-gray-700 py-1 px-2 rounded text-sm">
+                                          <i class="mdi mdi-sort-variant"></i> ✏️ Edit
+                                      </button>
+                                      <button class="bg-transparent hover:bg-gray-200 text-gray-700 py-1 px-2 rounded text-sm">
+                                          <i class="mdi mdi-window-close"></i> ❌ Delete
+                                      </button>
+                                  </div>
+                              </div>
+                            
+                        
+                                <div class="mt-4">
+                                    {% if classes %}
+                                      {% for class in classes %}
+                                        {% if class.module.id == module.id %}
+                                          <div class="bg-white flex justify-between text-gray-600 hover:bg-white-100 mb-2 p-3 rounded-md shadow w-full postcard" id="lesson-25">
+                                            <div>
+                                              <h5 class="text-lg mb-1">
+                                                  <span class="
+                                                  {% if class.status == 'Upcoming' %}
+                                                    bg-yellow-400 
+                                                  {% elif class.status == 'Live' %}
+                                                    bg-danger
+                                                  {% else %}
+                                                    bg-success
+                                                  {% endif %}
+                                                  text-white px-2 p-1 py-1 rounded-md" style="font-size:13px" >{{ class.status  }}</span>
+                                                  {{ class.title }}
+                                              </h5>
+                                              <p class="text-sm">
+                                                  <span>Schedule:</span>
+                                                  <span style="font-size:12px">{{ class.class_start|date:" d M Y H:m" }}</span>
+                                              </p>
+                                          </div>
+                                          <div class="hidden" id="widgets-of-lesson-26">
+                                            <a href="javascript: void(0);" data-hs-overlay="#hs-resourses-modal" title="Resource"
+                                                data-toggle="tooltip" title="" data-original-title="Resource"> 📦 </a>
+                                            <a href="javascript: void(0);" title="Edit"
+                                                data-toggle="tooltip" title="" data-original-title="Edit">✏️</a>
+                                            <a href="javascript: void(0);" title="Delete" class="delete-class" data-id="{{ class.id }}"
+                                                data-toggle="tooltip" title="" data-original-title="Delete">🗑️</a>
+                                          </div>
+                                        </div>
+                                        {% endif %}
+                                      {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                          {% endfor %}
+                        {% endif %}
+                      </div>
+                    
+                      
+                    </div>
+                 </div>
+                </div>
+              </div>
+    
+          <div id="segment-2" class="hidden" role="tabpanel" aria-labelledby="segment-item-2">
+            <div class="flex justify-center w-full">
+                <div class="w-full max-w-4xl">
+                  <div class="bg-white p-6 rounded-lg shadow-none">
+
+                    <div class="flex justify-center w-full">
+                      <div class="w-full md:w-8/12">
+                        <div class="mb-3">
+                          <label for="name" class="block text-sm font-medium text-gray-700">Bootcamp title</label>
+                            <input type="text" name="name" class="px-3 py-2 mt-2 ti-form-input" placeholder="Bootcamp title">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="flex justify-center w-full">
+                      <div class="w-full md:w-8/12">
+                        <div class="mb-3">
+                          <label for="name" class="block text-sm font-medium text-gray-700">Short description</label>
+                            <textarea name="short_description" class="px-3 py-2 mt-2 ti-form-input" row="3" ></textarea>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="flex justify-center w-full">
+                      <div class="w-full md:w-8/12">
+                        <div class="mb-3">
+                          <label for="name" class="block text-sm mb-3 font-medium text-gray-700">Description</label>
+                            <textarea name="description" id="editor1" class="px-3 py-2 mt-3 ti-form-input" row="3" ></textarea>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="flex justify-center w-full">
+                      <div class="w-full md:w-8/12">
+                        <div class="mb-6">
+                          <label for="Category" class="block text-sm font-medium text-gray-700">Category</label>
+                          <select id="Category" name="category"
+                            class="px-3 py-2 mt-3 ti-form-input border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-0">
+                            <option value="youtube">select</option>
+                            {% if categories %}
+                                {% for category in categories %}
+                                     <option value="{{ category.id }}">{{ category.name }}</option>
+                                {% endfor %}
+                            {% endif %}
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+  
+
+                    <div class="flex justify-center w-full">
+                      <div class="w-full md:w-8/12">
+                        <div class="mb-6">
+                          <label for="instructor" class="block text-sm font-medium text-gray-700">Instructor</label>
+                          <select id="instructor" name="instructor"
+                            class="px-3 py-2 mt-3 ti-form-input border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-0">
+                            <option value="youtube">select</option>
+                            {% if users %}
+                                {% for user in users %}
+                                     <option value="{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</option>
+                                {% endfor %}
+                            {% endif %}
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="flex justify-center w-full">
+                      <div class="w-full md:w-8/12">
+                        <div class="mb-6">
+                          <label for="start_date" class="block text-sm font-medium text-gray-700">Start Date</label>
+                          <input type="date" id="start_date" name="start_date"
+                            placeholder="start date"
+                            class="px-3 py-2 mt-3 ti-form-input border-gray-300 bg-white rounded-0 shadow-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+
+          </div>
+          <div id="segment-3" class="hidden" role="tabpanel" aria-labelledby="segment-item-3">
+            <div class="flex justify-center w-full">
+              <div class="w-full max-w-4xl">
+                <div class="bg-white p-6 rounded-lg shadow-none">
+                  
+                    <div class="form-group row mb-3">
+                        <label class="col-md-2 col-form-label" for="requirements">Requirements</label>
+                        <div class="col-md-10">
+                          <div id="requirement_area">
+  
+                            <div class="flex items-center mt-2">
+                              <div class="flex-grow px-3">
+                                <input type="text"  name="requirements[]" id="requirements" placeholder="Provide Bootcamp Requirements" class="ti-form-input block w-full px-3 py-2 border border-gray-300 rounded-none  placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                              </div>
+                              <div>
+                                <button type="button" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2" onclick="appendRequirement()">
+                                  <i class="ti ti-plus"></i>
+                                </button>
+                              </div>
+                            </div>
+                            <div id="blank_requirement_field" style="display: none;">
+                              <div class="flex items-center mt-2">
+                                <div class="flex-grow px-3">
+                                  <input type="text"  name="requirements[]" id="requirements" placeholder="Provide Bootcamp Requirements" class="ti-form-input block w-full px-3 py-2 border border-gray-300 rounded-none  placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                </div>
+                                <div>
+                                  <button type="button" class="text-white bg-danger hover:bg-danger focus:ring-4 focus:ring-danger-300 font-medium rounded-lg text-sm px-4 py-2" style="margin-top: 0px;" name="button" onclick="removeRequirement(this)">
+                                    <i class="ti ti-minus"></i>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group row mb-3">
+                        <label class="col-md-2 col-form-label" for="outcomes">Outcomes</label>
+                        <div class="col-md-10">
+                          <div id="outcomes_area">
+                            <div class="flex items-center mt-2">
+                              <div class="flex-grow px-3">
+                                <input type="text"  name="outcomes[]" id="outcomes" placeholder="Provide Bootcamp Outcomes" class="ti-form-input block w-full px-3 py-2 border border-gray-300 rounded-none  placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                              </div>
+                              <div>
+                                <button type="button" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2" onclick="appendoutcomes()">
+                                  <i class="ti ti-plus"></i>
+                                </button>
+                              </div>
+                            </div>
+                            <div id="blank_outcomes_field" style="display: none;">
+                              <div class="flex items-center mt-2">
+                                <div class="flex-grow px-3">
+                                  <input type="text"  name="outcomes[]" id="outcomes" placeholder="Provide Bootcamp Outcomes" class="ti-form-input block w-full px-3 py-2 border border-gray-300 rounded-none  placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                </div>
+                                <div>
+                                  <button type="button" class="text-white bg-danger hover:bg-danger focus:ring-4 focus:ring-danger-300 font-medium rounded-lg text-sm px-4 py-2" style="margin-top: 0px;" name="button" onclick="removeoutcomes(this)">
+                                    <i class="ti ti-minus"></i>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="segment-4" class="hidden" role="tabpanel" aria-labelledby="segment-item-4">
+            <div class="flex justify-center w-full">
+              <div class="w-full max-w-4xl">
+                <div class="bg-white p-6 rounded-lg shadow-none">
+                  <div class="form-group mb-3">
+                    <div class="flex items-center justify-between">
+                      <input type="checkbox" id="is_free_course" name="is_free_course" value="1"
+                        class="form-checkbox h-5 w-5 text-blue-600" onclick="togglePriceFields(this.id)">
+                      <label for="is_free_course" class="ml-2 block text-sm font-medium text-gray-900">Check if this is
+                        a free module</label>
+                    </div>
+                  </div>
+
+                  <div class="paid-course-stuffs">
+                    <div class="form-group mb-3">
+                      <label for="price" class="block text-sm font-medium text-gray-700">Course price ($)</label>
+                      <input type="number" id="price" name="price"
+                        class="mt-1 block w-full ti-form-input px-3 py-2 border border-gray-300 rounded-0 shadow-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        min="0" placeholder="Enter course price">
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <div class="flex items-center justify-between">
+                        <input type="checkbox" id="discount_flag" name="discount_flag" value="1"
+                          class="form-checkbox h-5 w-5 text-blue-600">
+                        <label for="discount_flag" class="ml-2 block text-sm font-medium text-gray-900">Check if this
+                            module has discount</label>
+                      </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <label for="discounted_price" class="block text-sm font-medium text-gray-700">Discounted price
+                        ($)</label>
+                      <input type="number" id="discounted_price" name="discounted_price"
+                        class="mt-1 block w-full ti-form-input px-3 py-2 border border-gray-300 rounded-0 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        min="0" onkeyup="calculateDiscountPercentage()">
+                        <input type="hidden" name="discounted_percentage" id="discounted_percentages" class="discounted_percentages">
+                      <small class="text-sm text-gray-500">This module has <span id="discounted_percentage"
+                          class="text-red-600">0%</span> Discount</small>
+                    </div>
+                  </div>
+
+                  <hr class="my-4">
+
+                  <div class="form-group mb-3">
+                    <label class="block text-sm font-medium text-gray-700">Expiry period</label>
+                    <div class="flex items-center">
+                      <div class="mr-4">
+                        <input type="radio" id="lifetime_expiry_period" name="expiry_period"
+                          class="form-radio h-5 w-5 text-blue-600" value="lifetime" onchange="checkExpiryPeriod(this)"
+                          >
+                        <label for="lifetime_expiry_period"
+                          class="ml-2 text-sm font-medium text-gray-900">Lifetime</label>
+                      </div>
+                      <div>
+                        <input type="radio" id="limited_expiry_period" name="expiry_period"
+                          class="form-radio h-5 w-5 text-blue-600" value="limited_time"
+                          onchange="checkExpiryPeriod(this)">
+                        <label for="limited_expiry_period" class="ml-2 text-sm font-medium text-gray-900">Limited
+                          time</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group mb-3 hidden" id="number_of_month">
+                    <label for="number_of_months" class="block text-sm font-medium text-gray-700">Number of
+                      months</label>
+                    <input type="number" id="number_of_months" name="number_of_month"
+                      class="mt-1 block w-full ti-form-input px-3 py-2 border border-gray-300 rounded-0 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                      min="1">
+                    <small class="badge bg-gray-100 text-gray-500">After purchase, students can access the course until
+                      your selected time.</small>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div id="segment-5" class="hidden" role="tabpanel" aria-labelledby="segment-item-5">
+            <div class="flex justify-center w-full">
+              <div class="w-full max-w-4xl">
+                <div class="bg-white p-6 rounded-lg shadow-none">
+
+                  <div class="flex justify-center w-full">
+                    <div class="w-full md:w-8/12">
+                      <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700">Bootcamp thumbnail</label>
+                        <div class="mt-1 flex flex-col items-start">
+                          <div class="w-48 h-48 rounded overflow-hidden bg-gray-100 mb-4">
+                            <img id="thumbnailPreview"
+                              src="https://demo.creativeitem.com/academy/uploads/thumbnails/course_thumbnails/optimized/course_thumbnail_default-new_121701001881.jpg"
+                              alt="Thumbnail" class="w-full h-full object-cover">
+                          </div>
+                          <button type="button" onclick="document.getElementById('course_thumbnail').click();"
+                            class="bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Upload a file
+                          </button>
+                          <input id="course_thumbnail" type="file" name="thumbnail" class="hidden" onchange="previewFile()"
+                            accept="image/*">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div id="segment-6" class="hidden" role="tabpanel" aria-labelledby="segment-item-6">
+            <div class="flex justify-center w-full">
+              <div class="w-full max-w-4xl">
+                <div class="bg-white p-6 rounded-lg shadow-none">
+                  <div class="flex justify-center w-full">
+                    <div class="w-full max-w-4xl">
+                      <!-- Meta Keywords Field -->
+                      <div class="mb-3 flex">
+                        <label for="meta_keywords"
+                          class="w-1/6 text-right pr-3 align-middle pt-2 text-sm font-medium">Meta keywords</label>
+                        <div class="w-full">
+                          <input type="text" id="meta_keywords" name="meta_keywords"
+                            class="ti-form-input tags-input bg-white border border-gray-300 rounded-lg shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-2 w-full"
+                            placeholder="Write a keyword and then press enter button"
+                            >
+                        </div>
+                      </div>
+                      <!-- Meta Description Field -->
+                      <div class="mb-3 flex">
+                        <label for="meta_description"
+                          class="w-1/6 text-right pr-3 align-middle pt-2 text-sm font-medium">Meta description</label>
+                        <div class="w-full">
+                          <textarea name="meta_description" id="meta_description"
+                            class="bg-white ti-form-input  border border-gray-300 rounded-lg shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-2 w-full"
+                            rows="4"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="segment-7" class="hidden" role="tabpanel" aria-labelledby="segment-item-7">
+            <div class="flex justify-center w-full">
+              <div class="w-full max-w-4xl">
+                <div class="bg-white p-6 rounded-lg shadow-none">
+                  <div class="flex justify-center w-full">
+                    <div class="w-full">
+                      <div class="text-center">
+                        <h2 class="mt-0"><i class="mdi mdi-check-all"></i></h2>
+                        <h3 class="text-3xl mt-0">Thank you!</h3>
+                        <p class="w-3/4 mx-auto mb-2">You are just one click away</p>
+                        <div class="my-3">
+                          <button type="submit"
+                            class="px-4 py-2 bg-blue-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                            >Submit</button>
+                        </div>
+                      </div>
+                    </div> <!-- end col -->
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<form id="createModuleModel" name="createModuleModel" action="" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+<div id="hs-medium-modal" class="hs-overlay hidden ti-modal">
+  <div class="hs-overlay-open:mt-7 ti-modal-box mt-0 ease-out  md:w-full m-3 md:mx-auto">
+    <div class="ti-modal-content">
+        <div class="ti-modal-header">
+          <h3 class="ti-modal-title">
+            New Module
+          </h3>
+          <button type="button" class="hs-dropdown-toggle ti-modal-close-btn" data-hs-overlay="#hs-medium-modal">
+            <span class="sr-only">Close</span>
+            <svg class="w-3.5 h-3.5" width="8" height="8" viewBox="0 0 8 8" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M0.258206 1.00652C0.351976 0.912791 0.479126 0.860131 0.611706 0.860131C0.744296 0.860131 0.871447 0.912791 0.965207 1.00652L3.61171 3.65302L6.25822 1.00652C6.30432 0.958771 6.35952 0.920671 6.42052 0.894471C6.48152 0.868271 6.54712 0.854471 6.61352 0.853901C6.67992 0.853321 6.74572 0.865971 6.80722 0.891111C6.86862 0.916251 6.92442 0.953381 6.97142 1.00032C7.01832 1.04727 7.05552 1.1031 7.08062 1.16454C7.10572 1.22599 7.11842 1.29183 7.11782 1.35822C7.11722 1.42461 7.10342 1.49022 7.07722 1.55122C7.05102 1.61222 7.01292 1.6674 6.96522 1.71352L4.31871 4.36002L6.96522 7.00648C7.05632 7.10078 7.10672 7.22708 7.10552 7.35818C7.10442 7.48928 7.05182 7.61468 6.95912 7.70738C6.86642 7.80018 6.74102 7.85268 6.60992 7.85388C6.47882 7.85498 6.35252 7.80458 6.25822 7.71348L3.61171 5.06702L0.965207 7.71348C0.870907 7.80458 0.744606 7.85498 0.613506 7.85388C0.482406 7.85268 0.357007 7.80018 0.264297 7.70738C0.171597 7.61468 0.119017 7.48928 0.117877 7.35818C0.116737 7.22708 0.167126 7.10078 0.258206 7.00648L2.90471 4.36002L0.258206 1.71352C0.164476 1.61976 0.111816 1.4926 0.111816 1.36002C0.111816 1.22744 0.164476 1.10028 0.258206 1.00652Z"
+                fill="currentColor" />
+            </svg>
+          </button>
+        </div>
+        <div class="ti-modal-body">
+          <div class="space-y-2 py-2">
+            <label for="input-label" class="ti-form-label">Module name</label>
+            <input type="text" id="input-label" name="name" class="ti-form-input" placeholder="Module name">
+          </div>
+
+          <div class="space-y-2 py-2">
+            <label for="input-label" class="ti-form-label">Study plan Start</label>
+            <div class="flex rounded-sm shadow-sm">
+                <div
+                    class="px-4 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
+                    <span class="text-sm text-gray-500 dark:text-white/70"><i
+                            class="ri ri-calendar-line"></i></span>
+                </div>
+
+                <input type="text"
+                    class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
+                    id="addignedDate" name="study_plan_start" placeholder="Choose date and time" readonly>
+            </div>
+        </div>
+        <div class="space-y-2 py-2">
+            <label for="input-label" class="ti-form-label">Study plan End</label>
+            <div class="flex rounded-sm shadow-sm">
+                <div
+                    class="px-4 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
+                    <span class="text-sm text-gray-500 dark:text-white/70"><i
+                            class="ri ri-calendar-line"></i></span>
+                </div>
+
+                <input type="text"
+                    class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
+                    id="targetDate" name="study_plan_end" placeholder="Choose date and time" readonly>
+            </div>
+        </div>
+        
+        <div class="space-y-2 py-3">
+          <label for="input-label" class="ti-form-label">Restriction of study plan: </label>
+          <div class="form-group mb-3">
+            <div class="block items-center">
+              <div class="mr-4 my-1">
+                <input type="radio" id="restriction" name="restriction"
+                  class="form-radio h-5 w-5 text-blue-600" value="No restriction"
+                  >
+                <label for="restriction"
+                  class="ml-2 text-sm font-medium text-gray-900">No restriction</label>
+              </div>
+              <div class="my-1">
+                <input type="radio" id="Until" name="restriction"
+                  class="form-radio h-5 w-5 text-blue-600" value="Until Start Date"
+                 >
+                <label for="Until" class="ml-2 text-sm font-medium text-gray-900"> Until the start date, keep this section locked</label>
+              </div>
+              <div class="my-1">
+                <input type="radio" id="Within" name="restriction"
+                  class="form-radio h-5 w-5 text-blue-600" value="Within"
+                 >
+                <label for="Within" class="ml-2 text-sm font-medium text-gray-900"> Keep this section open only within the selected date range </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+        <div class="ti-modal-footer">
+          <button type="button"
+            class="hs-dropdown-toggle ti-btn ti-border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:ring-offset-white focus:ring-primary dark:bg-bgdark dark:hover:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-white dark:focus:ring-offset-white/10"
+            data-hs-overlay="#hs-medium-modal">
+            Close
+          </button>
+          <button type="submit"
+            class="ti-btn  bg-primary text-white hover:bg-primary  focus:ring-primary  dark:focus:ring-offset-white/10">
+            Save
+          </button>
+        </div>
+    </div>
+  </div>
+</div>
+</form>
+
+<form id="createClassModel" name="createClassModel" action="" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+<div id="hs-class-modal" class="hs-overlay hidden ti-modal">
+  <div class="hs-overlay-open:mt-7 ti-modal-box mt-0 ease-out lg:!max-w-4xl lg:w-full m-3 lg:!mx-auto">
+    <div class="ti-modal-content">
+        <div class="ti-modal-header">
+          <h3 class="ti-modal-title">
+            Add live class
+          </h3>
+          <button type="button" class="hs-dropdown-toggle ti-modal-close-btn" data-hs-overlay="#hs-class-modal">
+            <span class="sr-only">Close</span>
+            <svg class="w-3.5 h-3.5" width="8" height="8" viewBox="0 0 8 8" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M0.258206 1.00652C0.351976 0.912791 0.479126 0.860131 0.611706 0.860131C0.744296 0.860131 0.871447 0.912791 0.965207 1.00652L3.61171 3.65302L6.25822 1.00652C6.30432 0.958771 6.35952 0.920671 6.42052 0.894471C6.48152 0.868271 6.54712 0.854471 6.61352 0.853901C6.67992 0.853321 6.74572 0.865971 6.80722 0.891111C6.86862 0.916251 6.92442 0.953381 6.97142 1.00032C7.01832 1.04727 7.05552 1.1031 7.08062 1.16454C7.10572 1.22599 7.11842 1.29183 7.11782 1.35822C7.11722 1.42461 7.10342 1.49022 7.07722 1.55122C7.05102 1.61222 7.01292 1.6674 6.96522 1.71352L4.31871 4.36002L6.96522 7.00648C7.05632 7.10078 7.10672 7.22708 7.10552 7.35818C7.10442 7.48928 7.05182 7.61468 6.95912 7.70738C6.86642 7.80018 6.74102 7.85268 6.60992 7.85388C6.47882 7.85498 6.35252 7.80458 6.25822 7.71348L3.61171 5.06702L0.965207 7.71348C0.870907 7.80458 0.744606 7.85498 0.613506 7.85388C0.482406 7.85268 0.357007 7.80018 0.264297 7.70738C0.171597 7.61468 0.119017 7.48928 0.117877 7.35818C0.116737 7.22708 0.167126 7.10078 0.258206 7.00648L2.90471 4.36002L0.258206 1.71352C0.164476 1.61976 0.111816 1.4926 0.111816 1.36002C0.111816 1.22744 0.164476 1.10028 0.258206 1.00652Z"
+                fill="currentColor" />
+            </svg>
+          </button>
+        </div>
+        <div class="ti-modal-body">
+          <div class="space-y-2 py-2">
+            <label for="input-label" class="ti-form-label">Title</label>
+            <input type="text" id="input-label" name="title" class="ti-form-input" placeholder="Live class title">
+          </div>
+
+          <div class="space-y-2 py-2">
+            <label for="input-label" class="ti-form-label">Class schedule</label>
+            <div class="flex rounded-sm shadow-sm">
+                <div
+                    class="px-4 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
+                    <span class="text-sm text-gray-500 dark:text-white/70"><i
+                            class="ri ri-calendar-line"></i></span>
+                </div>
+
+                <input type="text"
+                    class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
+                    id="addignedDate" name="class_start" placeholder="Choose date and time" readonly>
+            </div>
+        </div>
+        <div class="space-y-2 py-2">
+            <label for="input-label" class="ti-form-label">Estimated time</label>
+            <div class="flex rounded-sm shadow-sm">
+                <div
+                    class="px-4 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
+                    <span class="text-sm text-gray-500 dark:text-white/70"><i
+                            class="ri ri-calendar-line"></i></span>
+                </div>
+
+                <input type="text"
+                    class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
+                    id="targetDate" name="class_end" placeholder="Choose date and time" readonly>
+            </div>
+        </div>
+        
+        <div class="space-y-2 py-3">
+          <label for="input-label" class="ti-form-label">Status </label>
+          <div class="form-group mb-3">
+            <div class="flex items-center">
+              <div class="mr-4 my-1">
+                <input type="radio" id="Upcoming" name="status"
+                  class="form-radio h-5 w-5 text-blue-600" value="Upcoming"
+                  >
+                <label for="status"
+                  class="ml-2 text-sm font-medium text-gray-900">Upcoming</label>
+              </div>
+              <div class="mr-4 my-1">
+                <input type="radio" id="Live" name="status"
+                  class="form-radio h-5 w-5 text-blue-600" value="Live"
+                 >
+                <label for="Until" class="ml-2 text-sm font-medium text-gray-900"> Live</label>
+              </div>
+              <div class="my-1">
+                <input type="radio" id="Completed" name="status"
+                  class="form-radio h-5 w-5 text-blue-600" value="Completed"
+                 >
+                <label for="Within" class="ml-2 text-sm font-medium text-gray-900">Completed </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-2 py-2">
+          <label for="input-label" class="ti-form-label">Module</label>
+          <select name="module_id" class="ti-form-input">
+            <option>select</option>
+            {% if modules %}
+              {% for module in modules %}
+                <option value="{{ module.id }}">{{ module.name }}</option>
+              {% endfor %}
+            {% endif %}
+          </select>
+        </div>
+
+        <div class="space-y-2 py-2">
+          <label for="input-label" class="ti-form-label">Description</label>
+          <textarea name="description" id="editor1" class="ti-form-input" row="3"  placeholder="Short Description"></textarea>
+        </div>
+
+        </div>
+        <div class="ti-modal-footer">
+          <button type="button"
+            class="hs-dropdown-toggle ti-btn ti-border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:ring-offset-white focus:ring-primary dark:bg-bgdark dark:hover:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-white dark:focus:ring-offset-white/10"
+            data-hs-overlay="#hs-class-modal">
+            Close
+          </button>
+          <button type="submit"
+            class="ti-btn  bg-primary text-white hover:bg-primary  focus:ring-primary  dark:focus:ring-offset-white/10">
+            Save
+          </button>
+        </div>
+    </div>
+  </div>
+</div>
+</form>
+
+
+<form id="ResourcreForm" name="ResourcreForm" action="" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+<div id="hs-resourses-modal" class="hs-overlay hidden ti-modal">
+  <div class="hs-overlay-open:mt-7 ti-modal-box mt-0 ease-out  md:w-full m-3 md:mx-auto">
+    <div class="ti-modal-content">
+        <div class="ti-modal-header">
+          <h3 class="ti-modal-title">
+            New Resources
+          </h3>
+          <button type="button" class="hs-dropdown-toggle ti-modal-close-btn" data-hs-overlay="#hs-resourses-modal">
+            <span class="sr-only">Close</span>
+            <svg class="w-3.5 h-3.5" width="8" height="8" viewBox="0 0 8 8" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M0.258206 1.00652C0.351976 0.912791 0.479126 0.860131 0.611706 0.860131C0.744296 0.860131 0.871447 0.912791 0.965207 1.00652L3.61171 3.65302L6.25822 1.00652C6.30432 0.958771 6.35952 0.920671 6.42052 0.894471C6.48152 0.868271 6.54712 0.854471 6.61352 0.853901C6.67992 0.853321 6.74572 0.865971 6.80722 0.891111C6.86862 0.916251 6.92442 0.953381 6.97142 1.00032C7.01832 1.04727 7.05552 1.1031 7.08062 1.16454C7.10572 1.22599 7.11842 1.29183 7.11782 1.35822C7.11722 1.42461 7.10342 1.49022 7.07722 1.55122C7.05102 1.61222 7.01292 1.6674 6.96522 1.71352L4.31871 4.36002L6.96522 7.00648C7.05632 7.10078 7.10672 7.22708 7.10552 7.35818C7.10442 7.48928 7.05182 7.61468 6.95912 7.70738C6.86642 7.80018 6.74102 7.85268 6.60992 7.85388C6.47882 7.85498 6.35252 7.80458 6.25822 7.71348L3.61171 5.06702L0.965207 7.71348C0.870907 7.80458 0.744606 7.85498 0.613506 7.85388C0.482406 7.85268 0.357007 7.80018 0.264297 7.70738C0.171597 7.61468 0.119017 7.48928 0.117877 7.35818C0.116737 7.22708 0.167126 7.10078 0.258206 7.00648L2.90471 4.36002L0.258206 1.71352C0.164476 1.61976 0.111816 1.4926 0.111816 1.36002C0.111816 1.22744 0.164476 1.10028 0.258206 1.00652Z"
+                fill="currentColor" />
+            </svg>
+          </button>
+        </div>
+        <div class="ti-modal-body">
+          <div class="space-y-2 my-2">
+            <label for="input-label" class="ti-form-label">Class</label>
+            <select name="class_id" id="class_id" class="ti-form-input">
+              <option>select</option>
+              {% if classes %}
+                  {% for class in classes %}
+                      <option value="{{ class.id }}"> {{ class.title}}</option>
+                  {% endfor %}
+              {% endif %}
+            </select>
+          </div>
+          <div class="space-y-2">
+            <label for="input-label" class="ti-form-label">Resource File</label>
+            <input type="file"  name="files_resource" id="files_resource" class="ti-form-input dropify" data-height="100" placeholder="">
+          </div>
+        </div>
+        <div class="ti-modal-footer">
+          <button type="button"
+            class="hs-dropdown-toggle ti-btn ti-border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:ring-offset-white focus:ring-primary dark:bg-bgdark dark:hover:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-white dark:focus:ring-offset-white/10"
+            data-hs-overlay="#hs-resourses-modal">
+            Close
+          </button>
+          <button type="button" onclick="save_class_resources('{{bootcamp.id}}');"
+            class="ti-btn  bg-primary text-white hover:bg-primary  focus:ring-primary  dark:focus:ring-offset-white/10">
+            Save
+          </button>
+        </div>
+    </div>
+  </div>
+</div>
+</form>
+
+
+{% endblock content %}
+{% block extra_scripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% static 'admin/libs/dragula/dragula.min.js' %}"></script>
+<script src="{% static 'admin/js/tasks.js' %}"></script>
+<script>
+
+    {% comment %} var url = window.location.href;
+    const parsedUrl = new URL(url);
+    const pathname = parsedUrl.pathname;
+    const parts = pathname.split('/').filter(part => part.length > 0);
+    const lastPart = parts[parts.length - 1];
+    console.log(lastPart);  {% endcomment %}
+
+  
+  
+    var blank_requirement = jQuery('#blank_requirement_field').html();
+    var blank_outcomes = jQuery('#blank_outcomes_field').html();
+    jQuery(document).ready(function() {
+      jQuery('#blank_outcomes_field').hide();
+      jQuery('#blank_requirement_field').hide();
+    });
+  
+    function appendRequirement() {
+      jQuery('#requirement_area').append(blank_requirement);
+    }
+  
+    function removeRequirement(requirementElem) {
+      jQuery(requirementElem).parent().parent().remove();
+    }
+  
+    function appendoutcomes() {
+      jQuery('#outcomes_area').append(blank_outcomes);
+    }
+  
+    function removeoutcomes(outcomesElem) {
+      jQuery(outcomesElem).parent().parent().remove();
+    }
+  
+  function previewFile() {
+    const file = document.getElementById("course_thumbnail").files[0];
+    const reader = new FileReader();
+    
+    reader.addEventListener("load", function () {
+        // Convert image file to base64 string and display it
+        document.getElementById("thumbnailPreview").src = reader.result;
+    }, false);
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+}
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Attach event listeners once the DOM is fully loaded
+    document.getElementById('is_free_course').addEventListener('change', togglePriceFields);
+    document.getElementById('price').addEventListener('input', calculateDiscountPercentage);
+    document.getElementById('discounted_price').addEventListener('input', calculateDiscountPercentage);
+    document.querySelectorAll('input[name="expiry_period"]').forEach((elem) => {
+        elem.addEventListener('change', checkExpiryPeriod);
+    });
+});
+
+function calculateDiscountPercentage() {
+    var originalPrice = parseFloat(document.getElementById('price').value);
+    var discountedPrice = parseFloat(document.getElementById('discounted_price').value);
+    if (originalPrice > 0 && discountedPrice > 0 && discountedPrice < originalPrice) {
+        var discountPercentage = ((originalPrice - discountedPrice) / originalPrice) * 100;
+        document.getElementById('discounted_percentages').value = discountPercentage.toFixed(2) + '%';
+        document.getElementById('discounted_percentage').textContent = discountPercentage.toFixed(2) + '%';
+    } else {
+        document.getElementById('discounted_percentages').value = '0%';
+        document.getElementById('discounted_percentage').textContent = '0%';
+    }
+}
+
+function togglePriceFields() {
+    var checkbox = document.getElementById('is_free_course');
+    var priceFields = document.querySelector('.paid-course-stuffs');
+    priceFields.style.display = checkbox.checked ? 'none' : 'block';
+}
+
+function checkExpiryPeriod() {
+    var lifetime = document.getElementById('lifetime_expiry_period').checked;
+    var number_of_month = document.getElementById('number_of_month');
+    number_of_month.style.display = !lifetime ? 'block' : 'none';
+}
+
+document.querySelectorAll('.postcard').forEach(item => {
+  item.addEventListener('mouseover', () => {
+    item.children[1].classList.remove('hidden');
+  });
+  item.addEventListener('mouseout', () => {
+    item.children[1].classList.add('hidden');
+  });
+});
+
+function toggleWidgets(id, show) {
+  var element = document.getElementById(id);
+  if (element) {
+    element.classList.toggle('hidden', !show);
+  }
+}
+
+
+"use strict";
+
+
+$(document).ready(function() {
+  $("body").on("submit", "#createModuleModel", function(e) {
+    e.preventDefault();
+    var bootcampId = '{{ bootcamp.id }}'; 
+    $.ajax({
+      url: '/courses/bootcamp-courses/post/' + bootcampId + '/', 
+      type: 'POST',
+      data: $(this).serialize(),
+      dataType: 'json',
+      beforeSend: function(xhr, settings) {
+        if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+          xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+        }
+      },
+      success: function(response) {
+        // Check response status
+        if (response.status == 0) {
+          displayModalError(response.title);
+          location.reload();
+        } else {
+          displayModalSuccess(response.message);
+          $('#createModuleModel')[0].reset();
+          $('#hs-medium-modal').hide();
+          location.reload();
+        }
+      },
+      error: function(xhr, status, error) {
+        displayModalError("An error occurred: " + xhr.statusText);
+        location.reload();
+      }
+    });
+  });
+});
+
+
+"use strict";
+
+
+$(document).ready(function() {
+  $("body").on("submit", "#createClassModel", function(e) {
+    e.preventDefault();
+    var bootcampId = '{{ bootcamp.id }}'; 
+    $.ajax({
+      url: '/courses/bootcamp-courses/class/add/' + bootcampId + '/', 
+      type: 'POST',
+      data: $(this).serialize(),
+      dataType: 'json',
+      beforeSend: function(xhr, settings) {
+        if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+          xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+        }
+      },
+      success: function(response) {
+        // Check response status
+        if (response.status == 0) {
+          displayModalError(response.title);
+          location.reload();
+        } else {
+          displayModalSuccess(response.message);
+          $('#createClassModel')[0].reset();
+          $('#hs-medium-modal').hide();
+          location.reload();
+        }
+      },
+      error: function(xhr, status, error) {
+        displayModalError("An error occurred: " + xhr.statusText);
+        location.reload();
+      }
+    });
+  });
+});
+
+$(document).ready(function() {
+  $('.delete-class').on('click', function(e) {
+      e.preventDefault();
+      var classId = $(this).data('id');
+
+      alertify.confirm('Delete Class', 'Are you sure you want to delete this class?', function(){ 
+        $.ajax({
+          url: `/courses/bootcamp-courses/delete-class/${classId}/`,
+          type: 'POST',
+          dataType: 'json',
+          headers: {'X-CSRFToken': getCookie('csrftoken')},
+          success: function(response) {
+              if (response.status === 'success') {
+                  alertify.success(response.message);
+                  window.location.href = response.redirect_url;
+              } else {
+                alertify.error(response.message);
+              }
+          },
+          error: function(xhr, errmsg, err) {
+            alertify.error('Error deleting lesson: ' + errmsg);
+          }
+      });
+      }
+      , function(){
+         alertify.error('Cancel')
+      });
+  });
+});
+
+
+"use strict";
+function save_class_resources(bootcampId) {
+  var fd = new FormData();
+  var class_id = $("#class_id").val();
+  var files_resource = $("#files_resource").get(0).files[0];
+  fd.append('class_id', class_id);
+  fd.append('files_resource', files_resource);
+  fd.append('bootcampId', bootcampId);
+  if (class_id == '') {
+    $("#class_id").focus();
+    toastrErrorMsg("Class must be required!");
+    setTimeout(function() {}, 1000);
+    return false;
+  }
+
+  $.ajax({
+    url: '/courses/save-class-resources/',
+    type: "POST",
+    data: fd,
+    enctype: 'multipart/form-data',
+    processData: false,
+    contentType: false,
+    beforeSend: function(xhr, settings) {
+      if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+        xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+      }
+    },
+    success: function(response) {
+      if (response.status == 0) {
+        console.log(response.title)
+        displayModalError(response.title);
+      } else {
+        displayModalSuccess(response.message);
+        console.log(response.message)
+        $('#ResourcreForms')[0].reset();
+        $('#hs-quiz-modal').hide();
+      }
+    },
+    error: function(xhr, status, error) {
+      displayModalError("An error occurred: " + xhr.statusText);
+      location.reload();
+    }
+  });
+}
+
+
+function displayModalError(message) {
+  alertify.error(message);
+}
+
+function displayModalSuccess(message) {
+  alertify.success(message);
+}
+
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = jQuery.trim(cookies[i]);
+      if (cookie.substring(0, name.length + 1) === (name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
+$.ajaxSetup({
+  beforeSend: function(xhr, settings) {
+    if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+      xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+    }
+  }
+});
+
+
+</script>
+
+{% endblock extra_scripts %}

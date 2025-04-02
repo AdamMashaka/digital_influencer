@@ -1,0 +1,112 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<div class="grid grid-cols-12 gap-x-6">
+    <div class="col-span-12 xl:col-span-12">
+        <div class="box">
+            <div class="box-header lg:flex lg:justify-between">
+                <h5 class="box-title my-auto">New Ticket</h5>
+            </div>
+            <div class="box-body">
+                <div class="flex justify-center w-full">
+                    <div class="w-full max-w-4xl">
+                        <div class="bg-white p-6 rounded-lg shadow-none">
+                            <div class="grid lg:grid-cols-2 gap-6 space-y-4 lg:space-y-0">
+                                <div class="space-y-2">
+                                    <label for="input-label" class="ti-form-label">Title</label>
+                                    <input type="text" id="input-label" name="title" class="ti-form-input"
+                                        placeholder="title">
+                                </div>
+                                <div class="space-y-2">
+                                    <label for="input-label" class="ti-form-label">Category</label>
+                                    <select id="Category" name="category"
+                                        class="px-3 py-2 mt-3 ti-form-input border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-0">
+                                        <option value="youtube">select</option>
+                                        {% if categories %}
+                                        {% for category in categories %}
+                                        <option value="{{ category.id }}">{{ category.name }}</option>
+                                        {% endfor %}
+                                        {% endif %}
+                                    </select>
+                                </div>
+                                <div class="space-y-2">
+                                    <label for="input-label" class="ti-form-label">Project Costs</label>
+                                    <input type="text" id="input-label" name="project_cost" class="ti-form-input"
+                                        placeholder="Project title">
+                                </div>
+
+                                <div class="space-y-2">
+                                    <label class="ti-form-label">Priority</label>
+                                    <select id="Category" name="category"
+                                        class="px-3 py-2 mt-3 ti-form-input border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-0">
+                                        <option value="youtube">select</option>
+                                        {% if categories %}
+                                        {% for category in categories %}
+                                        <option value="{{ category.id }}">{{ category.name }}</option>
+                                        {% endfor %}
+                                        {% endif %}
+                                    </select>
+                                </div>
+                                <div class="space-y-2">
+                                    <label for="input-label" class="ti-form-label">Start Date</label>
+                                    <div class="flex rounded-sm shadow-sm">
+                                        <div
+                                            class="px-4 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
+                                            <span class="text-sm text-gray-500 dark:text-white/70"><i
+                                                    class="ri ri-calendar-line"></i></span>
+                                        </div>
+
+                                        <input type="text"
+                                            class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
+                                            id="addignedDate" name="start_date" placeholder="Choose date and time"
+                                            readonly="readonly">
+                                    </div>
+                                </div>
+                                <div class="space-y-2">
+                                    <label for="input-label" class="ti-form-label">End Date</label>
+                                    <div class="flex rounded-sm shadow-sm">
+                                        <div
+                                            class="px-4 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
+                                            <span class="text-sm text-gray-500 dark:text-white/70"><i
+                                                    class="ri ri-calendar-line"></i></span>
+                                        </div>
+
+                                        <input type="text"
+                                            class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
+                                            id="targetDate" name="end_date" placeholder="Choose date and time"
+                                            readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-center w-full py-3">
+                                <div class="w-full md:w-8/12">
+                                    <div class="mb-3">
+                                        <label for="name"
+                                            class="block text-sm mb-3 font-medium text-gray-700">Description</label>
+                                        <textarea name="description" id="editor1" class="px-3 py-2 mt-3 ti-form-input"
+                                            row="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-center w-full py-3">
+                                <div class="w-full md:w-8/12">
+                                    <div class="mb-3">
+                                        <label for="name"
+                                            class="block text-sm mb-3 font-medium text-gray-700">Attachment</label>
+                                        <input type="file" name="description" id="editor1" class="dropify px-3 py-2 mt-3 ti-form-input"
+                                            >
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}

@@ -1,0 +1,149 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<div class="grid grid-cols-12 gap-x-6">
+    <div class="col-span-12 xl:col-span-12">
+      <div class="box">
+        <div class="box-header lg:flex lg:justify-between">
+            <h5 class="box-title my-auto">Students</h5>
+            <a href="{% url 'students:add_student' %}"><button type="button" class="m-0 py-2 ti-btn rounded-full ti-btn-outline ti-btn-outline-primary">Add Student
+                </button></a>
+        </div>
+        <div class="box-body">
+            <div class="xl:flex xl:justify-between space-y-3 xl:space-y-0">
+                <div class="sm:flex sm:space-x-3 space-y-3 sm:space-y-0 rtl:space-x-reverse">
+                    <div class="relative max-w-xs">
+                        <label for="hs-table-search" class="sr-only">Search</label>
+                        <input type="text" name="hs-table-search" id="hs-table-search"
+                            class="px-3 py-2 ltr:pr-10 rtl:pl-10 ti-form-input" placeholder="Search for student">
+                        <div
+                            class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center pointer-events-none ltr:pr-4 rtl:pl-4">
+                            <i class="ri-search-line text-gray-500 dark:text-white/70"></i>
+                        </div>
+                    </div>
+                    <button aria-label="button" type="button"
+                        class="ti-btn px-3 py-2 ti-btn-outline border-gray-200 text-gray-500 dark:text-white/70 hover:text-white hover:bg-gray-500 hover:border-gray-500 focus:ring-gray-200  dark:hover:bg-black/30 dark:border-white/10 dark:hover:border-white/20 dark:focus:ring-white/10 dark:focus:ring-offset-white/10 m-0">
+                        <i class="ri-refresh-line leading-none text-lg"></i>
+                    </button>
+                    <button aria-label="button" type="button" id="delete-btn" class="ti-btn px-3 py-2 ti-btn-danger m-0">
+                        <i class="ri-delete-bin-7-line leading-none text-lg"></i>
+                    </button>
+                </div>
+                <div class="sm:space-x-3 sm:flex space-y-3 sm:space-y-0 rtl:space-x-reverse">
+                    <div class="inline-flex">
+                        <div
+                            class="px-4 py-2 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
+                            <span class="text-sm text-gray-500 dark:text-white/70"><i
+                                    class="ri ri-calendar-line"></i></span>
+                        </div>
+
+                        <input type="text"
+                            class="px-3 py-2 ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
+                            id="daterange" placeholder="Filter By Date" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5 table-bordered rounded-sm ti-custom-table-head overflow-auto">
+                <table class="ti-custom-table ti-custom-table-head edit-table whitespace-nowrap text-center">
+                    <thead class="bg-gray-50 dark:bg-black/20">
+                        <tr class="cart-box">
+                            <th scope="col" class="dark:text-white/70">
+                                <div class="flex leading-[0] justify-center">
+                                    <input type="checkbox"
+                                        class="border-gray-500 ti-form-checkbox mt-0.5 check-all"
+                                        id="hs-default-checkbox">
+                                    <label for="hs-default-checkbox"
+                                        class="text-sm text-gray-500 dark:text-white/70"></label>
+                                </div>
+                            </th>
+                            <th scope="col" class="dark:text-white/70">Id</th>
+                            <th scope="col" class="dark:text-white/70">Image</th>
+                            <th scope="col" class="dark:text-white/70">Name</th>
+                            <th scope="col" class="dark:text-white/70">Email</th>
+                            <th scope="col" class="dark:text-white/70">Phone</th>
+                            <th scope="col" class="dark:text-white/70">Status</th>
+                            <th scope="col" class="dark:text-white/70">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if students %}
+                        {% for student in students %}
+                        <tr class="invoice-list">
+                            <td class="">
+                                <div class="flex items-center h-5 invoice-checkbox justify-center">
+                                    <input id="invoice-check-1" type="checkbox"
+                                        class="border-gray-500 ti-form-checkbox">
+                                    <label for="invoice-check-1" class="sr-only">Checkbox</label>
+                                </div>
+                            </td>
+                            <td>#{{ student.id }}</td>
+                            <td><img src="{{ student.profile.profile_picture.url }}" width="60" /></td>
+                            <td>{{ student.first_name }} {{ student.last_name }} </td>
+                            <td>{{ student.email }}</td>
+                            <td>{{ student.profile.phone }}</td>
+                            <td>
+                                {% if student.profile.is_verified %}
+                                <span class="truncate whitespace-nowrap inline-block py-1 px-3 rounded-full text-xs font-medium bg-success/10 text-success/80">Active</span></td>
+
+                                {% else %}
+                                <span class="truncate whitespace-nowrap inline-block py-1 px-3 rounded-full text-xs font-medium bg-danger/10 text-danger/80">Inactive</span></td>
+
+                                {% endif %}
+                            <td class="font-medium space-x-2 rtl:space-x-reverse">
+                                <div class="hs-tooltip ti-main-tooltip">
+                                    <a href="{% url 'students:edit_student'  student.id %}"  class="invoice-edit m-0 hs-tooltip-toggle relative  w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-secondary">
+                                        <i class="ti ti-pencil"></i>
+                                        <span
+                                            class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
+                                            role="tooltip">
+                                            Edit
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="hs-tooltip ti-main-tooltip">
+                                    <a href="{% url 'students:change_password'  student.id %}"  class="invoice-edit m-0 hs-tooltip-toggle relative  w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-secondary">
+                                        <i class="ti ti-lock"></i>
+                                        <span
+                                            class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
+                                            role="tooltip">
+                                            Change Password
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="hs-tooltip ti-main-tooltip">
+                                    <a href="{% url 'students:delete_student' student.id %}"
+                                        class="invoice-btn m-0 hs-tooltip-toggle relative  w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-danger">
+                                        <i class="ti ti-trash"></i>
+                                        <span
+                                            class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
+                                            role="tooltip">
+                                            Delete
+                                        </span>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+            <nav class="flex justify-end items-center space-x-2 rtl:space-x-reverse mt-5">
+                <a class="w-10 h-10 bg-white dark:bg-black/20 text-gray-500 hover:bg-primary hover:text-white p-2 inline-flex justify-center text-sm font-medium items-center gap-2 rounded-full" href="javascript:void(0);">
+                  <span aria-hidden="true">«</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="w-10 h-10 bg-primary text-white p-2 inline-flex items-center justify-center text-sm font-medium rounded-full" href="javascript:void(0);" aria-current="page">1</a>
+                <a class="w-10 h-10 bg-white dark:bg-black/20 text-gray-500 hover:bg-primary hover:text-white p-2 inline-flex justify-center items-center text-sm font-medium rounded-full" href="javascript:void(0);">2</a>
+                <a class="w-10 h-10 bg-white dark:bg-black/20 text-gray-500 hover:bg-primary hover:text-white p-2 inline-flex justify-center items-center text-sm font-medium rounded-full" href="javascript:void(0);">3</a>
+                <a class="w-10 h-10 bg-white dark:bg-black/20 text-gray-500 hover:bg-primary hover:text-white p-2 inline-flex justify-center text-sm font-medium items-center gap-2 rounded-full" href="javascript:void(0);">
+                  <span class="sr-only">Next</span>
+                  <span aria-hidden="true">»</span>
+                </a>
+            </nav>
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+{% endblock content %}
