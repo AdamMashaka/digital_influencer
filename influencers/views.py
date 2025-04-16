@@ -200,7 +200,7 @@ def register(request):
             messages.error(request, 'Registration failed. Please correct the errors below.')
     else:
         form = RegistrationForm()
-    return render(request, 'signup.html', {'form': form}) 
+    return render(request, 'website/register.html', {'form': form}) 
 
 
 def profile(request):
@@ -221,3 +221,7 @@ def logout_view(request):
     
 def dashboard(request):
     return render(request, 'dashboard/index.html') 
+
+def send_sms(phone_number, message):
+    # Implement your SMS sending logic here
+    pass
