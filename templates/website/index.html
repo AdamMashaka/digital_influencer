@@ -748,7 +748,7 @@
 <div class="chatbot-container">
   <div class="chatbox">
       <div class="chatbox-header">
-          <img src="{% static 'assets/img/Kwibo.png' %}" alt="TIC Logo" class="chatbox-logo">
+          <img src="{% static 'assets/img/Kwibo.png' %}" alt="kwibo Logo" class="chatbox-logo">
           <h5>Chat with Kwibo</h5>
           <button id="chatbox-close" class="btn-close">&times;</button>
       </div>
@@ -797,9 +797,9 @@ chatboxSend.addEventListener('click', async () => {
           const data = await response.json();
 
           if (response.ok) {
-              chatboxMessages.innerHTML += `<div class="chatbox-message"><strong>TIC:</strong> ${data.answer}</div>`;
+              chatboxMessages.innerHTML += `<div class="chatbox-message"><strong>Kwibo:</strong> ${data.answer}</div>`;
           } else {
-              chatboxMessages.innerHTML += `<div class="chatbox-message"><strong>TIC:</strong> ${data.error}</div>`;
+              chatboxMessages.innerHTML += `<div class="chatbox-message"><strong>Kwibo:</strong> ${data.error}</div>`;
           }
       } catch (error) {
           console.error('Error:', error);
