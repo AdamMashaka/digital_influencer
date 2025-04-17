@@ -17,8 +17,20 @@ ALLOWED_HOSTS = [
     'liveodds.kijanicart.com', 
     'liveodds.games', 
     'adamkatani.systems', 
-    '51e9-197-186-0-64.ngrok-free.app',   
+    '2827-41-59-87-86.ngrok-free.app',   
     'ticevents.onrender.com',
+]
+
+
+CSRF_TRUSTED_ORIGINS =[
+    'https://127.0.0.1',
+    'https://localhost',
+    'https://157.173.105.219',
+    'https://liveodds.kijanicart.com', 
+    'https://liveodds.games',
+    'https://adamkatani.systems',
+    'https://2827-41-59-87-86.ngrok-free.app',  
+    'https://ticevents.onrender.com',
 ]
 
 # Application definition
