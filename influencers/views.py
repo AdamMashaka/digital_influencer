@@ -17,15 +17,69 @@ from django.utils import timezone
 from .models import Influencer
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
-
-
-
 import logging
 from .forms import  RegistrationForm,ContactForm, MeetingLinkForm
+import json
 
 logger = logging.getLogger(__name__)
 
-openai.api_key = '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'
+
+openai_api_key = os.getenv('OPENAI_API_KEY')
+
+if not openai_api_key:
+    logger.error("OpenAI API key not found in environment variables")
+else:
+    logger.info(f"OpenAI API key found: {openai_api_key}")
+
+
+openai.api_key = openai_api_key
+
+@csrf_exempt
+def ask_openai(request):
+    if request.method == 'POST':
+        try:
+         
+            data = json.loads(request.body)
+            question = data.get('question', '').strip()
+
+            if not question:
+                return JsonResponse({'error': 'No question provided'}, status=400)
+
+         
+            response = openai.ChatCompletion.create(
+                model="gpt-4o-mini",
+                messages=[
+                    {
+                        "role": "system",
+                        "content": (
+                            "You are a helpful assistant specializing in providing information exclusively "
+                            "about the Kwibo, including it is roles, services, events, "
+                            "and other related topics. If a question is unrelated to Kwibo, politely redirect the user "
+                            "to focus on TIC or contact +255734989470 for more information. If you are unsure about the answer, kindly direct the user to visit "
+                            "our main website at https://starbuzz.ai/ or contact us at 0694021848."
+                        ),
+                    },
+                    {"role": "user", "content": question},
+                ],
+                temperature=0.7,
+                max_tokens=150,
+            )
+
+
+            answer = response.choices[0].message.content.strip()
+            return JsonResponse({'answer': answer})
+
+        except Exception as e:
+            import traceback
+            logger.error("Error during TIC API call: %s", traceback.format_exc())
+            return JsonResponse({'error': f"An error occurred: {str(e)}"}, status=500)
+
+    return JsonResponse({'error': 'Invalid request method'}, status=400)
+
+
+
+
+#openai.api_key = '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'
 
 ACCESS_TOKEN = '1002792908415536|DEpcT8fn-E13NsoDF8Ud6PicADQ' 
 
