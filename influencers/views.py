@@ -20,6 +20,7 @@ from django.contrib.auth.decorators import login_required
 import logging
 from .forms import  RegistrationForm,ContactForm, MeetingLinkForm
 import json
+from django.http import HttpResponse
 
 logger = logging.getLogger(__name__)
 
@@ -279,3 +280,20 @@ def dashboard(request):
 def send_sms(phone_number, message):
     # Implement your SMS sending logic here
     pass
+
+def test_email(request):
+    try:
+        send_mail(
+            'Test Email',
+            'This is a test email.',
+            'tic.events@tic.go.tz',
+            ['your-email@example.com'],
+            fail_silently=False,
+        )
+        return HttpResponse('Email sent successfully')
+    except Exception as e:
+        return HttpResponse(f'Error sending email: {e}')
+    
+def welcome(request):
+    return render(request, 'website/authentication/general/welcome.html')
+
