@@ -57,7 +57,7 @@ class  Registration(models.Model):
     language = models.CharField(max_length=100, default='English')
     communication = models.CharField(max_length=100, default='Email,Phone')
     attended = models.BooleanField(default=False)  
-    allow_marketing = models.BooleanField(default=True)
+    allow_marketing = models.BooleanField(default=True) 
     
     def __str__(self): 
         return f"{self.name} - {self.event.title}"
