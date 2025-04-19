@@ -100,7 +100,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -127,6 +126,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'mashakaadam123@gmail.com'
 EMAIL_HOST_PASSWORD = 'ewztowqevbbmipzc' 
+DEFAULT_FROM_EMAIL = 'mashakaadam123@gmail.com' 
 #ewztowqevbbmipzc
         
         
@@ -136,3 +136,21 @@ LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 
 APPEND_SLASH = True  
+
+
+#LOGGING = {
+  #  'version': 1,
+  #  'disable_existing_loggers': False,
+   # 'handlers': {
+    #    'console': {
+     #       'class': 'logging.StreamHandler',
+      #  },
+    #},
+   # 'loggers': {
+    #    'django': {
+     #       'handlers': ['console'],
+      #      'level': 'DEBUG',
+       # },
+    #},
+#}
+
