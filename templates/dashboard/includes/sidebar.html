@@ -1,0 +1,247 @@
+{% load static %}
+<aside class="app-sidebar" id="sidebar">
+  <div class="main-sidebar-header">
+    <a href="{% url 'home' %}" class="header-logo">
+      <img src="{% static 'assets/img/Kwibo.png' %}" alt="logo" style="margin-top:-10px; width:55px; height:auto;" class="main-logo desktop-logo">
+      <img src="{% static 'assets/img/Kwibo.png' %}" alt="logo" style="width:50px; height:auto;" class="main-logo toggle-logo">
+      <img src="{% static 'assets/img/Kwibo.png' %}" alt="logo" style="margin-top:-10px; width:55px; height:auto;" class="main-logo desktop-dark">
+      <img src="{% static 'assets/img/Kwibo.png' %}" alt="logo" style="width:50px; height:auto;" class="main-logo toggle-dark">
+    </a>
+</div>
+
+  <div class="main-sidebar " id="sidebar-scroll">
+
+    <nav class="main-menu-container nav nav-pills flex-column sub-open">
+      <div class="slide-left" id="slide-left"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24"
+          height="24" viewBox="0 0 24 24">
+          <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
+        </svg></div>
+      <ul class="main-menu">
+        <li class="slide__category"><span class="category-name">Main</span></li>
+
+
+        <li class="slide">
+          <a href="#" class="side-menu__item">
+            <i class="ri-apps-2-line side-menu__icon"></i>
+            <span class="side-menu__label">Dashboards</span>
+          </a>
+        </li>
+
+        <li class="slide">
+          <a href="#" class="side-menu__item">
+            <i class="ri-apps-2-line side-menu__icon"></i>
+            <span class="side-menu__label">Report</span>
+          </a>
+        </li>
+
+        <li class="slide">
+          <a href="#" class="side-menu__item">
+            
+            <i class="ri-apps-2-line side-menu__icon"></i>
+            <span class="side-menu__label">Competitor</span>
+          </a>
+        </li>
+
+        <li class="slide">
+          <a href="#" class="side-menu__item">
+            <i class="ri-apps-2-line side-menu__icon"></i>
+            <span class="side-menu__label">Communication</span>
+          </a>
+        </li>
+
+        <li class="slide has-sub">
+          <a href="javascript:void(0);" class="side-menu__item">
+            <i class="ri-inbox-line side-menu__icon"></i>
+            <span class="side-menu__label">Accounting</span>
+            <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
+          </a>
+          <ul class="slide-menu child1">
+            <li class="slide side-menu__label1"><a href="javascript:void(0)">Accounting</a></li>
+            <li class="slide"><a href="#" class="side-menu__item">Financial Year</a></li>
+            
+          </ul>
+        </li>
+
+        <li class="slide has-sub">
+          <a href="javascript:void(0);" class="side-menu__item">
+            <i class="ri-inbox-line side-menu__icon"></i>
+            <span class="side-menu__label">Compaigns</span>
+            <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
+          </a>
+          <ul class="slide-menu child1">
+            <li class="slide side-menu__label1"><a href="javascript:void(0)">Projects</a></li>
+            <li class="slide"><a href="#" class="side-menu__item">Projects</a></li>
+            <li class="slide"><a href="#" class="side-menu__item">Category</a></li>
+          </ul>
+        </li>
+
+
+        <li class="slide has-sub">
+          <a href="javascript:void(0);" class="side-menu__item">
+            <i class="ri-node-tree side-menu__icon"></i>
+            <span class="side-menu__label">Users</span>
+            <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
+          </a>
+          <ul class="slide-menu child1">
+            <li class="slide side-menu__label1"><a href="javascript:void(0)">Users</a></li>
+            <li class="slide"><a href="#" class="side-menu__item">User Groups</a></li>
+            <li class="slide has-sub"><a href="javascript:void(0);" class="side-menu__item">Instructors<i
+                  class="ri ri-arrow-right-s-line side-menu__angle"></i></a>
+              <ul class="slide-menu child2">
+                <li class="slide"><a href="#" class="side-menu__item">Instructor list</a>
+                </li>
+                <li class="slide"><a href="#" class="side-menu__item">Add Instructor</a>
+                </li>
+              </ul>
+            </li>
+            <li class="slide has-sub"><a href="javascript:void(0);" class="side-menu__item">Students<i
+                  class="ri ri-arrow-right-s-line side-menu__angle"></i></a>
+              <ul class="slide-menu child2">
+                <li class="slide"><a href="#" class="side-menu__item">Student list</a>
+                </li>
+                <li class="slide"><a href="#" class="side-menu__item">Add Student</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+
+
+        <li class="slide has-sub">
+          <a href="javascript:void(0);" class="side-menu__item">
+            <i class="ri-inbox-line side-menu__icon"></i>
+            <span class="side-menu__label">Enrollments</span>
+            <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
+          </a>
+          <ul class="slide-menu child1">
+            <li class="slide side-menu__label1"><a href="javascript:void(0)">Enrollments</a></li>
+            <li class="slide"><a href="#" class="side-menu__item">New Enrollment</a></li>
+            <li class="slide"><a href="#" class="side-menu__item">Enrolled list</a></li>
+            <li class="slide"><a href="#" class="side-menu__item">Refund and Cancelation</a></li>
+          </ul>
+        </li>
+
+        <li class="slide has-sub">
+          <a href="javascript:void(0);" class="side-menu__item">
+            <i class="ri-inbox-line side-menu__icon"></i>
+            <span class="side-menu__label">Certificates</span>
+            <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
+          </a>
+          <ul class="slide-menu child1">
+            <li class="slide side-menu__label1"><a href="javascript:void(0)">Certificates</a></li>
+            <li class="slide"><a href="accordion.html" class="side-menu__item">Certificate list</a></li>
+            <li class="slide"><a href="alerts.html" class="side-menu__item">Add Certificate</a></li>
+            <li class="slide"><a href="avatars.html" class="side-menu__item">Certificate Template</a></li>
+          </ul>
+        </li>
+
+        <li class="slide">
+          <a href="#" class="side-menu__item">
+            <i class="ri-apps-2-line side-menu__icon"></i>
+            <span class="side-menu__label">Virtual Class</span>
+          </a>
+        </li>
+
+        <li class="slide has-sub">
+          <a href="javascript:void(0);" class="side-menu__item">
+            <i class="ri-inbox-line side-menu__icon"></i>
+            <span class="side-menu__label">Payments</span>
+            <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
+          </a>
+          <ul class="slide-menu child1">
+            <li class="slide side-menu__label1"><a href="javascript:void(0)">Payments</a></li>
+            <li class="slide"><a href="accordion.html" class="side-menu__item">Payments received online</a></li>
+            <li class="slide"><a href="alerts.html" class="side-menu__item">Offline payment</a></li>
+            <li class="slide"><a href="avatars.html" class="side-menu__item">Bank payment</a></li>
+          </ul>
+        </li>
+
+        <li class="slide has-sub">
+          <a href="javascript:void(0);" class="side-menu__item">
+            <i class="ri-inbox-line side-menu__icon"></i>
+            <span class="side-menu__label">Invoices</span>
+            <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
+          </a>
+          <ul class="slide-menu child1">
+            <li class="slide side-menu__label1"><a href="javascript:void(0)">Invoices</a></li>
+            <li class="slide"><a href="accordion.html" class="side-menu__item">Pending Invoice</a></li>
+            <li class="slide"><a href="alerts.html" class="side-menu__item">Invoices</a></li>
+          </ul>
+        </li>
+
+        <li class="slide has-sub">
+          <a href="javascript:void(0);" class="side-menu__item">
+            <i class="ri-inbox-line side-menu__icon"></i>
+            <span class="side-menu__label">Coupons</span>
+            <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
+          </a>
+          <ul class="slide-menu child1">
+            <li class="slide side-menu__label1"><a href="javascript:void(0)">Coupons</a></li>
+            <li class="slide"><a href="#" class="side-menu__item">Coupon list</a></li>
+            <li class="slide"><a href="alerts.html" class="side-menu__item">add coupon</a></li>
+          </ul>
+        </li>
+
+        <li class="slide has-sub">
+          <a href="javascript:void(0);" class="side-menu__item">
+            <i class="ri-inbox-line side-menu__icon"></i>
+            <span class="side-menu__label">Communications</span>
+            <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
+          </a>
+          <ul class="slide-menu child1">
+            <li class="slide side-menu__label1"><a href="javascript:void(0)">Communications</a></li>
+            <li class="slide"><a href="#" class="side-menu__item">Notice board</a></li>
+            <li class="slide"><a href="#" class="side-menu__item">Course Noticeboard</a></li>
+            <li class="slide"><a href="alerts.html" class="side-menu__item">Private message</a></li>
+            <li class="slide"><a href="alerts.html" class="side-menu__item">Notifications</a></li>
+            <li class="slide"><a href="alerts.html" class="side-menu__item">Newsletter</a></li>
+          </ul>
+        </li>
+
+        <li class="slide has-sub">
+          <a href="javascript:void(0);" class="side-menu__item">
+            <i class="ri-node-tree side-menu__icon"></i>
+            <span class="side-menu__label">Blog & Events</span>
+            <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
+          </a>
+          <ul class="slide-menu child1">
+            <li class="slide side-menu__label1"><a href="javascript:void(0)">Blog & Events</a></li>
+            <li class="slide has-sub"><a href="javascript:void(0);" class="side-menu__item">Blogs<i
+                  class="ri ri-arrow-right-s-line side-menu__angle"></i></a>
+              <ul class="slide-menu child2">
+                <li class="slide"><a href="#" class="side-menu__item">Category</a></li>
+                <li class="slide"><a href="#" class="side-menu__item">Blog Post</a></li>
+                <li class="slide"><a href="#" class="side-menu__item">Add Post</a></li>
+              </ul>
+            </li>
+            <li class="slide has-sub"><a href="javascript:void(0);" class="side-menu__item">Events<i
+                  class="ri ri-arrow-right-s-line side-menu__angle"></i></a>
+              <ul class="slide-menu child2">
+                <li class="slide"><a href="#" class="side-menu__item">Category</a></li>
+                <li class="slide"><a href="#" class="side-menu__item">Events Post</a></li>
+                <li class="slide"><a href="#" class="side-menu__item">Add Event</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+
+        <li class="slide">
+          <a href="#" class="side-menu__item">
+            <i class="ri-apps-2-line side-menu__icon"></i>
+            <span class="side-menu__label">Backup</span>
+          </a>
+        </li>
+
+      </ul>
+      <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24"
+          height="24" viewBox="0 0 24 24">
+          <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
+        </svg></div>
+    </nav>
+
+  </div>
+  <!-- End::main-sidebar -->
+
+</aside>

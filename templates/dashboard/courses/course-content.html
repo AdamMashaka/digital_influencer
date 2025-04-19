@@ -1,0 +1,1032 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<div class="grid grid-cols-12 gap-x-6">
+  <div class="col-span-12 xl:col-span-12">
+    <div class="box">
+      <div class="box-header lg:flex lg:justify-between">
+        <h5 class="box-title my-auto">Course Content</h5>
+      </div>
+      <div class="box-body">
+        <div
+          class="sm:flex bg-gray-100 hover:bg-gray-200 rounded-sm transition p-1 dark:bg-black/20 dark:hover:bg-black/20">
+          <nav class="sm:flex sm:space-x-2 rtl:space-x-reverse overflow-auto">
+            <a class="w-full sm:w-auto hs-tab-active:bg-white hs-tab-active:text-gray-700 dark:hs-tab-active:bg-bgdark dark:hs-tab-active:text-white py-2 px-3 inline-flex items-center gap-2 bg-transparent text-sm text-gray-500 hover:text-gray-700 font-medium rounded-sm hover:hover:text-primary dark:text-white/70 dark:hover:text-white active"
+              href="javascript:void(0);" id="segment-item-1" data-hs-tab="#segment-1" aria-controls="segment-1">
+              Curriculum
+            </a>
+            <a class="w-full sm:w-auto hs-tab-active:bg-white hs-tab-active:text-gray-700 dark:hs-tab-active:bg-bgdark dark:hs-tab-active:text-white py-2 px-3 inline-flex items-center gap-2 bg-transparent text-sm text-gray-500 font-medium rounded-sm  dark:text-white/50 dark:hover:text-white"
+              href="javascript:void(0);" id="segment-item-2" data-hs-tab="#segment-2">
+              Basic
+            </a>
+            <a class="w-full sm:w-auto hs-tab-active:bg-white hs-tab-active:text-gray-700 dark:hs-tab-active:bg-bgdark dark:hs-tab-active:text-white py-2 px-3 inline-flex items-center gap-2 bg-transparent text-sm text-gray-500 font-medium rounded-sm  dark:text-white/50 dark:hover:text-white"
+              href="javascript:void(0);" id="segment-item-4" data-hs-tab="#segment-4">
+              Pricing
+            </a>
+            <a class="w-full sm:w-auto hs-tab-active:bg-white hs-tab-active:text-gray-700 dark:hs-tab-active:bg-bgdark dark:hs-tab-active:text-white py-2 px-3 inline-flex items-center gap-2 bg-transparent text-sm text-gray-500 font-medium rounded-sm  dark:text-white/50 dark:hover:text-white"
+              href="javascript:void(0);" id="segment-item-5" data-hs-tab="#segment-5">
+              Media
+            </a>
+            <a class="w-full sm:w-auto hs-tab-active:bg-white hs-tab-active:text-gray-700 dark:hs-tab-active:bg-bgdark dark:hs-tab-active:text-white py-2 px-3 inline-flex items-center gap-2 bg-transparent text-sm text-gray-500 font-medium rounded-sm  dark:text-white/50 dark:hover:text-white"
+              href="javascript:void(0);" id="segment-item-6" data-hs-tab="#segment-6">
+              Seo
+            </a>
+            <a class="w-full sm:w-auto hs-tab-active:bg-white hs-tab-active:text-gray-700 dark:hs-tab-active:bg-bgdark dark:hs-tab-active:text-white py-2 px-3 inline-flex items-center gap-2 bg-transparent text-sm text-gray-500 font-medium rounded-sm  dark:text-white/50 dark:hover:text-white"
+              href="javascript:void(0);" id="segment-item-7" data-hs-tab="#segment-7">
+              Finish
+            </a>
+          </nav>
+        </div>
+
+        <div class="mt-3">
+          <div id="segment-1" role="tabpanel" aria-labelledby="segment-item-1" class="">
+            <div class="flex justify-center w-full">
+              <div class="w-full max-w-4xl">
+                <div class="bg-white p-6 rounded-lg shadow-none">
+                  <div class="col-span-12 mb-4 text-center mt-3">
+                    <a href="javascript:void(0);" data-hs-overlay="#hs-medium-modal"
+                      class="inline-block px-4 py-1 ml-1 border border-blue-500 text-blue-500 rounded-full text-sm leading-normal cursor-pointer hover:bg-blue-500 hover:text-white transition ease-in-out duration-150"><i
+                        class="mdi mdi-plus"></i> Add section</a>
+                    <a href="javascript:void(0);" data-hs-overlay="#hs-lesson-modal"
+                      class="inline-block px-4 py-1 ml-1 border border-blue-500 text-blue-500 rounded-full text-sm leading-normal cursor-pointer hover:bg-blue-500 hover:text-white transition ease-in-out duration-150"><i
+                        class="mdi mdi-plus"></i> Add lesson</a>
+                    <a href="javascript:void(0);" data-hs-overlay="#hs-quiz-modal"
+                      class="inline-block px-4 py-1 ml-1 border border-blue-500 text-blue-500 rounded-full text-sm leading-normal cursor-pointer hover:bg-blue-500 hover:text-white transition ease-in-out duration-150"><i
+                        class="mdi mdi-plus"></i> Add quiz</a>
+                    <a href="javascript:void(0)"
+                      class="inline-block px-4 py-1 ml-1 border border-blue-500 text-blue-500 rounded-full text-sm leading-normal cursor-pointer hover:bg-blue-500 hover:text-white transition ease-in-out duration-150"><i
+                        class="mdi mdi-sort-variant"></i> Sort sections</a>
+                  </div>
+
+                  <div class="container mx-auto">
+                    {% if sections %}
+                    {% for section in sections %}
+                    <div class="bg-gray-100 text-gray-800 p-5 mb-5">
+                      <div class="">
+                        <h5 class="text-lg font-light mb-4" id="section-title-{{ section.id }}"
+                          onmouseover="toggleWidgets('widgets-of-section-{{ section.id }}', true)"
+                          onmouseout="toggleWidgets('widgets-of-section-{{ section.id }}', false)">
+                          Section {{ section.order }}: {{ section.section }}
+                          <div class="flex justify-center items-center hidden" id="widgets-of-section-{{ section.id }}">
+                            <button class="bg-gray-200 text-gray-800 rounded-full text-sm p-2 mr-2 hover:bg-gray-300"
+                              onclick="alert('Sorting Lessons')">🔀 Sort lesson</button>
+                            <button class="bg-gray-200 text-gray-800 rounded-full text-sm p-2 mr-2 hover:bg-gray-300"
+                              onclick="alert('Editing Section')">✏️ Edit section</button>
+                            <button class="bg-gray-200 text-gray-800 rounded-full text-sm p-2 hover:bg-gray-300 delete-section"
+                              data-id="{{ section.id }}">❌ Delete section</button>
+                          </div>
+                        </h5>
+                        {% if lessons %}
+                        {% for lesson in lessons %}
+                        {% if section.id == lesson.section.id %}
+                        <div class="">
+                          <div class="postcard bg-white text-gray-800 mb-2 p-2">
+                            <div class="hidden" id="widgets-of-lesson-{{ lesson.id }}">
+                              <a href="javascript:void(0);" data-hs-overlay="#hs-resourses-modal" class="text-gray-500 hover:text-gray-600">📂 Add files</a>
+                              <a href="javascript:void(0);" class="text-gray-500 hover:text-gray-600">📝 Quiz Questions</a>
+                              <a href="javascript:void(0);" class="text-gray-500 hover:text-gray-600">📊 Quiz Results</a>
+                              <a href="javascript:void(0);" class="text-gray-500 hover:text-gray-600 ml-2">✏️ Edit</a>
+                              <a href="javascript:void(0);" class="text-gray-500 hover:text-gray-600 ml-2 delete-lesson" data-id="{{ lesson.id }}">❌ Delete</a>
+                            </div>
+                            <h5 class="text-base font-light">
+                              <!-- Lesson type icons and lesson details -->
+                              Lesson {{ lesson.order }}: {{ lesson.lesson }}
+                            </h5>
+                          </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                      </div>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                  </div>
+                  
+                </div>
+             </div>
+            </div>
+          </div>
+
+          <div id="segment-2" class="hidden" role="tabpanel" aria-labelledby="segment-item-2">
+            <div class="flex justify-center w-full">
+              <div class="w-full md:w-8/12">
+                <div class="flex flex-col mb-3">
+                  <label for="course_type" class="mb-1 text-sm font-semibold">Course type</label>
+                  <div class="px-4 py-3 border border-gray-200 rounded-lg bg-white">
+                    <h4 class="font-bold">General</h4>
+                    <hr class="my-1">
+                    <p>The course type cannot be editable.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div id="segment-4" class="hidden" role="tabpanel" aria-labelledby="segment-item-4">
+            <div class="flex justify-center w-full">
+              <div class="w-full max-w-4xl">
+                <div class="bg-white p-6 rounded-lg shadow-none">
+                  <div class="form-group mb-3">
+                    <div class="flex items-center justify-between">
+                      <input type="checkbox" id="is_free_course" name="is_free_course" value="1"
+                        class="form-checkbox h-5 w-5 text-blue-600" onclick="togglePriceFields(this.id)">
+                      <label for="is_free_course" class="ml-2 block text-sm font-medium text-gray-900">Check if this is
+                        a free course</label>
+                    </div>
+                  </div>
+
+                  <div class="paid-course-stuffs">
+                    <div class="form-group mb-3">
+                      <label for="price" class="block text-sm font-medium text-gray-700">Course price ($)</label>
+                      <input type="number" id="price" name="price"
+                        class="mt-1 block w-full ti-form-input px-3 py-2 border border-gray-300 rounded-0 shadow-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        min="0" placeholder="Enter course price">
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <div class="flex items-center justify-between">
+                        <input type="checkbox" id="discount_flag" name="discount_flag" value="1"
+                          class="form-checkbox h-5 w-5 text-blue-600" checked>
+                        <label for="discount_flag" class="ml-2 block text-sm font-medium text-gray-900">Check if this
+                          course has discount</label>
+                      </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <label for="discounted_price" class="block text-sm font-medium text-gray-700">Discounted price
+                        ($)</label>
+                      <input type="number" id="discounted_price" name="discounted_price"
+                        class="mt-1 block w-full ti-form-input px-3 py-2 border border-gray-300 rounded-0 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        min="0" onkeyup="calculateDiscountPercentage()">
+                      <small class="text-sm text-gray-500">This course has <span id="discounted_percentage"
+                          class="text-red-600">0%</span> Discount</small>
+                    </div>
+                  </div>
+
+                  <hr class="my-4">
+
+                  <div class="form-group mb-3">
+                    <label class="block text-sm font-medium text-gray-700">Expiry period</label>
+                    <div class="flex items-center">
+                      <div class="mr-4">
+                        <input type="radio" id="lifetime_expiry_period" name="expiry_period"
+                          class="form-radio h-5 w-5 text-blue-600" value="lifetime" onchange="checkExpiryPeriod(this)"
+                          checked>
+                        <label for="lifetime_expiry_period"
+                          class="ml-2 text-sm font-medium text-gray-900">Lifetime</label>
+                      </div>
+                      <div>
+                        <input type="radio" id="limited_expiry_period" name="expiry_period"
+                          class="form-radio h-5 w-5 text-blue-600" value="limited_time"
+                          onchange="checkExpiryPeriod(this)">
+                        <label for="limited_expiry_period" class="ml-2 text-sm font-medium text-gray-900">Limited
+                          time</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group mb-3 hidden" id="number_of_month">
+                    <label for="number_of_months" class="block text-sm font-medium text-gray-700">Number of
+                      months</label>
+                    <input type="number" id="number_of_months" name="number_of_month"
+                      class="mt-1 block w-full ti-form-input px-3 py-2 border border-gray-300 rounded-0 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                      min="1">
+                    <small class="badge bg-gray-100 text-gray-500">After purchase, students can access the course until
+                      your selected time.</small>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div id="segment-5" class="hidden" role="tabpanel" aria-labelledby="segment-item-5">
+            <div class="flex justify-center w-full">
+              <div class="w-full max-w-4xl">
+                <div class="bg-white p-6 rounded-lg shadow-none">
+                  <div class="flex justify-center w-full">
+                    <div class="w-full md:w-8/12">
+                      <div class="mb-6">
+                        <label for="course_overview_provider" class="block text-sm font-medium text-gray-700">Course
+                          overview provider</label>
+                        <select id="course_overview_provider" name="course_overview_provider"
+                          class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                          <option value="youtube">Youtube</option>
+                          <option value="vimeo">Vimeo</option>
+                          <option value="html5">Html5</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex justify-center w-full">
+                    <div class="w-full md:w-8/12">
+                      <div class="mb-6">
+                        <label for="course_overview_url" class="block text-sm font-medium text-gray-700">Course overview
+                          url</label>
+                        <input type="text" id="course_overview_url" name="course_overview_url"
+                          placeholder="E.g: https://www.youtube.com/watch?v=oBtf8Yglw2w"
+                          value="https://youtu.be/4KvXrbabutg"
+                          class="mt-1 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex justify-center w-full">
+                    <div class="w-full md:w-8/12">
+                      <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700">Course thumbnail</label>
+                        <div class="mt-1 flex flex-col items-start">
+                          <div class="w-48 h-48 rounded overflow-hidden bg-gray-100 mb-4">
+                            <img id="thumbnailPreview"
+                              src="https://demo.creativeitem.com/academy/uploads/thumbnails/course_thumbnails/optimized/course_thumbnail_default-new_121701001881.jpg"
+                              alt="Thumbnail" class="w-full h-full object-cover">
+                          </div>
+                          <button type="button" onclick="document.getElementById('course_thumbnail').click();"
+                            class="bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Upload a file
+                          </button>
+                          <input id="course_thumbnail" type="file" class="hidden" onchange="previewFile()"
+                            accept="image/*">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div id="segment-6" class="hidden" role="tabpanel" aria-labelledby="segment-item-6">
+            <div class="flex justify-center w-full">
+              <div class="w-full max-w-4xl">
+                <div class="bg-white p-6 rounded-lg shadow-none">
+                  <div class="flex justify-center w-full">
+                    <div class="w-full max-w-4xl">
+                      <!-- Meta Keywords Field -->
+                      <div class="mb-3 flex">
+                        <label for="meta_keywords"
+                          class="w-1/6 text-right pr-3 align-middle pt-2 text-sm font-medium">Meta keywords</label>
+                        <div class="w-full">
+                          <input type="text" id="meta_keywords" name="meta_keywords"
+                            class="ti-form-input tags-input bg-white border border-gray-300 rounded-lg shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-2 w-full"
+                            placeholder="Write a keyword and then press enter button"
+                            value="website, wordpress, Theme development, bootstrap">
+                        </div>
+                      </div>
+                      <!-- Meta Description Field -->
+                      <div class="mb-3 flex">
+                        <label for="meta_description"
+                          class="w-1/6 text-right pr-3 align-middle pt-2 text-sm font-medium">Meta description</label>
+                        <div class="w-full">
+                          <textarea name="meta_description" id="meta_description"
+                            class="bg-white ti-form-input  border border-gray-300 rounded-lg shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-2 w-full"
+                            rows="4">This course is for those who are self-driven and take action! The skills you will learn in this course will allow you to create an income on the side, or build a full-time business creating custom WordPress websites for clients.</textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="segment-7" class="hidden" role="tabpanel" aria-labelledby="segment-item-7">
+            <div class="flex justify-center w-full">
+              <div class="w-full max-w-4xl">
+                <div class="bg-white p-6 rounded-lg shadow-none">
+                  <div class="flex justify-center w-full">
+                    <div class="w-full">
+                      <div class="text-center">
+                        <h2 class="mt-0"><i class="mdi mdi-check-all"></i></h2>
+                        <h3 class="text-3xl mt-0">Thank you!</h3>
+                        <p class="w-3/4 mx-auto mb-2">You are just one click away</p>
+                        <div class="my-3">
+                          <button type="button"
+                            class="px-4 py-2 bg-blue-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                            onclick="checkRequiredFields()">Submit</button>
+                        </div>
+                      </div>
+                    </div> <!-- end col -->
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div id="hs-medium-modal" class="hs-overlay hidden ti-modal">
+  <div class="hs-overlay-open:mt-7 ti-modal-box mt-0 ease-out  md:w-full m-3 md:mx-auto">
+    <div class="ti-modal-content">
+      <form id="createSectionModel" name="createSectionModel" action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="ti-modal-header">
+          <h3 class="ti-modal-title">
+            New Section
+          </h3>
+          <button type="button" class="hs-dropdown-toggle ti-modal-close-btn" data-hs-overlay="#hs-medium-modal">
+            <span class="sr-only">Close</span>
+            <svg class="w-3.5 h-3.5" width="8" height="8" viewBox="0 0 8 8" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M0.258206 1.00652C0.351976 0.912791 0.479126 0.860131 0.611706 0.860131C0.744296 0.860131 0.871447 0.912791 0.965207 1.00652L3.61171 3.65302L6.25822 1.00652C6.30432 0.958771 6.35952 0.920671 6.42052 0.894471C6.48152 0.868271 6.54712 0.854471 6.61352 0.853901C6.67992 0.853321 6.74572 0.865971 6.80722 0.891111C6.86862 0.916251 6.92442 0.953381 6.97142 1.00032C7.01832 1.04727 7.05552 1.1031 7.08062 1.16454C7.10572 1.22599 7.11842 1.29183 7.11782 1.35822C7.11722 1.42461 7.10342 1.49022 7.07722 1.55122C7.05102 1.61222 7.01292 1.6674 6.96522 1.71352L4.31871 4.36002L6.96522 7.00648C7.05632 7.10078 7.10672 7.22708 7.10552 7.35818C7.10442 7.48928 7.05182 7.61468 6.95912 7.70738C6.86642 7.80018 6.74102 7.85268 6.60992 7.85388C6.47882 7.85498 6.35252 7.80458 6.25822 7.71348L3.61171 5.06702L0.965207 7.71348C0.870907 7.80458 0.744606 7.85498 0.613506 7.85388C0.482406 7.85268 0.357007 7.80018 0.264297 7.70738C0.171597 7.61468 0.119017 7.48928 0.117877 7.35818C0.116737 7.22708 0.167126 7.10078 0.258206 7.00648L2.90471 4.36002L0.258206 1.71352C0.164476 1.61976 0.111816 1.4926 0.111816 1.36002C0.111816 1.22744 0.164476 1.10028 0.258206 1.00652Z"
+                fill="currentColor" />
+            </svg>
+          </button>
+        </div>
+        <div class="ti-modal-body">
+          <div class="space-y-2">
+            <label for="input-label" class="ti-form-label">Section Title</label>
+            <input type="text" id="input-label" name="title" class="ti-form-input" placeholder="Section">
+          </div>
+        </div>
+        <div class="ti-modal-footer">
+          <button type="button"
+            class="hs-dropdown-toggle ti-btn ti-border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:ring-offset-white focus:ring-primary dark:bg-bgdark dark:hover:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-white dark:focus:ring-offset-white/10"
+            data-hs-overlay="#hs-medium-modal">
+            Close
+          </button>
+          <button type="submit"
+            class="ti-btn  bg-primary text-white hover:bg-primary  focus:ring-primary  dark:focus:ring-offset-white/10">
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<form id="createLessonForm" name="createLessonForm" action="" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div id="hs-lesson-modal" class="hs-overlay hidden ti-modal">
+    <div class="hs-overlay-open:mt-7 ti-modal-box mt-0 ease-out h-[calc(100%-3.5rem)]">
+      <div class="max-h-full overflow-hidden ti-modal-content">
+
+        <div class="ti-modal-header">
+          <h3 class="ti-modal-title">
+            New Lesson
+          </h3>
+          <button type="button" class="hs-dropdown-toggle ti-modal-close-btn" data-hs-overlay="#hs-lesson-modal">
+            <span class="sr-only">Close</span>
+            <svg class="w-3.5 h-3.5" width="8" height="8" viewBox="0 0 8 8" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M0.258206 1.00652C0.351976 0.912791 0.479126 0.860131 0.611706 0.860131C0.744296 0.860131 0.871447 0.912791 0.965207 1.00652L3.61171 3.65302L6.25822 1.00652C6.30432 0.958771 6.35952 0.920671 6.42052 0.894471C6.48152 0.868271 6.54712 0.854471 6.61352 0.853901C6.67992 0.853321 6.74572 0.865971 6.80722 0.891111C6.86862 0.916251 6.92442 0.953381 6.97142 1.00032C7.01832 1.04727 7.05552 1.1031 7.08062 1.16454C7.10572 1.22599 7.11842 1.29183 7.11782 1.35822C7.11722 1.42461 7.10342 1.49022 7.07722 1.55122C7.05102 1.61222 7.01292 1.6674 6.96522 1.71352L4.31871 4.36002L6.96522 7.00648C7.05632 7.10078 7.10672 7.22708 7.10552 7.35818C7.10442 7.48928 7.05182 7.61468 6.95912 7.70738C6.86642 7.80018 6.74102 7.85268 6.60992 7.85388C6.47882 7.85498 6.35252 7.80458 6.25822 7.71348L3.61171 5.06702L0.965207 7.71348C0.870907 7.80458 0.744606 7.85498 0.613506 7.85388C0.482406 7.85268 0.357007 7.80018 0.264297 7.70738C0.171597 7.61468 0.119017 7.48928 0.117877 7.35818C0.116737 7.22708 0.167126 7.10078 0.258206 7.00648L2.90471 4.36002L0.258206 1.71352C0.164476 1.61976 0.111816 1.4926 0.111816 1.36002C0.111816 1.22744 0.164476 1.10028 0.258206 1.00652Z"
+                fill="currentColor" />
+            </svg>
+          </button>
+        </div>
+        <div class="ti-modal-body ">
+          <div class="space-y-2">
+            <label for="input-label" class="ti-form-label">lesson type</label>
+            <select name="lesson_type" id="lesson_type" onchange="lesson_type_form(this.value)" class="ti-form-input">
+              <option>select</option>
+              <option value="YouTube">YouTube Video</option>
+              <option value="Video file">Video file</option>
+              <option value="Google drive video">Google drive video</option>
+              <option value="Document file">Document file</option>
+              <option value="Text">Text</option>
+              <option value="Image file">Image file</option>
+            </select>
+          </div>
+          <div class="space-y-2 my-2">
+            <label for="input-label" class="ti-form-label">Title</label>
+            <input type="text" id="input-label" name="lesson" class="ti-form-input" placeholder="Title">
+          </div>
+          <div class="space-y-2 my-2">
+            <label for="input-label" class="ti-form-label">Section</label>
+            <select name="section_id" class="ti-form-input">
+              <option>select</option>
+              {% if sections %}
+                {% for section in sections %}
+                   <option value="{{ section.id }}">{{ section.section }}</option>
+                {% endfor %}
+              {% endif %}
+            </select>
+          </div>
+
+          <div class="video-url-input" style="display:none;">
+            <div class="space-y-2 my-2">
+              <label for="input-label" class="ti-form-label">Video Url</label>
+              <input type="text" id="input-label" name="video_url" class="ti-form-input" placeholder="Video Url">
+            </div>
+          </div>
+
+          <div class="document-type" style="display:none;">
+            <div class="space-y-2 my-2">
+              <label for="input-label" class="ti-form-label">Doc Type</label>
+              <select name="doc_type" class="ti-form-input">
+                <option value="txt">Text file</option>
+                <option value="txt">Excel file</option>
+                <option value="pptx">Powerpoint file</option>
+                <option value="docx">Word file</option>
+                <option value="pdf">Pdf file</option>
+                <option value="other">other file</option>
+              </select>
+            </div>
+
+            <div class="space-y-2 my-2">
+              <label for="input-label" class="ti-form-label">Attachment</label>
+              <input type="file" id="input-label" name="attachment" class="ti-form-input dropify" data-height="100" data-allowed-file-extensions='["csv","docx","doc","pdf", "txt"]' placeholder="Attachment">
+            </div>
+          </div>
+
+          <div class="video-file-input" style="display:none;">
+            <div class="space-y-2 my-2">
+              <label for="input-label" class="ti-form-label">Video file</label>
+              <input type="file" id="input-label" name="video_file" class="ti-form-input dropify" data-height="100" data-allowed-file-extensions='["mp4", "mkv"]' placeholder="">
+            </div>
+          </div>
+
+          <div class="Image-file-input" style="display:none;">
+            <div class="space-y-2 my-2">
+              <label for="input-label" class="ti-form-label">Image file</label>
+              <input type="file" id="input-label" name="image_file" class="ti-form-input dropify" data-height="100" data-max-file-size="10M" data-allowed-file-extensions='["png", "jpg"]' placeholder="">
+            </div>
+          </div>
+
+          <div class="duration-input" style="display:none;">
+            <div class="space-y-2 my-2">
+              <label for="input-label" class="ti-form-label">Duration</label>
+              <input type="text" id="input-label" name="duration" class="ti-form-input" placeholder="00:00">
+            </div>
+          </div>
+
+          <div class="space-y-2 my-2">
+            <label for="input-label" class="ti-form-label">Description</label>
+            <textarea name="description" class="ti-form-input" id="editor1" rows="2"></textarea>
+          </div>
+
+        </div>
+        <div class="ti-modal-footer">
+          <button type="button"
+            class="hs-dropdown-toggle ti-btn ti-border font-lesson bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:ring-offset-white focus:ring-primary dark:bg-bgdark dark:hover:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-white dark:focus:ring-offset-white/10"
+            data-hs-overlay="#hs-lesson-modal">
+            Close
+          </button>
+          <button type="submit"
+            class="ti-btn  bg-primary text-white hover:bg-primary  focus:ring-primary  dark:focus:ring-offset-white/10">
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<form id="quizForm" name="quizForm" action="" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div id="hs-quiz-modal" class="hs-overlay hidden ti-modal">
+    <div class="hs-overlay-open:mt-7 ti-modal-box mt-0 ease-out h-[calc(100%-3.5rem)]">
+      <div class="max-h-full overflow-hidden ti-modal-content">
+
+        <div class="ti-modal-header">
+          <h3 class="ti-modal-title">
+            New Quiz
+          </h3>
+          <button type="button" class="hs-dropdown-toggle ti-modal-close-btn" data-hs-overlay="#hs-quiz-modal">
+            <span class="sr-only">Close</span>
+            <svg class="w-3.5 h-3.5" width="8" height="8" viewBox="0 0 8 8" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M0.258206 1.00652C0.351976 0.912791 0.479126 0.860131 0.611706 0.860131C0.744296 0.860131 0.871447 0.912791 0.965207 1.00652L3.61171 3.65302L6.25822 1.00652C6.30432 0.958771 6.35952 0.920671 6.42052 0.894471C6.48152 0.868271 6.54712 0.854471 6.61352 0.853901C6.67992 0.853321 6.74572 0.865971 6.80722 0.891111C6.86862 0.916251 6.92442 0.953381 6.97142 1.00032C7.01832 1.04727 7.05552 1.1031 7.08062 1.16454C7.10572 1.22599 7.11842 1.29183 7.11782 1.35822C7.11722 1.42461 7.10342 1.49022 7.07722 1.55122C7.05102 1.61222 7.01292 1.6674 6.96522 1.71352L4.31871 4.36002L6.96522 7.00648C7.05632 7.10078 7.10672 7.22708 7.10552 7.35818C7.10442 7.48928 7.05182 7.61468 6.95912 7.70738C6.86642 7.80018 6.74102 7.85268 6.60992 7.85388C6.47882 7.85498 6.35252 7.80458 6.25822 7.71348L3.61171 5.06702L0.965207 7.71348C0.870907 7.80458 0.744606 7.85498 0.613506 7.85388C0.482406 7.85268 0.357007 7.80018 0.264297 7.70738C0.171597 7.61468 0.119017 7.48928 0.117877 7.35818C0.116737 7.22708 0.167126 7.10078 0.258206 7.00648L2.90471 4.36002L0.258206 1.71352C0.164476 1.61976 0.111816 1.4926 0.111816 1.36002C0.111816 1.22744 0.164476 1.10028 0.258206 1.00652Z"
+                fill="currentColor" />
+            </svg>
+          </button>
+        </div>
+        <div class="ti-modal-body ">
+          <div class="space-y-2 my-2">
+            <label for="input-label" class="ti-form-label">Title</label>
+            <input type="text" id="input-label" name="title" class="ti-form-input" placeholder="Title">
+          </div>
+          <div class="space-y-2 my-2">
+            <label for="input-label" class="ti-form-label">Section</label>
+            <select name="section_id" class="ti-form-input">
+              <option>select</option>
+              {% if sections %}
+                {% for section in sections %}
+                      <option value="{{ section.id }}"> {{ section.section}}</option>
+                {% endfor %}
+              {% endif %}
+            </select>
+          </div>
+
+          <div class="space-y-2 my-2">
+            <label for="input-label" class="ti-form-label">Lesson</label>
+            <select name="lesson_id" class="ti-form-input">
+              <option>select</option>
+              {% if lessons %}
+                  {% for lesson in lessons %}
+                      <option value="{{ lesson.id }}"> {{ lesson.lesson}}</option>
+                  {% endfor %}
+              {% endif %}
+            </select>
+          </div>
+
+          <div class="space-y-2 my-2">
+            <label for="input-label" class="ti-form-label">Quiz Duration</label>
+            <input type="number" id="input-label" name="duration" class="ti-form-input" placeholder="">
+          </div>
+
+          <div class="space-y-2 my-2">
+            <label for="input-label" class="ti-form-label">Total Marks</label>
+            <input type="text" id="input-label" name="total_marks" class="ti-form-input">
+          </div>
+
+          <div class="space-y-2 my-2">
+            <label for="input-label" class="ti-form-label">Pass Marks</label>
+            <input type="text" id="input-label" name="pass_marks" class="ti-form-input">
+          </div>
+
+          <div class="space-y-2 my-2">
+            <label for="input-label" class="ti-form-label">Number of quiz retakes</label>
+            <input type="text" id="input-label" name="max_retakes" class="ti-form-input">
+            <small class="badge bg-primary/10 text-primary p-0.1">Enter 0 if you want to disable multiple attempts</small>
+          </div>
+
+
+          <div class="space-y-2 my-2">
+            <label for="input-label" class="ti-form-label">Instructions</label>
+            <textarea name="description" class="ti-form-input" id="" rows="2"></textarea>
+          </div>
+
+        </div>
+        <div class="ti-modal-footer">
+          <button type="button"
+            class="hs-dropdown-toggle ti-btn ti-border font-quiz bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:ring-offset-white focus:ring-primary dark:bg-bgdark dark:hover:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-white dark:focus:ring-offset-white/10"
+            data-hs-overlay="#hs-quiz-modal">
+            Close
+          </button>
+          <button type="submit"
+            class="ti-btn  bg-primary text-white hover:bg-primary  focus:ring-primary  dark:focus:ring-offset-white/10">
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+<form id="ResourcreForm" name="ResourcreForm" action="" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+<div id="hs-resourses-modal" class="hs-overlay hidden ti-modal">
+  <div class="hs-overlay-open:mt-7 ti-modal-box mt-0 ease-out  md:w-full m-3 md:mx-auto">
+    <div class="ti-modal-content">
+        <div class="ti-modal-header">
+          <h3 class="ti-modal-title">
+            New Resources
+          </h3>
+          <button type="button" class="hs-dropdown-toggle ti-modal-close-btn" data-hs-overlay="#hs-resourses-modal">
+            <span class="sr-only">Close</span>
+            <svg class="w-3.5 h-3.5" width="8" height="8" viewBox="0 0 8 8" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M0.258206 1.00652C0.351976 0.912791 0.479126 0.860131 0.611706 0.860131C0.744296 0.860131 0.871447 0.912791 0.965207 1.00652L3.61171 3.65302L6.25822 1.00652C6.30432 0.958771 6.35952 0.920671 6.42052 0.894471C6.48152 0.868271 6.54712 0.854471 6.61352 0.853901C6.67992 0.853321 6.74572 0.865971 6.80722 0.891111C6.86862 0.916251 6.92442 0.953381 6.97142 1.00032C7.01832 1.04727 7.05552 1.1031 7.08062 1.16454C7.10572 1.22599 7.11842 1.29183 7.11782 1.35822C7.11722 1.42461 7.10342 1.49022 7.07722 1.55122C7.05102 1.61222 7.01292 1.6674 6.96522 1.71352L4.31871 4.36002L6.96522 7.00648C7.05632 7.10078 7.10672 7.22708 7.10552 7.35818C7.10442 7.48928 7.05182 7.61468 6.95912 7.70738C6.86642 7.80018 6.74102 7.85268 6.60992 7.85388C6.47882 7.85498 6.35252 7.80458 6.25822 7.71348L3.61171 5.06702L0.965207 7.71348C0.870907 7.80458 0.744606 7.85498 0.613506 7.85388C0.482406 7.85268 0.357007 7.80018 0.264297 7.70738C0.171597 7.61468 0.119017 7.48928 0.117877 7.35818C0.116737 7.22708 0.167126 7.10078 0.258206 7.00648L2.90471 4.36002L0.258206 1.71352C0.164476 1.61976 0.111816 1.4926 0.111816 1.36002C0.111816 1.22744 0.164476 1.10028 0.258206 1.00652Z"
+                fill="currentColor" />
+            </svg>
+          </button>
+        </div>
+        <div class="ti-modal-body">
+          <div class="space-y-2">
+            <label for="input-label" class="ti-form-label">Title</label>
+            <input type="text" id="title" name="title" class="ti-form-input" placeholder="title">
+          </div>
+          <div class="space-y-2 my-2">
+            <label for="input-label" class="ti-form-label">Lesson</label>
+            <select name="lesson_id" id="lesson_id" class="ti-form-input">
+              <option>select</option>
+              {% if lessons %}
+                  {% for lesson in lessons %}
+                      <option value="{{ lesson.id }}"> {{ lesson.lesson}}</option>
+                  {% endfor %}
+              {% endif %}
+            </select>
+          </div>
+          <div class="space-y-2">
+            <label for="input-label" class="ti-form-label">Resource File</label>
+            <input type="file"  name="files_resource" id="files_resource" class="ti-form-input dropify" data-height="100" placeholder="">
+          </div>
+        </div>
+        <div class="ti-modal-footer">
+          <button type="button"
+            class="hs-dropdown-toggle ti-btn ti-border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:ring-offset-white focus:ring-primary dark:bg-bgdark dark:hover:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-white dark:focus:ring-offset-white/10"
+            data-hs-overlay="#hs-resourses-modal">
+            Close
+          </button>
+          <button type="button" onclick="save_resources('{{course.id}}');"
+            class="ti-btn  bg-primary text-white hover:bg-primary  focus:ring-primary  dark:focus:ring-offset-white/10">
+            Save
+          </button>
+        </div>
+    </div>
+  </div>
+</div>
+</form>
+
+{% endblock content %}
+{% block extra_scripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  
+  $(document).ready(function() {
+    $('.delete-section').on('click', function(e) {
+        e.preventDefault();
+        var sectionId = $(this).data('id');
+
+        alertify.confirm('Delete Section', 'Are you sure you want to delete this section?', function(){ 
+          $.ajax({
+            url: `/courses/delete-section/${sectionId}/`,
+            type: 'POST',
+            dataType: 'json',
+            headers: {'X-CSRFToken': getCookie('csrftoken')},
+            success: function(response) {
+                if (response.status === 'success') {
+                    alertify.success(response.message);
+                    window.location.href = response.redirect_url;
+                } else {
+                  alertify.error(response.message);
+                }
+            },
+            error: function(xhr, errmsg, err) {
+              alertify.error('Error deleting section: ' + errmsg);
+            }
+        });
+        }
+        , function(){
+           alertify.error('Cancel')
+        });
+    });
+  });
+
+  $(document).ready(function() {
+    $('.delete-lesson').on('click', function(e) {
+        e.preventDefault();
+        var sectionId = $(this).data('id');
+
+        alertify.confirm('Delete Lesson', 'Are you sure you want to delete this lesson?', function(){ 
+          $.ajax({
+            url: `/courses/delete-lesson/${sectionId}/`,
+            type: 'POST',
+            dataType: 'json',
+            headers: {'X-CSRFToken': getCookie('csrftoken')},
+            success: function(response) {
+                if (response.status === 'success') {
+                    alertify.success(response.message);
+                    window.location.href = response.redirect_url;
+                } else {
+                  alertify.error(response.message);
+                }
+            },
+            error: function(xhr, errmsg, err) {
+              alertify.error('Error deleting lesson: ' + errmsg);
+            }
+        });
+        }
+        , function(){
+           alertify.error('Cancel')
+        });
+    });
+  });
+
+  function lesson_type_form(type) {
+    if (type === "YouTube") {
+      $('.video-url-input').show()
+      $('.document-type').hide()
+      $('.video-file-input').hide()
+      $('.duration-input').show()
+      $('.Image-file-input').hide()
+    } else if (type === "Video file") {
+      $('.video-url-input').hide()
+      $('.document-type').hide()
+      $('.video-file-input').show()
+      $('.duration-input').show()
+      $('.Image-file-input').hide()
+    } else if (type === "Google drive video") {
+      $('.video-url-input').show()
+      $('.document-type').hide()
+      $('.video-file-input').hide()
+      $('.duration-input').show()
+      $('.Image-file-input').hide()
+    } else if (type === "Document file") {
+      $('.video-url-input').hide()
+      $('.document-type').show()
+      $('.video-file-input').hide()
+      $('.duration-input').hide()
+      $('.Image-file-input').hide()
+    } else if (type === "Image file") {
+      $('.Image-file-input').show()
+      $('.video-url-input').hide()
+      $('.document-type').hide()
+      $('.video-file-input').hide()
+      $('.duration-input').hide()
+    } else if (type === "Text") {
+      $('.Image-file-input').hide()
+      $('.video-url-input').hide()
+      $('.document-type').hide()
+      $('.video-file-input').hide()
+      $('.duration-input').hide()
+    }
+  }
+
+  function check_video_provider(provider) {
+    if (provider === 'youtube' || provider === 'vimeo') {
+      $('.html5').hide();
+      $('#youtube_vimeo').show();
+      $('#submit').show();
+    } else if (provider === 'html5') {
+      $('#youtube_vimeo').hide();
+      $('.html5').show();
+    } else {
+      $('#youtube_vimeo').hide();
+      $('.html5').hide();
+    }
+  }
+
+  function checkURLValidity(video_url) {
+    var youtubePregMatch =
+      /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+    var vimeoPregMatch = /^(http\:\/\/|https\:\/\/)?(www\.)?(vimeo\.com\/)([0-9]+)$/;
+    var verified = document.querySelector("#status_verification");
+    if (video_url.match(youtubePregMatch)) {
+      verified.innerHTML = "Valid link added";
+      return true;
+    } else if (vimeoPregMatch.test(video_url)) {
+      verified.innerHTML = "Valid link added";
+      return true;
+    } else {
+      verified.innerHTML = "invalid url your video source has to be either youtube";
+      return false;
+    }
+  }
+
+  function previewFile() {
+    const file = document.getElementById("course_thumbnail").files[0];
+    const reader = new FileReader();
+    
+    reader.addEventListener("load", function () {
+        // Convert image file to base64 string and display it
+        document.getElementById("thumbnailPreview").src = reader.result;
+    }, false);
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+}
+
+
+  document.querySelectorAll('.postcard').forEach(item => {
+    item.addEventListener('mouseover', () => {
+      item.children[0].classList.remove('hidden');
+    });
+    item.addEventListener('mouseout', () => {
+      item.children[0].classList.add('hidden');
+    });
+  });
+
+  function toggleWidgets(id, show) {
+    var element = document.getElementById(id);
+    if (element) {
+      element.classList.toggle('hidden', !show);
+    }
+  }
+
+  $(document).ready(function() {
+    // Attach the form submission handler
+    $("body").on("submit", "#createSectionModel", function(e) {
+      e.preventDefault(); // Prevent default form submission
+      var courseId = '{{ course.id }}'; // assuming 'urlid' is the correct ID
+      $.ajax({
+        url: '/courses/saveSection/' + courseId + '/', // Make sure URL is correct
+        type: 'POST',
+        data: $(this).serialize(),
+        dataType: 'json',
+        beforeSend: function(xhr, settings) {
+          if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+          }
+        },
+        success: function(response) {
+          // Check response status
+          if (response.status == 0) {
+            displayModalError(response.title);
+            location.reload();
+          } else {
+            displayModalSuccess(response.message);
+            $('#createSectionModel')[0].reset();
+            location.reload();
+            $('#hs-medium-modal').hide();
+            location.reload();
+          }
+        },
+        error: function(xhr, status, error) {
+          displayModalError("An error occurred: " + xhr.statusText);
+          location.reload();
+        }
+      });
+    });
+  });
+
+  $(document).ready(function() {
+    // Attach the form submission handler
+    $("body").on("submit", "#createLessonForm", function(e) {
+      e.preventDefault(); // Prevent default form submission
+      var courseId = '{{ course.id }}'; // assuming 'urlid' is the correct ID
+      $.ajax({
+        url: '/courses/saveLesson/' + courseId + '/', // Make sure URL is correct
+        type: 'POST',
+        data: $(this).serialize(),
+        dataType: 'json',
+        beforeSend: function(xhr, settings) {
+          if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+          }
+        },
+        success: function(response) {
+          // Check response status
+          if (response.status == 0) {
+            displayModalError(response.title);
+            location.reload();
+          } else {
+            displayModalSuccess(response.message);
+            $('#createLessonForm')[0].reset();
+            $('#hs-medium-modal').hide();
+            location.reload();
+          }
+        },
+        error: function(xhr, status, error) {
+          displayModalError("An error occurred: " + xhr.statusText);
+          location.reload();
+        }
+      });
+    });
+  });
+
+
+  $(document).ready(function() {
+    // Attach the form submission handler
+    $("body").on("submit", "#quizForm", function(e) {
+      e.preventDefault(); // Prevent default form submission
+      var courseId = '{{ course.id }}'; // assuming 'urlid' is the correct ID
+      $.ajax({
+        url: '/courses/saveQuiz/' + courseId + '/', // Make sure URL is correct
+        type: 'POST',
+        data: $(this).serialize(),
+        dataType: 'json',
+        beforeSend: function(xhr, settings) {
+          if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+          }
+        },
+        success: function(response) {
+          // Check response status
+          if (response.status == 0) {
+            console.log(response.title)
+            displayModalError(response.title);
+            location.reload();
+          } else {
+            displayModalSuccess(response.message);
+            console.log(response.message)
+            $('#quizForm')[0].reset();
+            $('#hs-quiz-modal').hide();
+            location.reload();
+          }
+        },
+        error: function(xhr, status, error) {
+          displayModalError("An error occurred: " + xhr.statusText);
+          location.reload();
+        }
+      });
+    });
+  });
+
+  "use strict";
+	function save_resources(course_id) {
+		var fd = new FormData();
+		var title = $("#title").val();
+		var lesson_id = $("#lesson_id").val();
+		var files_resource = $("#files_resource").get(0).files[0];
+		fd.append('title', title);
+		fd.append('lesson_id', lesson_id);
+		fd.append('files_resource', files_resource);
+		fd.append('course_id', course_id);
+		if (title == '') {
+			$("#title").focus();
+			toastrErrorMsg("Title must be required!");
+			setTimeout(function() {}, 1000);
+			return false;
+		}
+		if (lesson_id == '') {
+			$("#lesson_id").focus();
+			toastrErrorMsg("lesson must be required!");
+			setTimeout(function() {}, 1000);
+			return false;
+		}
+
+		$.ajax({
+			url: '/courses/save-resources/',
+			type: "POST",
+			data: fd,
+			enctype: 'multipart/form-data',
+			processData: false,
+			contentType: false,
+      beforeSend: function(xhr, settings) {
+        if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+          xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+        }
+      },
+			success: function(response) {
+        if (response.status == 0) {
+          console.log(response.title)
+          displayModalError(response.title);
+          location.reload();
+        } else {
+          displayModalSuccess(response.message);
+          console.log(response.message)
+          $('#ResourcreForms')[0].reset();
+          $('#hs-quiz-modal').hide();
+          location.reload();
+        }
+			},
+      error: function(xhr, status, error) {
+        displayModalError("An error occurred: " + xhr.statusText);
+        location.reload();
+      }
+		});
+	}
+
+  function displayModalError(message) {
+    alertify.error(message);
+  }
+
+  function displayModalSuccess(message) {
+    alertify.success(message);
+  }
+
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = jQuery.trim(cookies[i]);
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+  $.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+      if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+        xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+      }
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Attach event listeners once the DOM is fully loaded
+    document.getElementById('is_free_course').addEventListener('change', togglePriceFields);
+    document.getElementById('price').addEventListener('input', calculateDiscountPercentage);
+    document.getElementById('discounted_price').addEventListener('input', calculateDiscountPercentage);
+    document.querySelectorAll('input[name="expiry_period"]').forEach((elem) => {
+        elem.addEventListener('change', checkExpiryPeriod);
+    });
+});
+
+function calculateDiscountPercentage() {
+    var originalPrice = parseFloat(document.getElementById('price').value);
+    var discountedPrice = parseFloat(document.getElementById('discounted_price').value);
+    if (originalPrice > 0 && discountedPrice > 0 && discountedPrice < originalPrice) {
+        var discountPercentage = ((originalPrice - discountedPrice) / originalPrice) * 100;
+        document.getElementById('discounted_percentage').textContent = discountPercentage.toFixed(2) + '%';
+    } else {
+        document.getElementById('discounted_percentage').textContent = '0%';
+    }
+}
+
+function togglePriceFields() {
+    var checkbox = document.getElementById('is_free_course');
+    var priceFields = document.querySelector('.paid-course-stuffs');
+    priceFields.style.display = checkbox.checked ? 'none' : 'block';
+}
+
+function checkExpiryPeriod() {
+    var lifetime = document.getElementById('lifetime_expiry_period').checked;
+    var number_of_month = document.getElementById('number_of_month');
+    number_of_month.style.display = !lifetime ? 'block' : 'none';
+}
+
+
+</script>
+
+{% endblock extra_scripts %}

@@ -1,0 +1,66 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="grid grid-cols-12 gap-x-6">
+
+    <div class="col-span-12 xl:col-span-3">
+        <div class="box">
+            <div class="box-body pt-3">
+                <nav class="flex flex-col space-y-2" aria-label="Tabs" role="tablist" data-hs-tabs-vertical="true">
+                    <a href="" type="button"
+                        class="hs-tab-active:bg-primary hs-tab-active:border-primary hs-tab-active:text-white dark:hs-tab-active:bg-primary dark:hs-tab-active:border-primary dark:hs-tab-active:text-white -mr-px py-3 px-3 inline-flex items-center gap-2 bg-gray-50 text-sm font-medium text-center border text-gray-500 rounded-sm hover:text-gray-700 dark:bg-black/20 dark:border-white/10 dark:text-white/70 active">
+                        <i class="ti ti-alert-circle"></i> Project Details
+                    </a>
+                    <a href="" type="button"
+                        class="hs-tab-active:bg-primary hs-tab-active:border-primary hs-tab-active:text-white dark:hs-tab-active:bg-primary dark:hs-tab-active:border-primary dark:hs-tab-active:text-white -mr-px py-3 px-3 inline-flex items-center gap-2 bg-gray-50 text-sm font-medium text-center border text-gray-500 rounded-sm hover:text-gray-700 dark:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-gray-300">
+                        <i class="ri ri-global-line"></i> Attachments
+                    </a>
+                    <a href="" type="button"
+                        class="hs-tab-active:bg-primary hs-tab-active:border-primary hs-tab-active:text-white dark:hs-tab-active:bg-primary dark:hs-tab-active:border-primary dark:hs-tab-active:text-white -mr-px py-3 px-3 inline-flex items-center gap-2 bg-gray-50 text-sm font-medium text-center border text-gray-500 rounded-sm hover:text-gray-700 dark:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-gray-300">
+                        <i class="ri ri-global-line"></i> Milestones
+                    </a>
+                    <a href="" type="button"
+                        class="hs-tab-active:bg-primary hs-tab-active:border-primary hs-tab-active:text-white dark:hs-tab-active:bg-primary dark:hs-tab-active:border-primary dark:hs-tab-active:text-white -mr-px py-3 px-3 inline-flex items-center gap-2 bg-gray-50 text-sm font-medium text-center border text-gray-500 rounded-sm hover:text-gray-700 dark:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-gray-300"
+                        id="profile-settings-item-3" data-hs-tab="#profile-settings-3"
+                        aria-controls="profile-settings-3" role="tab">
+                        <i class="ri ri-lock-line"></i> Tasks
+                    </a>
+
+                    <a href="" type="button"
+                        class="hs-tab-active:bg-primary hs-tab-active:border-primary hs-tab-active:text-white dark:hs-tab-active:bg-primary dark:hs-tab-active:border-primary dark:hs-tab-active:text-white -mr-px py-3 px-3 inline-flex items-center gap-2 bg-gray-50 text-sm font-medium text-center border text-gray-500 rounded-sm hover:text-gray-700 dark:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-gray-300"
+                        id="profile-settings-item-3" data-hs-tab="#profile-settings-3"
+                        aria-controls="profile-settings-3" role="tab">
+                        <i class="ri ri-lock-line"></i> Invoices
+                    </a>
+
+                    <a href="" type="button"
+                        class="hs-tab-active:bg-primary hs-tab-active:border-primary hs-tab-active:text-white dark:hs-tab-active:bg-primary dark:hs-tab-active:border-primary dark:hs-tab-active:text-white -mr-px py-3 px-3 inline-flex items-center gap-2 bg-gray-50 text-sm font-medium text-center border text-gray-500 rounded-sm hover:text-gray-700 dark:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-gray-300"
+                        id="profile-settings-item-3" data-hs-tab="#profile-settings-3"
+                        aria-controls="profile-settings-3" role="tab">
+                        <i class="ri ri-lock-line"></i> Expenses
+                    </a>
+
+                    <a href="" type="button"
+                        class="hs-tab-active:bg-primary hs-tab-active:border-primary hs-tab-active:text-white dark:hs-tab-active:bg-primary dark:hs-tab-active:border-primary dark:hs-tab-active:text-white -mr-px py-3 px-3 inline-flex items-center gap-2 bg-gray-50 text-sm font-medium text-center border text-gray-500 rounded-sm hover:text-gray-700 dark:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-gray-300"
+                        id="profile-settings-item-3" data-hs-tab="#profile-settings-3"
+                        aria-controls="profile-settings-3" role="tab">
+                        <i class="ri ri-lock-line"></i> Timesheet
+                    </a>
+
+                    <button href="" type="button"
+                        class="text-center bg-primary -mr-px py-3 px-3 inline-flex items-center gap-2 bg-primary-50 text-sm font-medium text-center border text-white rounded-sm hover:text-gray-700 dark:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-gray-300"
+                        role="tab">
+                        Generate Invoice
+                    </button>
+
+                </nav>
+            </div>
+        </div>
+    </div>
+    {% block pro_content %}
+
+    {% endblock pro_content %}
+</div>
+
+{% endblock content %}

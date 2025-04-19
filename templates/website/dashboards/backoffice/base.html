@@ -199,7 +199,7 @@
                                 class="path2"></span></i></div>
                 </div>
                 <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-                    <a class="d-lg-none" href="{% url 'index' %}">
+                    <a class="d-lg-none" href="{% url 'home' %}">
                         <img alt="Logo" class="h-30px" src="{% static 'img/Ticlogo.png' %}"/>
                     </a>
                 </div>
@@ -273,7 +273,7 @@
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a class="menu-link active" href="{% url 'eventlist' %}">
+                                                            <a class="menu-link active" href="#">
                                 <span class="menu-custom-icon d-flex flex-center flex-shrink-0 rounded w-40px h-40px me-3">
                                     <i class="ki-duotone ki-basket text-danger fs-1"><span class="path1"></span><span
                                             class="path2"></span><span class="path3"></span><span class="path4"></span></i>                                </span>
@@ -293,7 +293,7 @@
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a class="menu-link " href="{% url 'ticketlist' %}">
+                                                            <a class="menu-link " href="#">
                                 <span class="menu-custom-icon d-flex flex-center flex-shrink-0 rounded w-40px h-40px me-3">
                                     <i class="ki-duotone ki-abstract-44 text-info fs-1"><span class="path1"></span><span
                                             class="path2"></span></i>                                </span>
@@ -313,7 +313,7 @@
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a class="menu-link " href="{% url 'suportcenter' %}">
+                                                            <a class="menu-link " href="{% url 'contact' %}">
                                 <span class="menu-custom-icon d-flex flex-center flex-shrink-0 rounded w-40px h-40px me-3">
                                     <i class="ki-duotone ki-call text-primary fs-1"><span class="path1"></span><span
                                             class="path2"></span><span class="path3"></span><span
@@ -363,7 +363,7 @@
                                                 <!--begin:Menu item-->
                                                 <div class="menu-item p-0 m-0">
                                                     <!--begin:Menu link-->
-                                                    <a class="menu-link py-2 " href="{% url 'contacts' %}">
+                                                    <a class="menu-link py-2 " href="{% url 'contact' %}">
                         <span class="menu-title">
                             <i class="fas fa-envelope me-2"></i>Contact us                   </span>
                                                     </a>
@@ -440,7 +440,7 @@
                              <div class="menu-item here show menu-here-bg menu-lg-down-accordion me-0 me-lg-2"
                                     data-kt-menu-placement="bottom-start"
                                     >
-                                <span class="menu-link"><span class="menu-title"> <a href="{% url 'list' %}">view list of events</a></span></span>
+                                <span class="menu-link"><span class="menu-title"> <a href="{% url 'about' %}">view list of events</a></span></span>
                             </div> 
 
                         </div>
@@ -463,7 +463,7 @@
                                     <span class="text-muted float-end">{{ notification.created_at }}</span>
                                 </li>
                                 {% endfor %}
-                                <li><a class="dropdown-item text-center" href="{% url 'notifications' %}">View all notifications</a></li>
+                                <li><a class="dropdown-item text-center" href="#">View all notifications</a></li>
                             </ul>
                         </div>
                         <div class="app-navbar-item ms-1 ms-md-3">
@@ -757,7 +757,7 @@
                 <!--begin::Logo-->
                 <div class="app-sidebar-logo px-2" id="kt_app_sidebar_logo">
                     <!--begin::Logo image-->
-                    <a href="{% url 'index' %}">
+                    <a href="{% url 'home' %}">
                         <img alt="Logo" class="app-sidebar-logo-default"
                              src="{% static 'dashboard/media/logos/Ticlogo.png'%}"
                              width="50">
@@ -840,7 +840,7 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link--><a class="menu-link"
-                                                                 href="{% url 'eventlist' %}"><span
+                                                                 href="#"><span
                                             class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
                                             class="menu-title">Events list</span></a>
                                         <!--end:Menu link-->
@@ -850,7 +850,7 @@
                                     <!-- filepath: /home/adam/Downloads/new_eventsystem/templates/dashboards/backoffice/base.html -->
                                   {% if user.is_superuser or user.email == 'switcherbaba76@gmail.com' %}
                                      <div class="menu-item">
-                      <!--begin:Menu link--><a class="menu-link" href="{% url 'addevent' %}"><span
+                      <!--begin:Menu link--><a class="menu-link" href="#"><span
                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
                                               class="menu-title">Add Event</span></a>
     <!--end:Menu link-->
@@ -860,7 +860,7 @@
 
                                     {% if user.is_superuser or user.email == 'switcherbaba76@gmail.com' %}
                                      <div class="menu-item">
-                      <!--begin:Menu link--><a class="menu-link" href="{% url 'addevent' %}"><span
+                      <!--begin:Menu link--><a class="menu-link" href="#"><span
                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
                                               class="menu-title">Business meeting</span></a> 
     <!--end:Menu link-->
@@ -889,7 +889,7 @@
                                     <!--begin:Menu item-->
 
                             <div class="menu-item">
-                                <a class="menu-link" href="{% url 'ticketlist' %}">
+                                <a class="menu-link" href="#"> 
                         <span class="menu-icon">
                             <span class="menu-icon">
                                 <i class="bullet bullet-dot">

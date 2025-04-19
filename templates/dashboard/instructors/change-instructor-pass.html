@@ -1,0 +1,30 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<div class="grid grid-cols-12 gap-x-6">
+    <div class="col-span-12 xl:col-span-6">
+      <div class="box">
+        <div class="box-header">
+          <h5 class="box-title">Password</h5>
+        </div>
+        <div class="box-body">
+            <form  action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label">New Password</label>
+                    <input type="password" name="new_password" class="px-3 py-2 ti-form-input" placeholder="New Password">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" name="confirm_password" class="px-3 py-2 ti-form-input" placeholder="Confirm Password">
+                </div>
+                <div>
+                    <button type="submit" class="ti-btn bg-indigo-500/10 text-indigo-500 hover:text-white hover:bg-indigo-500 ring-offset-white focus:ring-indigo-500 dark:focus:ring-offset-white/10">Save</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+{% endblock content %}

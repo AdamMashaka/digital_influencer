@@ -1,0 +1,101 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<div class="grid grid-cols-12 gap-x-6">
+    <div class="col-span-12 xl:col-span-8">
+      <div class="box">
+        <div class="box-header">
+          <h5 class="box-title">Edit Project</h5>
+        </div>
+        <div class="box-body">
+            <form  action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="grid lg:grid-cols-2 gap-6 space-y-4 lg:space-y-0">
+                    <div class="space-y-2">
+                        <label for="input-label" class="ti-form-label">Project Title</label>
+                        <input type="text" id="input-label" name="title" class="ti-form-input" placeholder="Project title" value="{{ project.title }}">
+                    </div>
+                    <div class="space-y-2">
+                        <label for="input-label" class="ti-form-label">Category</label>
+                        <select class="ti-form-select task-choice" name="category">
+                            <option value="">Select</option>
+                            {% if categories %}
+                                {% for category in categories %}
+                                   <option {% if project.category.id == category.id %} selected {% else %} '' {% endif %} value="{{ category.id }}">{{ category.name }}</option>
+                                {% endfor %}
+                            {% endif %}
+                        </select>
+                    </div>
+                    <div class="space-y-2">
+                        <label for="input-label" class="ti-form-label">Project Costs</label>
+                        <input type="text" id="input-label" name="project_cost" class="ti-form-input" placeholder="Project title"  value="{{ project.project_cost }}">
+                    </div>
+                   
+                    <div class="space-y-2">
+                        <label class="ti-form-label">Priority</label>
+                        <select class="ti-form-select task-choice" name="priority">
+                            <option value="">Select</option>
+                            <option {% if project.priority == "Critical" %} selected {% else %} '' {% endif %}  value="Critical">Critical</option>
+                            <option {% if project.priority == "High" %} selected {% else %} '' {% endif %}  value="High">High</option>
+                            <option {% if project.priority == "Medium" %} selected {% else %} '' {% endif %}  value="Medium">Medium</option>
+                            <option {% if project.priority == "Low" %} selected {% else %} '' {% endif %}  value="Low">Low</option>
+                        </select>
+                    </div>
+                    <div class="space-y-2">
+                        <label for="input-label" class="ti-form-label">Start Date</label>
+                        <div class="flex rounded-sm shadow-sm">
+                            <div
+                                class="px-4 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
+                                <span class="text-sm text-gray-500 dark:text-white/70"><i
+                                        class="ri ri-calendar-line"></i></span>
+                            </div>
+
+                            <input type="text"
+                                class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
+                                id="addignedDate" name="start_date" placeholder="Choose date and time" readonly  value="{{ project.start_date }}">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label for="input-label" class="ti-form-label">End Date</label>
+                        <div class="flex rounded-sm shadow-sm">
+                            <div
+                                class="px-4 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
+                                <span class="text-sm text-gray-500 dark:text-white/70"><i
+                                        class="ri ri-calendar-line"></i></span>
+                            </div>
+
+                            <input type="text"
+                                class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
+                                id="targetDate" name="end_date" placeholder="Choose date and time" readonly  value="{{ project.end_date }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-3 py-3">
+                    <label class="ti-form-label">Assigned To</label>
+                    <select class="ti-form-select" name="assigned_to"
+                        id="choices-multiple-remove-button" multiple>
+                        {% if users %}
+                            {% for user in users %}
+                                <option {% if project.assigned_to.id == user.id %} selected {% else %} '' {% endif %} value="{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</option>
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+                <div class="space-y-3 py-3">
+                    <label class="ti-form-label">Project Description</label>
+                    <textarea class="ti-form-input" rows="3" name="description" placeholder="Short project descriptions" data-lt-tmp-id="lt-130630" spellcheck="false" data-gramm="false"> {{ project.description }}</textarea>
+                </div>
+                <div>
+                    <button type="submit" class="ti-btn bg-indigo-500/10 text-indigo-500 hover:text-white hover:bg-indigo-500 ring-offset-white focus:ring-indigo-500 dark:focus:ring-offset-white/10">Save</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+{% endblock content %}
+{% block extra_scripts %}
+<script src="{% static 'admin/libs/dragula/dragula.min.js' %}"></script>
+<script src="{% static 'admin/js/tasks.js' %}"></script>
+{% endblock extra_scripts %}

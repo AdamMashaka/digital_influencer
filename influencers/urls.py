@@ -19,6 +19,7 @@ urlpatterns = [
     path('send-sms/', views.send_sms, name='send_sms'), 
     path('ask-openai/', views.ask_openai, name='ask_openai'),
     path('welcome/', views.welcome, name='welcome'), 
+    path('settingi/', views.settingi, name='settingi'),
     
 ]
 

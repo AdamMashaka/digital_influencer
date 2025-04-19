@@ -1,0 +1,37 @@
+<!-- filepath: /home/adam/Downloads/new_eventsystem/templates/dashboards/backoffice/edit_event_report.html -->
+{% extends 'dashboards/backoffice/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1>Edit Event Report for {{ event.title }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" value="{{ form.title.value }}">
+        </div>
+        <div class="mb-3">
+            <label for="date" class="form-label">Date</label>
+            <input type="date" class="form-control" id="date" name="date" value="{{ form.date.value }}">
+        </div>
+        <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input type="text" class="form-control" id="location" name="location" value="{{ form.location.value }}">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="10">{{ form.description.value }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="notes" class="form-label">Notes</label>
+            <textarea class="form-control" id="notes" name="notes" rows="10">{{ form.notes.value }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="report" class="form-label">Report</label>
+            <textarea class="form-control" id="report" name="report" rows="10">{{ form.report.value }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+</div>
+{% endblock content %}

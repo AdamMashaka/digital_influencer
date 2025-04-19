@@ -1,0 +1,240 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<div class="grid grid-cols-12 gap-6">
+    <div class="col-span-12 xl:col-span-12">
+      <div class="box">
+        <div class="box-body">
+          <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12 lg:col-span-3">
+              <div class="relative sm:max-w-xs max-w-[210px]">
+                <label for="hs-table-search" class="sr-only">Search</label>
+                <div class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center pointer-events-none ltr:pr-4 rtl:pl-4">
+                  <i class="ti ti-search"></i>
+                </div>
+                <input type="text" name="hs-table-search" id="hs-table-search" class="p-2 ltr:pr-10 rtl:pl-10 ti-form-input"
+                  placeholder="Search Training">
+              </div>
+            </div>
+            <div class="col-span-12 lg:col-span-6">
+              <div class="sm:flex space-y-2 sm:space-y-0 sm:space-x-3 space-x-0 justify-end todo-right rtl:space-x-reverse">
+                <select class="ti-form-select todo-choice">
+                  <option value="">Sort By</option>
+                  <option value="1">A To Z</option>
+                  <option value="2">Z To A</option>
+                  <option value="3">Favorites</option>
+                  <option value="4">All</option>
+                </select>
+                <select class="ti-form-select todo-choice">
+                  <option value="">Status</option>
+                  <option value="1">Pending</option>
+                  <option value="2">Completed</option>
+                  <option value="3">Inprogress</option>
+                  <option value="4">New</option>
+                </select>
+                <div class="hs-dropdown ti-dropdown">
+                  <a aria-label="anchor" href="javascript:void(0);"
+                    class="hs-dropdown-toggle ti-dropdown-toggle inline-flex !p-2 flex-shrink-0 justify-center items-center gap-2 w-full rounded-sm border font-medium bg-white text-gray-500 shadow-sm align-middle focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-white focus:ring-primary transition-all text-xs dark:bg-bgdark dark:border-white/10 dark:text-white/70 dark:focus:ring-offset-white/10">
+                    <i class="ri ri-more-2-line text-lg leading-none"></i>
+                  </a>
+                  <div class="hs-dropdown-menu ti-dropdown-menu">
+                    <a class="ti-dropdown-item" href="javascript:void(0);">Select All</a>
+                    <a class="ti-dropdown-item" href="javascript:void(0);">Mark All</a>
+                    <a class="ti-dropdown-item" href="javascript:void(0);">Delete All</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-span-12 lg:col-span-3">
+                <a href="{% url 'dashboard:new_training' %}" class="hs-dropdown-toggle py-2 px-3 ti-btn ti-btn-primary w-full"
+                  >
+                    <i class="ri ri-edit-line"></i> Add New Training
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <div class="box-body">
+          <div class="table-bordered rounded-sm overflow-auto todo-table">
+            <table class="ti-custom-table ti-custom-table-head whitespace-nowrap">
+              <thead class="bg-gray-100 dark:bg-black/20">
+                <tr>
+                  <th scope="col" class="dark:text-white/70">
+                    <div class="flex">
+                      <input type="checkbox" class="border-gray-500 ti-form-checkbox mt-0.5 check-all"
+                        id="hs-default-checkbox">
+                      <label for="hs-default-checkbox" class="text-sm text-gray-500 dark:text-white/70"></label>
+                    </div>
+                  </th>
+                  <th scope="col" class="dark:text-white/70"></th>
+                  <th scope="col" class="dark:text-white/70">Training title</th>
+                  <th scope="col" class="dark:text-white/70">Start Date</th>
+                  <th scope="col" class="dark:text-white/70">End Date</th>
+                  <th scope="col" class="dark:text-white/70">Status</th>
+                  <th scope="col" class="dark:text-white/70">Priority</th>
+                  <th scope="col" class="dark:text-white/70 min-w-[160px]">Assigned To</th>
+                  <th scope="col" class="!text-end dark:text-white/70">Action</th>
+                </tr>
+              </thead>
+              <tbody class="todo-drag">
+                {% if trainings %}
+                  {% for training in trainings %}
+                  <tr class="todo-box">
+                    <td>
+                      <div class="flex items-center h-5 justify-center todo-checkbox">
+                        <input id="hs-table-checkbox-{{ training.id }}" type="checkbox" class="border-gray-500 ti-form-checkbox">
+                        <label for="hs-table-checkbox-{{ training.id }}" class="sr-only">Checkbox</label>
+                      </div>
+                    </td>
+                    <td>
+                      <div
+                        class="cursor-move w-8 h-8 leading-none text-lg rounded-sm bg-gray-100 dark:bg-black/20 flex justify-center p-1.5 mx-auto">
+                        ::</div>
+                    </td>
+                    <td>
+                      <p class="text-sm font-semibold w-52 truncate">{{training.training_name }} </p>
+                    </td>
+                    <td>{{ training.start_date|date:"d-m-Y"}}</td>
+                    <td>{{ training.finish_date|date:"d-m-Y"}}</td>
+                    <td><span class="text-success">{{training.status }}</span></td>
+                    <td><span class="badge bg-info/20 text-gray">{{training.performance }}</span></td>
+                    <td>
+                      <div class="flex -space-x-2 rtl:space-x-reverse">
+                        <img class="avatar avatar-xs rounded-full" src="{% static 'admin/img/users/1.jpg' %}"
+                          alt="Image Description">
+                      </div>
+                    </td>
+                    <td class="text-end font-medium">
+                      <div class="hs-tooltip ti-main-tooltip">
+                        <a href="{% url 'dashboard:edit_training' training.id  %}"
+                          class="hs-tooltip-toggle w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-secondary">
+                          <i class="ti ti-pencil"></i>
+                          <span
+                            class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700 hidden"
+                            role="tooltip" data-popper-placement="top"
+                            style="position: fixed; inset: auto auto 0px 0px; margin: 0px; transform: translate(953px, -281px);">
+                            Edit
+                          </span>
+                        </a>
+                      </div>
+                      <div class="hs-tooltip ti-main-tooltip">
+                        <a href="{% url 'dashboard:delete_training' training.id  %}"
+                          class="todo-remove hs-tooltip-toggle w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-danger">
+                          <i class="ti ti-trash"></i>
+                          <span
+                            class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
+                            role="tooltip" data-popper-placement="top"
+                            style="position: fixed; inset: auto auto 0px 0px; margin: 0px; transform: translate(985px, -281px);">
+                            Delete
+                          </span>
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                {% endif %}
+              </tbody>
+            </table>
+          </div>
+          <nav class="flex items-center space-x-2 rtl:space-x-reverse justify-end">
+            <a class="text-gray-500 dark:text-white/70 hover:text-primary p-4 inline-flex items-center gap-2 font-medium rounded-sm" href="javascript:void(0);">
+              <span aria-hidden="true">«</span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="w-10 h-10 bg-primary text-white p-4 inline-flex items-center text-sm font-medium rounded-full" href="javascript:void(0);" aria-current="page">1</a>
+            <a class="w-10 h-10 text-gray-500 dark:text-white/70 hover:text-primary p-4 inline-flex items-center text-sm font-medium rounded-full" href="javascript:void(0);">2</a>
+            <a class="w-10 h-10 text-gray-500 dark:text-white/70 hover:text-primary p-4 inline-flex items-center text-sm font-medium rounded-full" href="javascript:void(0);">3</a>
+            <a class="text-gray-500 dark:text-white/70 hover:text-primary p-4 inline-flex items-center gap-2 font-medium rounded-sm" href="javascript:void(0);">
+              <span class="sr-only">Next</span>
+              <span aria-hidden="true">»</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="todo-compose" class="hs-overlay hidden ti-modal">
+    <div class="hs-overlay-open:mt-7 ti-modal-box mt-0 ease-out">
+      <div class="ti-modal-content">
+        <div class="ti-modal-header">
+          <h3 class="ti-modal-title">
+            New Task
+          </h3>
+          <button type="button" class="hs-dropdown-toggle ti-modal-close-btn" data-hs-overlay="#todo-compose">
+            <span class="sr-only">Close</span>
+            <i class="ri-close-line"></i>
+          </button>
+        </div>
+        <div class="ti-modal-body">
+          <div class="space-y-3">
+            <div class="">
+              <label for="input-label" class="ti-form-label">Task Title</label>
+              <input type="text" id="input-label" class="ti-form-input" placeholder="Task title">
+            </div>
+            <div>
+              <label class="ti-form-label">Assigned To</label>
+              <select class="ti-form-select" name="choices-multiple-remove-button"
+                id="choices-multiple-remove-button" multiple>
+                <option value="Choice 1" selected>Angelina May</option>
+                <option value="Choice 2">Kiara advain</option>
+                <option value="Choice 3">Hercules Jhon</option>
+                <option value="Choice 4">Mayor Kim</option>
+              </select>
+            </div>
+            <div>
+              <label for="input-label" class="ti-form-label">Assigned Date</label>
+              <div class="flex rounded-sm shadow-sm">
+                <div
+                  class="px-4 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
+                  <span class="text-sm text-gray-500 dark:text-white/70"><i class="ri ri-calendar-line"></i></span>
+                </div>
+
+                <input type="text" class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
+                  id="addignedDate" placeholder="Choose date and time" readonly>
+              </div>
+            </div>
+            <div>
+              <label for="input-label" class="ti-form-label">Due Date</label>
+              <div class="flex rounded-sm shadow-sm">
+                <div
+                  class="px-4 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
+                  <span class="text-sm text-gray-500 dark:text-white/70"><i class="ri ri-calendar-line"></i></span>
+                </div>
+
+                <input type="text" class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
+                  id="targetDate" placeholder="Choose date and time" readonly>
+              </div>
+            </div>
+            <div>
+              <label class="ti-form-label">Assigned To</label>
+              <select class="ti-form-select todo-choice" name="choices-single-default">
+                <option value="">Select</option>
+                <option value="Critical">Critical</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="ti-modal-footer">
+          <button type="button"
+            class="hs-dropdown-toggle ti-btn ti-border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:ring-offset-white focus:ring-primary dark:bg-bgdark dark:hover:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-white dark:focus:ring-offset-white/10"
+            data-hs-overlay="#todo-compose">
+            Close
+          </button>
+          <a class="ti-btn ti-btn-primary" href="javascript:void(0);">
+            Create
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+{% block extra_scripts %}
+    <script src="{% static 'admin/libs/dragula/dragula.min.js' %}"></script>
+    <script src="{% static 'admin/js/todo.js' %}"></script>
+{% endblock extra_scripts %}

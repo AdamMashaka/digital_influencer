@@ -1,0 +1,497 @@
+
+{% extends "dashboard/backoffice//base.html" %} 
+{% load static %}
+
+{% block toolbar %}
+  <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
+      <div
+        id="kt_app_toolbar_container"
+        class="app-container container-fluid d-flex flex-stack"
+      >
+        <div
+          class="page-title d-flex flex-column justify-content-center flex-wrap me-3"
+        >
+          <h1
+            class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0"
+          >
+            Account Overview
+          </h1>
+          <ul
+            class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1"
+          >
+            <li class="breadcrumb-item text-muted">
+              <a href="../index.html" class="text-muted text-hover-primary">
+                Home
+              </a>
+            </li>
+            <li class="breadcrumb-item">
+              <span class="bullet bg-gray-400 w-5px h-2px"></span>
+            </li>
+            <li class="breadcrumb-item text-muted">Account</li>
+          </ul>
+        </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock toolbar %}
+
+{% block content%}  
+        <div class="card mb-5 mb-xl-10">
+          <div class="card-body pt-9 pb-0">
+            <div class="d-flex flex-wrap flex-sm-nowrap">
+              <div class="me-7 mb-4">
+                <div
+                  class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative"
+                >
+                  <img
+                    src="{% if user.profile_image %}{{ user.profile_image.url }}{% else %} {% static 'dashboard/media/accounticon.png' %} {%endif%}"
+                    alt="image"
+                  />
+                  <div
+                    class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-body h-20px w-20px"
+                  ></div>
+                </div>
+              </div>
+              <div class="flex-grow-1">
+                <div
+                  class="d-flex justify-content-between align-items-start flex-wrap mb-2"
+                >
+                  <div class="d-flex flex-column">
+                    <div class="d-flex align-items-center mb-2">
+                      <a
+                        href="#"
+                        class="text-gray-900 text-hover-primary fs-2 fw-bold me-1"
+                        >{{ user.username}}</a
+                      >
+                      <a href="#"
+                        ><i class="ki-duotone ki-verify fs-1 text-primary"
+                          ><span class="path1"></span
+                          ><span class="path2"></span></i
+                      ></a>
+                    </div>
+                    <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
+                      <a
+                        href="#"
+                        class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2"
+                      >
+                        <i class="ki-duotone ki-profile-circle fs-4 me-1"
+                          ><span class="path1"></span><span class="path2"></span
+                          ><span class="path3"></span
+                        ></i>
+                        {{ user.username }}
+                      </a>
+                      <a
+                        href="#"
+                        class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2"
+                      >
+                        <i class="ki-duotone ki-geolocation fs-4 me-1"
+                          ><span class="path1"></span><span class="path2"></span
+                        ></i>
+                        {{ profile.country }}
+                      </a>
+                      <a
+                        href="#"
+                        class="d-flex align-items-center text-gray-400 text-hover-primary mb-2"
+                      >
+                        <i class="ki-duotone ki-sms fs-4 me-1"
+                          ><span class="path1"></span><span class="path2"></span
+                        ></i>
+                        {{ user.email }}
+                      </a>
+                    </div> 
+                  </div>
+                <div class="d-flex flex-wrap flex-stack">
+                  <div class="d-flex flex-column flex-grow-1 pe-8">
+                    <div class="d-flex flex-wrap">
+                      <div
+                        class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3"
+                      >
+                        <div class="d-flex align-items-center">
+                          <i
+                            class="ki-duotone ki-arrow-up fs-3 text-success me-2"
+                            ><span class="path1"></span
+                            ><span class="path2"></span
+                          ></i>
+                          <div
+                            class="fs-2 fw-bold"
+                            data-kt-countup="true"
+                            data-kt-countup-value="{{ registered_events }}"
+                            data-kt-countup-prefix=""
+                          >
+                            {{ registered_events }}
+                          </div>
+                        </div>
+                        <div class="fw-semibold fs-6 text-gray-400">
+                          Earnings
+                        </div>
+                      </div>
+                      <div
+                        class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3"
+                      >
+                        <div class="d-flex align-items-center">
+                          <i
+                            class="ki-duotone ki-arrow-down fs-3 text-danger me-2"
+                            ><span class="path1"></span
+                            ><span class="path2"></span
+                          ></i>
+                          <div
+                            class="fs-2 fw-bold"
+                            data-kt-countup="true"
+                            data-kt-countup-value="{{ missed_events }}"
+                          >
+                            {{ missed_events }}
+                          </div>
+                        </div>
+                        <div class="fw-semibold fs-6 text-gray-400">
+                          Miss
+                        </div>
+                      </div>
+                      <div
+                        class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3"
+                      >
+                        <div class="d-flex align-items-center">
+                          <i
+                            class="ki-duotone ki-arrow-up fs-3 text-success me-2"
+                            ><span class="path1"></span
+                            ><span class="path2"></span
+                          ></i>
+                          <div
+                            class="fs-2 fw-bold"
+                            data-kt-countup="true"
+                            data-kt-countup-value="{{ success_rate }}"
+                            data-kt-countup-prefix="%"
+                          >
+                            {{ success_rate }}%
+                          </div>
+                        </div>
+                        <div class="fw-semibold fs-6 text-gray-400">
+                          Success Rate
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="d-flex align-items-center w-200px w-sm-300px flex-column mt-3"
+                  >
+                    <div
+                      class="d-flex justify-content-between w-100 mt-auto mb-2"
+                    >
+                      <span class="fw-semibold fs-6 text-gray-400"
+                        >Profile Completion</span
+                      >
+                      <span class="fw-bold fs-6">{{ profile_completion }}%</span>
+                    </div>
+
+                    <div class="h-5px mx-3 w-100 bg-light mb-3">
+                      <div
+                        class="bg-success rounded h-5px"
+                        role="progressbar"
+                        style="width: {{ profile_completion }}%"
+                        aria-valuenow="{{ profile_completion }}"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+</div>  
+<!-- filepath: /home/adam/Downloads/new_eventsystem/templates/profile.html -->
+<div id="overview">
+  <div class="card mb-5 mb-xl-10" id="kt_profile_details_view">
+      <div class="card-header cursor-pointer">
+          <div class="card-title m-0">
+              <h3 class="fw-bold m-0">Profile Details</h3>
+          </div>
+          <a href="{% url 'settingi' %}" class="btn btn-sm btn-primary align-self-center">Edit Profile</a>
+      </div>
+      <div class="card-body p-9">
+          <div class="row mb-7">
+              <label class="col-lg-4 fw-semibold text-muted">Username</label>
+              <div class="col-lg-8 fv-row">
+                  <span class="fw-semibold text-gray-800 fs-6">{{ user.username }}</span>
+              </div>
+          </div>
+          <div class="row mb-7">
+              <label class="col-lg-4 fw-semibold text-muted">Full Name</label>
+              <div class="col-lg-8">
+                  <span class="fw-bold fs-6 text-gray-800">{{ user.first_name }} {{ user.last_name }}</span>
+              </div>
+          </div>
+          <div class="row mb-7">
+              <label class="col-lg-4 fw-semibold text-muted">Company</label>
+              <div class="col-lg-8 fv-row">
+                  <span class="fw-semibold text-gray-800 fs-6">{{ profile.company }}</span>
+              </div>
+          </div>
+          <div class="row mb-7">
+            <label class="col-lg-4 fw-semibold text-muted">Email</label>
+            <div class="col-lg-8 fv-row">
+                <span class="fw-semibold text-gray-800 fs-6">{{ user.email }}</span>
+            </div>
+        </div>
+        <div class="row mb-7">
+            <label class="col-lg-4 fw-semibold text-muted">Contact Phone</label>
+            <div class="col-lg-8 d-flex align-items-center">
+                <span class="fw-bold fs-6 text-gray-800 me-2">{{ profile.phone }}</span>
+            </div>
+        </div>
+          <div class="row mb-7">
+              <label class="col-lg-4 fw-semibold text-muted">Country</label>
+              <div class="col-lg-8">
+                  <span class="fw-bold fs-6 text-gray-800">{{ profile.country }}</span>
+              </div>
+          </div>
+
+          <div class="row mb-10">
+            <label class="col-lg-4 fw-semibold text-muted">Sector of Interest</label>
+            <div class="col-lg-8">
+                <!-- Sector of Interest as Buttons -->
+                <div id="sector-buttons">
+                    {% for sector in sectors %}
+                        <button class="btn btn-outline-primary sector-btn" data-sector="{{ sector }}">{{ sector }}</button>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mb-10">
+            <label class="col-lg-4 fw-semibold text-muted">Subsector of Interest</label>
+            <div class="col-lg-8">
+                <!-- Subsector Display -->
+                <ul id="subsector-list" class="list-group subsector-list">
+                    <!-- Subsector items will be dynamically added here -->
+                </ul>
+            </div>
+        </div>
+        
+        <style>
+            /* General styles for the subsector list */
+            .subsector-list {
+                background-color: var(--bs-light, #f8f9fa); /* Light mode background */
+                border: 1px solid var(--bs-gray-300, #dee2e6); /* Border color */
+                border-radius: 5px;
+                padding: 10px;
+            }
+        
+            /* List item styles */
+            .subsector-list .list-group-item {
+                background-color: var(--bs-light, #f8f9fa); /* Light mode background */
+                color: var(--bs-dark, #212529); /* Text color */
+                border: none;
+                padding: 10px 15px;
+                margin-bottom: 5px;
+                border-radius: 5px;
+            }
+        
+            /* Hover effect for list items */
+            .subsector-list .list-group-item:hover {
+                background-color: var(--bs-primary, #0d6efd); /* Primary color on hover */
+                color: var(--bs-light, #ffffff); /* White text on hover */
+            }
+        
+            /* Dark mode styles */
+            @media (prefers-color-scheme: dark) {
+                .subsector-list {
+                    background-color: var(--bs-dark, #212529); /* Dark mode background */
+                    border: 1px solid var(--bs-gray-700, #495057); /* Border color */
+                }
+        
+                .subsector-list .list-group-item {
+                    background-color: var(--bs-dark, #212529); /* Dark mode background */
+                    color: var(--bs-light, #f8f9fa); /* Text color */
+                }
+        
+                .subsector-list .list-group-item:hover {
+                    background-color: var(--bs-primary, #0d6efd); /* Primary color on hover */
+                    color: var(--bs-light, #ffffff); /* White text on hover */
+                }
+            }
+        </style>
+            <!-- Chatbot Section -->
+            <div class="chatbot-container">
+              <div class="chatbox">
+                  <div class="chatbox-header">
+                      <img src="{% static 'img/Ticlogo.png' %}" alt="TIC Logo" class="chatbox-logo">
+                      <h5>Chat with TIC</h5>
+                      <button id="chatbox-close" class="btn-close">&times;</button>
+                  </div>
+                  <div class="chatbox-messages" id="chatbox-messages"></div>
+                  <div class="chatbox-input">
+                      <input type="text" id="chatbox-input" placeholder="Type your question here...">
+                      <button id="chatbox-send" class="btn btn-primary">Send</button>
+                  </div>
+              </div>
+              <button id="chatbox-toggle" class="btn btn-primary">Chat with us</button>
+          </div>
+      </main>
+
+
+     
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const sectorButtons = document.querySelectorAll(".sector-btn");
+      const subsectorList = document.getElementById("subsector-list");
+
+      // Subsector data (replace this with dynamic data if needed)
+      const subsectorData = {
+          {% for sector, subsectors in subsector_data.items %}
+          "{{ sector }}": ["{{ subsectors|join:'","' }}"],
+          {% endfor %}
+      };
+
+      // Handle sector button clicks
+      sectorButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+              const sector = this.getAttribute("data-sector");
+
+              // Clear existing subsector list
+              subsectorList.innerHTML = "";
+
+              // Add subsectors for the selected sector
+              if (subsectorData[sector]) {
+                  subsectorData[sector].forEach((subsector) => {
+                      const listItem = document.createElement("li");
+                      listItem.textContent = subsector;
+                      listItem.classList.add("list-group-item");
+                      subsectorList.appendChild(listItem);
+                  });
+              } else {
+                  // If no subsectors are found, show a message
+                  const listItem = document.createElement("li");
+                  listItem.textContent = "No subsectors available for this sector.";
+                  listItem.classList.add("list-group-item", "text-muted");
+                  subsectorList.appendChild(listItem);
+              }
+          });
+      });
+  });
+</script>
+      <!-- JS Scripts -->
+      <script src="{% static 'js1/bootstrap.min.js' %}"></script>
+      <script>
+          // Chatbox logic
+          const chatboxContainer = document.querySelector('.chatbot-container');
+          const chatbox = document.querySelector('.chatbox');
+          const chatboxToggle = document.getElementById('chatbox-toggle');
+          const chatboxClose = document.getElementById('chatbox-close');
+          const chatboxMessages = document.getElementById('chatbox-messages');
+          const chatboxInput = document.getElementById('chatbox-input');
+          const chatboxSend = document.getElementById('chatbox-send');
+
+          chatboxToggle.addEventListener('click', () => {
+              chatbox.classList.toggle('chatbox-open');
+              chatboxToggle.style.display = 'none';
+          });
+
+          chatboxClose.addEventListener('click', () => {
+              chatbox.classList.remove('chatbox-open');
+              chatboxToggle.style.display = 'block';
+          });
+
+          chatboxSend.addEventListener('click', async () => {
+              const userMessage = chatboxInput.value.trim();
+              if (userMessage !== '') {
+                  // Display user's message
+                  chatboxMessages.innerHTML += `<div class="chatbox-message"><strong>You:</strong> ${userMessage}</div>`;
+                  chatboxInput.value = '';
+          
+                  // Send message to the server
+                  try {
+                      const response = await fetch('/ask-openai/', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ question: userMessage }),
+                      });
+          
+                      const data = await response.json();
+          
+                      if (response.ok) {
+                          chatboxMessages.innerHTML += `<div class="chatbox-message"><strong>TIC:</strong> ${data.answer}</div>`;
+                      } else {
+                          chatboxMessages.innerHTML += `<div class="chatbox-message"><strong>TIC:</strong> ${data.error}</div>`;
+                      }
+                  } catch (error) {
+                      console.error('Error:', error);
+                      chatboxMessages.innerHTML += `<div class="chatbox-message"><strong>AI:</strong> Unable to connect to the server.</div>`;
+                  }
+              }
+          });
+      </script>
+
+      <!-- Chatbox Styling -->
+      <style>
+          .chatbot-container {
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+              z-index: 1000;
+          }
+          .chatbox {
+              display: none;
+              flex-direction: column;
+              width: 300px;
+              max-height: 400px;
+              border: 1px solid #ccc;
+              border-radius: 10px;
+              background-color: #fff;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          }
+          .chatbox-open {
+              display: flex;
+          }
+          .chatbox-header {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 10px;
+              border-bottom: 1px solid #ccc;
+              background-color: #007bff;
+              color: black;
+              border-radius: 20px 20px 0 0;
+          }
+          .chatbox-logo {
+              width: 30px;
+              height: 30px;
+              margin-right: 10px;
+          }
+          .chatbox-messages {
+              flex: 1;
+              padding: 10px;
+              overflow-y: auto;
+          }
+          .chatbox-input {
+              display: flex;
+              border-top: 1px solid #ccc;
+          }
+          .chatbox-input input {
+              flex: 1;
+              padding: 10px;
+              border: none;
+              border-radius: 0 0 0 10px;
+          }
+          .chatbox-input button {
+              padding: 10px;
+              border: none;
+              border-radius: 0 0 10px 0;
+              background-color: #007bff;
+              color: white;
+          }
+          .chatbox-message {
+              margin-bottom: 10px;
+          }
+          #chatbox-togle {
+              display: block;
+              padding: 20px 67px;
+              border: none;
+              border-radius: 90px;
+              background-color: #007bff;
+              color: white;
+              cursor: pointer;
+          }
+      </style>
+
+  {% endblock content%}
+</div>

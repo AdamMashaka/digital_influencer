@@ -1,0 +1,30 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<div class="grid grid-cols-12 gap-x-6">
+    <div class="col-span-12 xl:col-span-6">
+      <div class="box">
+        <div class="box-header">
+          <h5 class="box-title">Edit Course Category</h5>
+        </div>
+        <div class="box-body">
+            <form  action="{% url 'courses:add_category' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label">Name</label>
+                    <input type="text" name="name" class="px-3 py-2 ti-form-input" placeholder="Name" value="{{ category.name }}">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Image</label>
+                    <input type="file" name="image" class="px-3 py-2 ti-form-input dropify" data-height="100" data-default-file="{{ category.image.url }}" placeholder="Image">
+                </div>
+                <div>
+                    <button type="submit" class="ti-btn bg-indigo-500/10 text-indigo-500 hover:text-white hover:bg-indigo-500 ring-offset-white focus:ring-indigo-500 dark:focus:ring-offset-white/10">Save</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+{% endblock content %}
