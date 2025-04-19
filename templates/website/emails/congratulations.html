@@ -1,0 +1,82 @@
+<!-- filepath: /home/adam/Downloads/new_eventsystem/templates/emails/congratulations.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congratulations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+        }
+        .header {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .header img {
+            max-width: 100px;
+        }
+        .content {
+            text-align: center;
+        }
+        .content h1 {
+            color: #333333;
+        }
+        .content p {
+            color: #666666;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 20px 0;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #007bff;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .button img {
+            vertical-align: middle;
+            margin-right: 10px;
+            width: 60px;  /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            color: #999999;
+        }
+    </style> 
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://i.ibb.co/Z1XGk0Yf/Ticlogo.png" alt="Logo">
+        </div>
+        <div class="content">
+            <h1>Congratulations!</h1>
+            <p>Dear {{ user.username }},</p>
+            <p>You are registration with user name  {{ user.username }} have been successful..</p>
+            <p>Welcome to TIC Events Management Portal.</p>
+            <a href="https://ticevents.onrender.com/" class="button">
+                <img src="https://i.ibb.co/538Lc7D/tic3-remov.png" alt="Logo"> Visit Our Website
+            </a>
+        </div>
+        <div class="footer">
+            <p>&copy; {{ current_year }} TIC events portal. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

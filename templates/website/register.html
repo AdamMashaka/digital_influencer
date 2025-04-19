@@ -1,6 +1,6 @@
 <!-- filepath: /home/adam/Downloads/new_eventsystem/templates/signup.html -->
 {% load static %}
-{% include 'dashboards/backoffice/authentication/head.html' %}
+{% include 'website/dashboards/backoffice/authentication/head.html' %}
 
 <script src="{% static 'dashboard/js/signup_validation.js' %}"></script>
 <style>
@@ -122,7 +122,7 @@
         <div class="d-flex justify-content-between flex-column-fluid flex-column w-100 mw-450px">
             <div class="d-flex flex-stack py-2">
                 <div class="me-2">
-                    <a href="{% url 'index'%}" class="btn btn-icon bg-light rounded-circle">
+                    <a href="{% url 'home'%}" class="btn btn-icon bg-light rounded-circle">
                         <i class="ki-duotone ki-black-left fs-2 text-gray-800"></i>
                     </a>
                 </div>
@@ -144,7 +144,7 @@
                         Get unlimited access & earn money with mapato AI
                     </div>
                 </div>
-                <form action="{% url 'register' %}" method="post" class="sign-up-form">
+                <form action="{% url 'signup' %}" method="post" class="sign-up-form">
                     {% csrf_token %}
                     {% if form.errors %}
                       <div class="form-errors">
@@ -201,7 +201,7 @@
     </div>
 </div>
 
-{% include 'dashboards/backoffice/authentication/footer.html' %}
+{% include 'website/dashboards/backoffice/authentication/footer.html' %}
 
 <script>
     // Toggle password visibility
