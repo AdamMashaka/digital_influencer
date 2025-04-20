@@ -324,7 +324,7 @@ def profile(request):
         'success_rate': success_rate,
         'profile_completion': profile_completion,
         'sectors': sectors,
-        'subsectors': subsectors,  # Pass subsectors to the template
+        'subsectors': subsectors, 
     }
 
     return render(request, 'website/profile.html', context)
