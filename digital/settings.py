@@ -19,6 +19,7 @@ ALLOWED_HOSTS = [
     'adamkatani.systems', 
     'd554-41-59-87-86.ngrok-free.app',   
     'digital-influencer.onrender.com',
+    'digital-influencer.netlify.app',
 ]
 
 
@@ -31,6 +32,7 @@ CSRF_TRUSTED_ORIGINS =[
     'https://adamkatani.systems',
     'https://d554-41-59-87-86.ngrok-free.app',  
     'https://digital-influencer.onrender.com',
+    'https://digital-influencer.netlify.app', 
 ]
 
 # Application definition
