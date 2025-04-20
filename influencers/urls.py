@@ -2,6 +2,13 @@ from django.urls import path
 from . import views
 from django.conf.urls.static import static
 from django.conf import settings
+#from django.conf.urls import handler404, handler403, handler500
+
+
+
+handler404 = 'influencers.views.custom_404'
+handler403 = 'influencers.views.custom_403'
+handler500 = 'influencers.views.custom_500'
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -20,6 +27,7 @@ urlpatterns = [
     path('ask-openai/', views.ask_openai, name='ask_openai'),
     path('welcome/', views.welcome, name='welcome'), 
     path('settingi/', views.settingi, name='settingi'),
+    path('trigger-error/', views.trigger_error, name='trigger_error'),
     
 ]
 

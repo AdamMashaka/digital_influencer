@@ -1,0 +1,675 @@
+<!-- filepath: /home/adam/Downloads/new_eventsystem/templates/index1.html -->
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="keywords" content="TIC events management portal">
+        <meta name="event za tic" content="">
+        <meta name='copyright' content=''>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>TIC | events </title> 
+
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,sw,ar'}, 'google_translate_element');
+            }
+        </script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+        <link rel="icon" href="{% static 'img/Ticlogo.png' %}">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css1/bootstrap.min.css' %}"> 
+        <link rel="stylesheet" href="{% static 'css1/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'css1/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css1/icofont.css' %}">
+        <link rel="stylesheet" href="{% static 'css1/slicknav.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css1/owl-carousel.css' %}">
+        <link rel="stylesheet" href="{% static 'css1/datepicker.css' %}">
+        <link rel="stylesheet" href="{% static 'css1/animate.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css1/magnific-popup.css' %}">
+        <link rel="stylesheet" href="{% static 'css1/normalize.css' %}">
+        <link rel="stylesheet" href="{% static 'css1/style.css' %}"> 
+        <link rel="stylesheet" href="{% static 'css1/responsive.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">                 
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/bootstrap-icons.css' %}" rel="stylesheet">
+        <link href="{% static 'css/templatemo-topic-listing.css' %}" rel="stylesheet"> 
+
+        <style>
+            .logo-img {
+                width: 80px;
+                height: auto;
+            }
+            .logo-img2 {
+                width: 200px;
+                height: auto;
+            }
+            @media (max-width: 767px) {
+				.header {
+					flex-direction: column;
+					align-items: center;
+				}
+				.logo-img, .logo-img2 {
+					width: 50px;
+				}
+				.site-title {
+					font-size: 16px;
+					text-align: center;
+				}
+				.main-menu {
+					text-align: center;
+					padding: 10px;
+				}
+				.main-menu .nav.menu {
+					display: flex;
+					flex-direction: column;
+				}
+				.navbar-icon {
+					font-size: 1rem;
+				}
+				.slider {
+					height: 300px;
+				}
+				.single-slider .image img {
+					max-width: 100%;
+					height: auto;
+					border-radius: 20px;
+				}
+			}
+		
+			@media (max-width: 480px) {
+				.logo-img, .logo-img2 {
+					width: 40px;
+				}
+				.site-title {
+					font-size: 14px;
+				}
+				.single-slider {
+					flex-direction: column;
+				}
+				.button a {
+					font-size: 12px;
+				}
+			}
+            .fun-facts .single-fun:hover i {
+                color: black;
+                background: green;
+                border-color: transparent;
+            }
+            .fun-facts .single-fun .content {
+                padding-left: 80px;
+            }
+            .fun-facts .single-fun span {
+                color: #fff;
+                font-weight: 600;
+                font-size: 30px;
+                position: relative;
+                display: block;
+                transition: all 0.4s ease;
+                margin-bottom: 7px;
+            }
+            .fun-facts .single-fun p {
+                color: #fff;
+                font-size: 15px;
+            }
+            .why-choose .choose-left h3 {
+                font-size: 24px;
+                font-weight: 600;
+                color: #2C2D3F;
+            }
+            .site-title {
+                font-size: 24px;
+                font-weight: bold;
+                color: #2C2D3F;
+                margin: 0;
+            }
+            .nav.menu {
+                display: flex;
+                align-items: center;
+            }
+            .nav.menu .dropdown {
+                position: relative;
+            }
+            .navbar-icon {
+                font-size: 1.5rem;
+                margin-left: 15px;
+                cursor: pointer;
+            }
+            .green1-background {
+                background-color: black;
+                color: green;
+            }
+            .site-title {
+                font-size: 24px;
+                font-weight: bold;
+                color: green;
+                margin: 0;
+            }
+            .header {
+                background-color: black;
+            }
+            .hero-slider {
+                background-image: url('{% static 'images/image1.png' %}'); 
+                background-size: cover;
+                background-position: center;
+            }
+            .single-slider {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background-size: cover;
+                background-position: center;
+                padding: 50px 0;
+            }
+            .single-slider .text {
+                max-width: 100%;
+                color: black;
+            }
+            .single-slider .image {
+                max-width: 100%;
+            }
+            .single-slider .image img {
+                width: 100%;
+                height: auto;
+                border-radius: 50px;
+                max-width: 1000px;
+                max-height: 300px;
+            }
+            .button a {
+                margin-right: 10px;
+            }
+            .slider {
+                background-image: url('{% static 'img/image1.png' %}');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                padding: 60px 0;
+                position: relative;
+                color: #fff;
+                text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+                width: 100%;
+                height: 500px;
+            }
+            .carousel-item img {
+                width: 100%;
+                height: 400px;
+                object-fit: cover;
+            }
+        </style>
+		
+		<script>
+			function loadMobileStyles() {
+				if (window.innerWidth <= 767) {
+					var link = document.createElement("link");
+					link.rel = "stylesheet";
+					link.type = "text/css";
+					link.href = "{% static 'css/mobile-styles.css' %}"; // Mobile-specific stylesheet
+					document.head.appendChild(link);
+				}
+			}
+			window.onload = loadMobileStyles;
+			window.onresize = loadMobileStyles;
+		</script>
+		
+    </head>
+    <body>
+        <div class="preloader">
+            <div class="loader">
+                <div class="loader-outter"></div>
+                <div class="loader-inner"></div>
+                <div class="indicator"> 
+                    <img src="{% static 'img/tic1-preview.png' %}" alt="Loading...">
+                </div>
+            </div>
+        </div>
+        <ul class="pro-features">
+            <a class="get-po" href="#"></a>
+            <div class="col-lg-6 col-md-4 col-12 mt-4 mt-lg-0 ms-auto">
+                <div id="google_translate_element"></div>
+            </div>
+        </ul> 
+        <header class="header">
+            <div class="topbar green1-background d-flex align-items-center">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 col-md-3 col-12">
+                            <div class="logo">
+                                <a href="{% url 'index' %}"><img src="{% static 'img/tic3-remove.png' %}" alt="#" class="logo-img"></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12 text-center">
+                            <h1 class="site-title mb-4">TANZANIA INVESTMENT CENTRE (TIC) EVENTS MANAGEMENT PORTAL</h1>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-12 text-right">
+                            <div class="logo logo-right">
+                                <a href="https://www.tic.go.tz"><img src="{% static 'img/tic1-preview.png' %}" alt="#" class="logo-img2"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-inner">
+                <div class="container">
+                    <div class="iner">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-12">
+                                <div class="mobile-nav"></div>
+                            </div>
+                            <div class="col-lg-7 col-md-6 col-12">
+                                <div class="main-menu">
+                                    <nav class="navigation">
+                                        <ul class="nav menu">
+                                            <li><a href="{% url 'index' %}" id="home-link">Home <i class="icofont"></i></a></li>
+                                            <li class="active"><a href="{% url 'about' %}">About </a></li>
+                                            <li><a href="{% url 'list' %}">Events </a></li>
+                                            <li><a href="{% url 'contacts' %}">Contact Us</a></li>
+                                            <li><a href="{% url 'faqs' %}">FAQS</a></li>
+                                            {% if not user.is_authenticated %}
+                                            <li><a href="{% url 'login' %}">Signin</a></li>
+                                            {% endif %}
+                                            {% if user.is_authenticated %}
+                                            <li><a href="{% url 'profile' %}">Profile</a></li>
+                                            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                                            <li>
+                                                <form method="post" action="{% url 'logout' %}">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="btn btn-primary" id="logout-button">Logout</button>
+                                                </form>
+                                            </li>
+                                            {% endif %}
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-3 col-12 d-flex justify-content-end align-items-center">
+                                <button id="languageButton" class="btn btn-primary me-2" onclick="toggleLanguage()">Swahili</button>
+                                <div id="google_translate_element"></div>
+                            </div>
+                        </div>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    <body id="top">
+
+        <main>
+		
+		<!-- Error Page -->
+		<section class="error-page section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 offset-lg-3 col-12">
+						<!-- Error Inner -->
+						<div class="error-inner">
+							<h1>403<span>Oop's  sorry we can't find that page!</span></h1>
+							<p>You may return to the home for other pages description </p>
+							<form class="search-form">
+								<input placeholder="Search from Here" type="text">
+								<button class="btn" type="submit"><i class="fa fa-search"></i></button>
+							</form>
+						</div>
+						<!--/ End Error Inner -->
+					</div>
+				</div>
+			</div>
+		</section>	
+		<!--/ End Error Page -->
+		
+<!-- filepath: /home/adam/Downloads/new_eventsystem/templates/about.html -->
+<footer class="site-footer section-padding">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-3 col-12 mb-4 pb-2">
+                <a class="navbar-brand" href="{% url 'index' %}">
+                    <img src="{% static 'images/Ticlogo.png' %}" alt="Logo" style="height: 100px;">
+                </a>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-6">
+                <h6 class="site-footer-title mb-3">Resources</h6>
+                <ul class="site-footer-links">
+                    <li class="site-footer-link-item">
+                        <a href="{% url 'index' %}" class="site-footer-link">Home</a>
+                    </li>
+                    <li class="site-footer-link-item">
+                        <a href="{% url 'about' %}" class="site-footer-link">How it works</a>
+                    </li>
+                    <li class="site-footer-link-item">
+                        <a href="{% url 'faqs' %}" class="site-footer-link">FAQs</a>
+                    </li>
+                    <li class="site-footer-link-item">
+                        <a href="{% url 'contacts' %}" class="site-footer-link">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0">
+                <h6 class="site-footer-title mb-3">Inform us</h6>
+                <p class="text-white d-flex mb-1">
+                    <a href="tel:+255734989470" class="site-footer-link">
+                        +255734989470
+                    </a>
+                </p> 
+                <p class="text-white d-flex">
+                    <a href="mailto:tic.events@tic.go.tz" class="site-footer-link">
+                        tic.events@tic.go.tz
+                    </a>
+                </p>
+            </div>
+   <!-- filepath: /home/adam/Downloads/new_eventsystem/templates/index1.html -->
+<div class="col-lg-3 col-md-4 col-6">
+    <h6 class="site-footer-title mb-3">Contact us</h6>
+    <ul class="site-footer-links">
+        <li class="site-footer-link-item">
+            <span class="site-footer-link no-underline">The United Republic of Tanzania
+                Tanzania Investment Centre (TIC)
+                Head Office,
+            </span>
+        </li>
+        <li class="site-footer-link-item">
+            <span class="site-footer-link no-underline">P.O. Box 938
+                Golden Jubilee Tower, 1st Floor,
+                Ohio Street,
+                Dar es Salaam
+            </span>
+        </li>
+        <li class="site-footer-link-item">
+            <span class="site-footer-link no-underline">Email Address: info@tic.go.tz</span>
+        </li>
+        <li class="site-footer-link-item">
+            <span class="site-footer-link no-underline">Telephone:
+                +255 734 - 989 469
+            </span>
+        </li>
+        <li class="site-footer-link-item">
+            <span class="site-footer-link no-underline">Phone: +255 734 989470</span>
+        </li>
+        <li class="site-footer-link-item">
+            <span class="site-footer-link no-underline">Fax:
+                +255 25 25 - 2504399
+            </span>
+        </li>
+    </ul>
+</div>
+
+            <div class="col-lg-3 col-md-4 col-12">
+                <h6 class="site-footer-title mb-3">Follow us</h6>
+                <div class="d-flex">
+                    <a href="https://www.facebook.com/profile.php?id=100064507640831&refid=52&_rdr" target="_blank" class="me-3">
+                        <img src="{% static 'img/logo-facebook.svg' %}" alt="Facebook" style="height: 40px;">
+                    </a>
+                    <a href="https://x.com/InvestTanzania?t=pW7YA80eKhZ-2xkYE1sdcA" target="_blank" class="me-3">
+                        <img src="{% static 'img/twitter.svg' %}" alt="Twitter" style="height: 40px;">
+                    </a>
+                    <a href="https://www.whatsapp.com/channel/0029Vafd5AmHLHQWLCCA4t04" target="_blank" class="me-3">
+                        <img src="{% static 'img/whatsapp.svg' %}" alt="Whatsapp" style="height: 40px;">
+                    </a>
+                    <a href="https://www.linkedin.com/company/tanzania-investment-centre/" target="_blank" class="me-3">
+                        <img src="{% static 'img/linkedin.svg' %}" alt="LinkedIn" style="height: 40px;">
+
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<style>
+    .site-footer {
+        background-color: #2c3e50;
+        color: #ffffff;
+        padding: 40px 0;
+    }
+    .site-footer .site-footer-title {
+        color: #ffffff;
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    .site-footer .site-footer-link {
+        color: #ffffff;
+        text-decoration: none;
+        margin-bottom: 10px;
+        display: block;
+    }
+    .site-footer .site-footer-link:hover {
+        text-decoration: underline;
+    }
+    .site-footer .site-footer-links {
+        list-style: none;
+        padding: 0;
+    }
+    .site-footer .site-footer-link-item {
+        margin-bottom: 10px;
+    }
+    .site-footer .d-flex a {
+        margin-right: 10px;
+    }
+    .site-footer .d-flex a img {
+        height: 40px;
+    }
+</style>
+
+        
+        
+                    <!-- Chatbot Section -->
+                    <div class="chatbot-container">
+                        <div class="chatbox">
+                            <div class="chatbox-header">
+                                <img src="{% static 'img/Ticlogo.png' %}" alt="TIC Logo" class="chatbox-logo">
+                                <h5>Chat with TIC</h5>
+                                <button id="chatbox-close" class="btn-close">&times;</button>
+                            </div>
+                            <div class="chatbox-messages" id="chatbox-messages"></div>
+                            <div class="chatbox-input">
+                                <input type="text" id="chatbox-input" placeholder="Type your question here...">
+                                <button id="chatbox-send" class="btn btn-primary">Send</button>
+                            </div>
+                        </div>
+                        <button id="chatbox-toggle" class="btn btn-primary">Chat with us</button>
+                    </div>
+                </main>
+        
+                <!-- JS Scripts -->
+                <script src="{% static 'js1/bootstrap.min.js' %}"></script>
+                <script>
+                    // Chatbox logic
+                    const chatboxContainer = document.querySelector('.chatbot-container');
+                    const chatbox = document.querySelector('.chatbox');
+                    const chatboxToggle = document.getElementById('chatbox-toggle');
+                    const chatboxClose = document.getElementById('chatbox-close');
+                    const chatboxMessages = document.getElementById('chatbox-messages');
+                    const chatboxInput = document.getElementById('chatbox-input');
+                    const chatboxSend = document.getElementById('chatbox-send');
+        
+                    chatboxToggle.addEventListener('click', () => {
+                        chatbox.classList.toggle('chatbox-open');
+                        chatboxToggle.style.display = 'none';
+                    });
+        
+                    chatboxClose.addEventListener('click', () => {
+                        chatbox.classList.remove('chatbox-open');
+                        chatboxToggle.style.display = 'block';
+                    });
+        
+                    chatboxSend.addEventListener('click', async () => {
+                        const userMessage = chatboxInput.value.trim();
+                        if (userMessage !== '') {
+                            // Display user's message
+                            chatboxMessages.innerHTML += `<div class="chatbox-message"><strong>You:</strong> ${userMessage}</div>`;
+                            chatboxInput.value = '';
+                    
+                            // Send message to the server
+                            try {
+                                const response = await fetch('/ask-openai/', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({ question: userMessage }),
+                                });
+                    
+                                const data = await response.json();
+                    
+                                if (response.ok) {
+                                    chatboxMessages.innerHTML += `<div class="chatbox-message"><strong>TIC:</strong> ${data.answer}</div>`;
+                                } else {
+                                    chatboxMessages.innerHTML += `<div class="chatbox-message"><strong>TIC:</strong> ${data.error}</div>`;
+                                }
+                            } catch (error) {
+                                console.error('Error:', error);
+                                chatboxMessages.innerHTML += `<div class="chatbox-message"><strong>AI:</strong> Unable to connect to the server.</div>`;
+                            }
+                        }
+                    });
+                </script>
+        
+                <!-- Chatbox Styling -->
+                <style>
+                    .chatbot-container {
+                        position: fixed;
+                        bottom: 20px;
+                        right: 20px;
+                        z-index: 1000;
+                    }
+                    .chatbox {
+                        display: none;
+                        flex-direction: column;
+                        width: 300px;
+                        max-height: 400px;
+                        border: 1px solid #ccc;
+                        border-radius: 10px;
+                        background-color: #fff;
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    }
+                    .chatbox-open {
+                        display: flex;
+                    }
+                    .chatbox-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 10px;
+                        border-bottom: 1px solid #ccc;
+                        background-color: #007bff;
+                        color: black;
+                        border-radius: 20px 20px 0 0;
+                    }
+                    .chatbox-logo {
+                        width: 30px;
+                        height: 30px;
+                        margin-right: 10px;
+                    }
+                    .chatbox-messages {
+                        flex: 1;
+                        padding: 10px;
+                        overflow-y: auto;
+                    }
+                    .chatbox-input {
+                        display: flex;
+                        border-top: 1px solid #ccc;
+                    }
+                    .chatbox-input input {
+                        flex: 1;
+                        padding: 10px;
+                        border: none;
+                        border-radius: 0 0 0 10px;
+                    }
+                    .chatbox-input button {
+                        padding: 10px;
+                        border: none;
+                        border-radius: 0 0 10px 0;
+                        background-color: #007bff;
+                        color: white;
+                    }
+                    .chatbox-message {
+                        margin-bottom: 10px;
+                    }
+                    #chatbox-toggle {
+                        display: block;
+                        padding: 10px 50px;
+                        border: none;
+                        border-radius: 50px;
+                        background-color: #007bff;
+                        color: white;
+                        cursor: pointer;
+                    }
+                </style>
+        <script src="{% static 'js1/jquery.min.js' %}"></script>
+		<script src="{% static 'js1/jquery-migrate-3.0.0.js' %}"></script>
+		<script src="{% static 'js1/jquery-ui.min.js' %}"></script>
+        <script src="{% static 'js1/easing.js' %}"></script>
+		<script src="{% static 'js1/colors.js' %}"></script>
+		<script src="{% static 'js1/popper.min.js' %}"></script>
+		<script src="{% static 'js1/bootstrap-datepicker.js' %}"></script>
+        <script src="{% static 'js1/jquery.nav.js' %}"></script>
+		<script src="{% static 'js1/slicknav.min.js' %}"></script>
+        <!--<script src="{% static 'js1/jquery.scrollUp.min.js' %}"></script> -->
+		<script src="{% static 'js1/niceselect.js' %}"></script>
+		<script src="{% static 'js1/tilt.jquery.min.js' %}"></script>
+        <script src="{% static 'js1/owl-carousel.js' %}"></script>
+		<script src="{% static 'js1/jquery.counterup.min.js' %}"></script>
+		<script src="{% static 'js1/steller.js' %}"></script>
+		<script src="{% static 'js1/wow.min.js' %}"></script>
+		<script src="{% static 'js1/jquery.magnific-popup.min.js' %}"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+		<script src="{% static 'js1/bootstrap.min.js' %}"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+		<script src="{% static 'js1/main.js' %}"></script>
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'js/jquery.sticky.js' %}"></script>
+        <script src="{% static 'js/click-scroll.js' %}"></script>
+        <script src="{% static 'js/custom.js' %}"></script>
+
+        <script>
+            function toggleLanguage() {
+                const languageButton = document.getElementById('languageButton');
+                const currentLanguage = languageButton.textContent.trim();
+                const homeLink = document.getElementById('home-link');
+                const logoutButton = document.getElementById('logout-button');
+        
+                if (currentLanguage === 'Swahili') {
+                    languageButton.textContent = 'English';
+                    // Change the language to Kiswahili
+                    const translateElement = document.querySelector('.goog-te-combo');
+                    if (translateElement) {
+                        translateElement.value = 'sw';
+                        translateElement.dispatchEvent(new Event('change'));
+                    }
+                    // Change text to Swahili
+                    if (homeLink) homeLink.textContent = 'Mwanzo';
+                    if (logoutButton) logoutButton.textContent = 'Jitoe';
+                    if (contacts) contacts.textContent = 'Wasiliana nasi';
+                    if (faqsLink) faqsLink.textContent = 'Maswali';
+                } else {
+                    languageButton.textContent = 'Swahili';
+                    // Change the language to English
+                    const translateElement = document.querySelector('.goog-te-combo');
+                    if (translateElement) {
+                        translateElement.value = 'en';
+                        translateElement.dispatchEvent(new Event('change'));
+                    }
+                    // Change text to English
+                    if (homeLink) homeLink.textContent = 'Home';
+                    if (logoutButton) logoutButton.textContent = 'Logout';
+                }
+            }
+        
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+            }
+        </script>
+        <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    </body>
+</html>
