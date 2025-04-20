@@ -18,7 +18,7 @@ ALLOWED_HOSTS = [
     'liveodds.games', 
     'adamkatani.systems', 
     'd554-41-59-87-86.ngrok-free.app',   
-    'digital-influencer.onrender.com/',
+    'digital-influencer.onrender.com',
 ]
 
 
@@ -30,7 +30,7 @@ CSRF_TRUSTED_ORIGINS =[
     'https://liveodds.games',
     'https://adamkatani.systems',
     'https://d554-41-59-87-86.ngrok-free.app',  
-    'https://digital-influencer.onrender.com/',
+    'https://digital-influencer.onrender.com',
 ]
 
 # Application definition
