@@ -18,7 +18,7 @@ ALLOWED_HOSTS = [
     'liveodds.games', 
     'adamkatani.systems', 
     'd554-41-59-87-86.ngrok-free.app',   
-    'ticevents.onrender.com',
+    'kwibo.onrender.com',
 ]
 
 
@@ -30,7 +30,7 @@ CSRF_TRUSTED_ORIGINS =[
     'https://liveodds.games',
     'https://adamkatani.systems',
     'https://d554-41-59-87-86.ngrok-free.app',  
-    'https://ticevents.onrender.com',
+    'https://kwibo.onrender.com',
 ]
 
 # Application definition
