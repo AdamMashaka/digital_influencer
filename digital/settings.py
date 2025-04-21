@@ -6,10 +6,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-^!x_%)xs1)#tv6p8t)nqy_-zm7q4#(e2algds%&fl2p2_*l4*s'
 
-
 DEBUG = False
  
-
 ALLOWED_HOSTS = [
     '127.0.0.1', 
     'localhost', 
@@ -32,10 +30,8 @@ CSRF_TRUSTED_ORIGINS =[
     'https://adamkatani.systems',
     'https://d554-41-59-87-86.ngrok-free.app',  
     'https://digital-influencer.onrender.com',
-    'https://digital-influencer.netlify.app', 
-]
-
-# Application definition
+    'https://digital-influencer.netlify.app',  
+] 
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -115,15 +111,13 @@ USE_TZ = True
 
 
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent 
 
-# Static files settings
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Media files (if applicable)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -157,7 +151,8 @@ APPEND_SLASH = True
     #    'django': {
      #       'handlers': ['console'],
       #      'level': 'DEBUG',
-       # },
-    #},
-#}
+       # }, 
+    #}, 
+#} 
 
+ 
