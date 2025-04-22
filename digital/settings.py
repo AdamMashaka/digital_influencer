@@ -18,6 +18,7 @@ ALLOWED_HOSTS = [
     'd554-41-59-87-86.ngrok-free.app',   
     'digital-influencer.onrender.com',
     'digital-influencer.netlify.app',
+    'digitalinfluencer-production-62cf.up.railway.app',
 ]
 
 
@@ -31,6 +32,7 @@ CSRF_TRUSTED_ORIGINS =[
     'https://d554-41-59-87-86.ngrok-free.app',  
     'https://digital-influencer.onrender.com',
     'https://digital-influencer.netlify.app',  
+    'https://digitalinfluencer-production-62cf.up.railway.app',
 ] 
 
 INSTALLED_APPS = [
